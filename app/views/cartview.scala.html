@@ -1,0 +1,6 @@
+@(order: models.IOrder)
+
+@for(orderItem <- order.Archives() ){
+    @orderItem.Archive.AipUri()
+    <br/>
+}

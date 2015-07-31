@@ -1,0 +1,8 @@
+@(searchResults: List[IArchive])
+
+@main("Welcome to Play") {
+    @for(archive <- searchResults) {
+        @archive.AipUri()
+        <br/>
+    }
+}

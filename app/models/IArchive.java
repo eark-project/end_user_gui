@@ -5,10 +5,10 @@ package models;
  */
 public interface IArchive {
 
-    String getReferenceCode();
-    void setReferenceCode(String value);
+    String ReferenceCode();
+    void ReferenceCode(String value);
 
-    String getAipUri();
-    void setAipUri(String value);
+    String AipUri();
+    void AipUri(String value);
 
 }

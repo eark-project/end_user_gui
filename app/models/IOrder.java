@@ -28,6 +28,12 @@ public interface IOrder {
     IEndUser User();
     void User(IEndUser value);
 
+    Date PlannedDate();
+    void PlannedDate(Date value);
+
+    DateText ExpectedReadyDate();
+    void ExpectedReadyDate(DateText value);
+
     IArchivist Archivist();
     void Archivist(IArchivist value);
 
