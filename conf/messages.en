@@ -1,12 +1,14 @@
 main.entersearchterrm = "Enter search query"
 cart.add = +
-cart.view = view cart
+cart.view = Cart
 cart.items = items
 cart.close = Close
 
 navbar.brand = E-Ark Web
 navbar.home = Home
 navbar.profile = Profile
+
+search.nametitle = Name :
 
 userorders.username = Account
 userorders.myorders = My orders

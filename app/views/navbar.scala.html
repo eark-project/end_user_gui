@@ -1,23 +1,25 @@
 @(order: IOrder)
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">@Messages("navbar.brand")</a>
+            <a class="navbar-brand">@Messages("navbar.brand")</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/">@Messages("navbar.home")</a></li>
                 <li class="active"><a href="/profile">@Messages("navbar.profile")</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li class="active">
-                <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#cartModal" data-backdrop="static">
-                    @Messages("cart.view") (@order.Archives().size())
-                </button>
+                    <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#cartModal" data-backdrop="static">
+                        @Messages("cart.view")
+                        @if(order.Archives().size()>0) {
+                            (@order.Archives().size())
+                        }
+                    </button>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-
 @cartview(order)
-
