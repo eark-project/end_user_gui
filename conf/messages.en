@@ -1,1 +1,4 @@
 main.entersearchterrm = "Enter search query"
+cart.add = +
+cart.view = view cart
+cart.items = items

@@ -3,11 +3,19 @@
 # ~~~~
 
 # Home page
-GET        /                           controllers.Application.index
-POST       /search                     @controllers.SearchController.Search()
-GET        /search/autocomplete?q=:q   @controllers.SearchController.AutoComplete(q: String)
+GET         /                                controllers.Application.index
+
+# Search
+POST        /search                          @controllers.SearchController.Search()
+GET         /search/autocomplete?q=:q        @controllers.SearchController.AutoComplete(q: String)
+
+# Cart (Order)
+GET         /cart/add/:key                   @controllers.OrderController.Add(key: String, commnets = null)
+GET         /cart/remove/:key                @controllers.OrderController.Remove(key:String)
+GET         /cart/view/                      @controllers.OrderController.View()
+GET         /cart/empty/                     @controllers.OrderController.Empty()
+GET         /cart/submit/                    @controllers.OrderController.Submit()
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file        controllers.Assets.at(path="/public", file)
-
-    
+GET         /assets/*file                    controllers.Assets.at(path="/public", file)

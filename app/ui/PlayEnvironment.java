@@ -20,7 +20,7 @@ public class PlayEnvironment
 
     @Override
     public ISession Session() {
-        return null;
+        return GetObject(ISession.class);
     }
 
     private static IEnvironment _Current;

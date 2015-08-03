@@ -1,0 +1,8 @@
+@(order: IOrder)
+<a href="#cartModal" data-backdrop="static" data-toggle="modal" data-target="#cartModal">
+
+@Messages("cart.view")
+(<span name="cartCount">@order.Archives().size()</span>)
+</a>
+@cartview(order)
+

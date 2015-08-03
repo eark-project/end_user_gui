@@ -3,6 +3,7 @@
 @main("Welcome to Play") {
     @for(archive <- searchResults) {
         @archive.AipUri()
+        @cartadd(archive)
         <br/>
     }
 }
