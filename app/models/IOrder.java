@@ -40,4 +40,8 @@ public interface IOrder {
     List<String> InternalNotes();
 
     List<DeliveryFormat> DeliveryFormats();
+
+    /*Accessor methods*/
+    Boolean Add(IArchive archive);
+    Boolean Remove(IArchive archive);
 }

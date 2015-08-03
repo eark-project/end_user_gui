@@ -23,14 +23,6 @@ public class PlayEnvironment
         return GetObject(ISession.class);
     }
 
-    private static IEnvironment _Current;
-    public static IEnvironment Current() {
-        if(_Current == null) {
-            _Current = new PlayEnvironment();
-        }
-        return _Current;
-    }
-
     private com.google.inject.Injector injector;
     public PlayEnvironment(){
 

@@ -7,4 +7,5 @@ import java.util.List;
  */
 public interface ISearchModule {
     List<IArchive> Search(ArchiveSearchObject searchObject);
+    IArchive Lookup(String key);
 }

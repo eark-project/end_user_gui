@@ -10,9 +10,10 @@ POST        /search                          @controllers.SearchController.Searc
 GET         /search/autocomplete?q=:q        @controllers.SearchController.AutoComplete(q: String)
 
 # Cart (Order)
-GET         /cart/add/:key                   @controllers.OrderController.Add(key: String, commnets = null)
-GET         /cart/remove/:key                @controllers.OrderController.Remove(key:String)
+GET         /cart/add/:key/                  @controllers.OrderController.Add(key: String, commnets = null)
+GET         /cart/remove/:key/               @controllers.OrderController.Remove(key:String)
 GET         /cart/view/                      @controllers.OrderController.View()
+GET         /cart/count/                      @controllers.OrderController.Count()
 GET         /cart/empty/                     @controllers.OrderController.Empty()
 GET         /cart/submit/                    @controllers.OrderController.Submit()
 

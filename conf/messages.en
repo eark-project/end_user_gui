@@ -1,5 +1,7 @@
 main.entersearchterrm = "Enter search query"
 cart.add = +
+cart.remove = -
+cart.clear = Reset cart
 cart.view = Cart
 cart.items = items
 cart.close = Close

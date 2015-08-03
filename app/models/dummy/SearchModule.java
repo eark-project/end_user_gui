@@ -32,4 +32,13 @@ public class SearchModule implements ISearchModule {
 
         return ret;
     }
+
+    @Override
+    public IArchive Lookup(String key) {
+        for(IArchive archive : Search(null)){
+            if(archive.ReferenceCode().equals(key))
+                return archive;
+        }
+        return null;
+    }
 }

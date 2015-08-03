@@ -4,6 +4,14 @@
     <li class="list-group-item">
     @orderItem.Archive.AipUri()
     @orderItem.Archive.ReferenceCode()
+    <button type="button" class="btn btn-default btn-sm" uuid="@orderItem.Archive.ReferenceCode()" name="removeFromCartAnchor">
+    @Messages("cart.remove")
+    </button>
     </li>
 }
+    @if(order.Archives().size() > 0){
+        <button type="button" class="btn btn-default btn-lg" name="clearCartAnchor">
+        @Messages("cart.clear")
+        </button>
+    }
 </ul>

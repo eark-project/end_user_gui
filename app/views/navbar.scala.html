@@ -11,11 +11,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active">
-                    <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#cartModal" data-backdrop="static">
+                    <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#cartModal" data-backdrop="static" name="cartViewButton">
                         @Messages("cart.view")
-                        @if(order.Archives().size()>0) {
-                            (@order.Archives().size())
-                        }
+                        <span name="cartCount"></span>
                     </button>
                 </li>
             </ul>

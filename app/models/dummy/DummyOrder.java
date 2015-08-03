@@ -112,4 +112,27 @@ public class DummyOrder implements IOrder {
     public List<DeliveryFormat> DeliveryFormats() {
         return null;
     }
+
+    @Override
+    public Boolean Add(IArchive archive) {
+        OrderArchiveReference ref = new OrderArchiveReference();
+        ref.Archive = archive;
+        ref.Status =new OrderStatus();
+        ref.Status.Status = "";
+        ref.Status.StatusDate = new Date();
+
+        this.Archives().add(ref);
+        return true;
+    }
+
+    @Override
+    public Boolean Remove(IArchive archive) {
+        for (OrderArchiveReference orderArchiveReference:this.Archives()){
+            if(orderArchiveReference.Archive.ReferenceCode().equals(archive.ReferenceCode())){
+                Archives().remove(orderArchiveReference);
+                return true;
+            }
+        }
+        return false;
+    }
 }

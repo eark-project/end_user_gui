@@ -1,11 +1,11 @@
 package controllers;
 
 import models.ArchiveSearchObject;
+import models.Environment;
 import models.IArchive;
 import play.mvc.Result;
 import play.data.Form;
 import play.mvc.Controller;
-import ui.PlayEnvironment;
 import views.html.searchresultview;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class SearchController extends Controller{
         Form<ArchiveSearchObject> form = Form.form(ArchiveSearchObject.class);
         form = form.bindFromRequest();
         ArchiveSearchObject searchObject = form.get();
-        List<IArchive> searchResults = PlayEnvironment.Current().SearchModule().Search(searchObject);
+        List<IArchive> searchResults = Environment.Current().SearchModule().Search(searchObject);
         return ok(searchresultview.render(searchResults));
     }
 
@@ -27,7 +27,7 @@ public class SearchController extends Controller{
         ArchiveSearchObject searchObject = new ArchiveSearchObject();
         searchObject.name = query;
 
-        List<IArchive> searchResults = PlayEnvironment.Current ().SearchModule().Search(searchObject);
+        List<IArchive> searchResults = Environment.Current().SearchModule().Search(searchObject);
         // TODO: Fill JSON object
         return null;
 
