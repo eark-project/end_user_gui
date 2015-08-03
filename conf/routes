@@ -16,6 +16,8 @@ GET         /cart/view/                      @controllers.OrderController.View()
 GET         /cart/empty/                     @controllers.OrderController.Empty()
 GET         /cart/submit/                    @controllers.OrderController.Submit()
 
+GET         /profile/                        @controllers.UserController.ProfileSummary()
+GET         /profile                         @controllers.UserController.ProfileSummary()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                    controllers.Assets.at(path="/public", file)

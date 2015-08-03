@@ -1,6 +1,9 @@
 @(order: models.IOrder)
+<ul class="list-group">
 @for(orderItem <- order.Archives() ){
+    <li class="list-group-item">
     @orderItem.Archive.AipUri()
     @orderItem.Archive.ReferenceCode()
-    <br/>
+    </li>
 }
+</ul>
