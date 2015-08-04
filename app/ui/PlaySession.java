@@ -18,6 +18,7 @@ public class PlaySession implements ISession {
         Object ret = play.cache.Cache.get(key);
         if(ret == null){
             NewOrder();
+            ret = play.cache.Cache.get(key);
         }
         return (IOrder)ret;
     }
