@@ -1,0 +1,29 @@
+@import java.util
+@(orders: util.List[IOrder])
+
+<div class="container col-md-12">
+@for(order <- orders){
+    <div class="row">
+        <div class="col-md-4">
+        @order.OrderUniqueID()
+        </div>
+        <div class="col-md-4">ddd
+        @order.IssueDate()
+        </div>
+
+
+        @for(orderItem <- order.Archives()){
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                @orderItem.Archive.AipUri()
+                </div>
+                <div class="col-md-4">
+                @orderItem.Archive.ReferenceCode()
+                </div>
+            </div>
+
+        }
+
+    </div>
+}
+</div>

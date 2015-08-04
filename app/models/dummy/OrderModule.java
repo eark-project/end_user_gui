@@ -12,14 +12,13 @@ public class OrderModule implements IOrderModule {
     private final HashMap<IEndUser,List<IOrder>>_Orders = new HashMap<>();
 
     @Override
-    public StandardReturn SubmitOrder(IOrder order, ISession sesion) {
+    public StandardReturn SubmitOrder(IOrder order, IEndUser user) {
         if(order.Archives().size() > 0){
             order.IssueDate(new Date());
 
-            _Orders.putIfAbsent(sesion.User(), new ArrayList<>());
-            _Orders.get(sesion.User()).add(order);
+            _Orders.putIfAbsent(user, new ArrayList<>());
+            _Orders.get(user).add(order);
 
-            sesion.NewOrder();
             return StandardReturn.OK();
         }
         else {
@@ -29,6 +28,6 @@ public class OrderModule implements IOrderModule {
 
     @Override
     public List<IOrder> GetUserOrders(IEndUser user) {
-        return _Orders.getOrDefault(user,new ArrayList<>());
+        return _Orders.getOrDefault(user, new ArrayList<>());
     }
 }

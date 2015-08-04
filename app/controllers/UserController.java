@@ -1,5 +1,6 @@
 package controllers;
 
+import models.Environment;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.profile;
@@ -9,6 +10,6 @@ import views.html.profile;
  */
 public class UserController extends Controller {
     public Result ProfileSummary() {
-        return ok(profile.render());
+        return ok(profile.render(Environment.Current()));
     }
 }

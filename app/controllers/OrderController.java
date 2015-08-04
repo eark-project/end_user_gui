@@ -44,8 +44,11 @@ public class OrderController extends play.mvc.Controller {
 
         StandardReturn ret = Environment.Current().OrderModule().SubmitOrder(
                 Environment.Current().Session().CurrentOrder(),
-                Environment.Current().Session()
+                Environment.Current().Session().User()
         );
+        if(ret.Succeeded){
+            Environment.Current().Session().NewOrder();
+        }
         return ok(ret.toString());
     }
 

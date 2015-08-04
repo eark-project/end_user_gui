@@ -53,24 +53,26 @@ public class DummyOrder implements IOrder {
         return null;
     }
 
+    private Date _IssueDate;
     @Override
     public Date IssueDate() {
-        return null;
+        return _IssueDate;
     }
 
     @Override
     public void IssueDate(Date value) {
-
+        _IssueDate = value;
     }
 
+    IEndUser _User;
     @Override
     public IEndUser User() {
-        return null;
+        return _User;
     }
 
     @Override
     public void User(IEndUser value) {
-
+        _User = value;
     }
 
     @Override

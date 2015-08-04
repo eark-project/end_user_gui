@@ -17,15 +17,19 @@ public class PlaySession implements ISession {
         String key = orderKey();
         Object ret = play.cache.Cache.get(key);
         if(ret == null){
-            ret = new DummyOrder();
-            play.cache.Cache.set(key,ret);
+            NewOrder();
         }
         return (IOrder)ret;
     }
 
     @Override
     public void NewOrder() {
-        play.cache.Cache.set(orderKey(),null);
+        play.cache.Cache.set(
+                orderKey(),
+                new DummyOrder(){{
+                    User(this.User());
+                }}
+        );
     }
 
     public String SessionId(){
