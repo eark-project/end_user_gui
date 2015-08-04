@@ -2,6 +2,7 @@ package controllers;
 
 import models.Environment;
 import models.IArchive;
+import models.StandardReturn;
 import play.mvc.Result;
 import views.html.cartviewbody;
 
@@ -40,7 +41,13 @@ public class OrderController extends play.mvc.Controller {
     }
 
     public Result Submit(){
-        throw new UnsupportedOperationException();
+
+        StandardReturn ret = Environment.Current().OrderModule().SubmitOrder(
+                Environment.Current().Session().CurrentOrder(),
+                Environment.Current().Session()
+        );
+        return ok(ret.Text);
+
     }
 
 }

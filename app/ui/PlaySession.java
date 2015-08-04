@@ -14,13 +14,18 @@ import javax.persistence.criteria.Order;
 public class PlaySession implements ISession {
 
     public IOrder CurrentOrder(){
-        String key = SessionId() + "_CurrentOrder";
+        String key = orderKey();
         Object ret = play.cache.Cache.get(key);
         if(ret == null){
             ret = new DummyOrder();
             play.cache.Cache.set(key,ret);
         }
         return (IOrder)ret;
+    }
+
+    @Override
+    public void NewOrder() {
+        play.cache.Cache.set(orderKey(),null);
     }
 
     public String SessionId(){
@@ -33,6 +38,11 @@ public class PlaySession implements ISession {
         }
         return uuid;
     }
+
+    String orderKey(){
+        return SessionId() + "_CurrentOrder";
+    }
+
     public IEndUser _User;
     public IEndUser User(){return  _User;}
 

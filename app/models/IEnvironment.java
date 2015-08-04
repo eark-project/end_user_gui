@@ -5,5 +5,6 @@ package models;
  */
 public interface IEnvironment {
     ISearchModule SearchModule();
+    IOrderModule OrderModule();
     ISession Session();
 }

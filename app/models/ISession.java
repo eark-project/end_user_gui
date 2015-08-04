@@ -5,5 +5,6 @@ package models;
  */
 public interface ISession {
     IOrder CurrentOrder();
+    void NewOrder();
     IEndUser User();
 }
