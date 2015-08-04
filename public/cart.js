@@ -34,7 +34,7 @@ function submitCart(){
     $.get(
         '/cart/submit/',
         function(data){
-            alert(data);
+            $('#cartModal').modal('hide');
             refreshCartContents();
         }
     );
