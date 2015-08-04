@@ -1,12 +1,16 @@
 @(searchResults: List[IArchive])
 
 @main("Welcome to Play") {
-    <ul class="list-group">
+    <div class="container col-lg-12">
     @for(archive <- searchResults) {
-        <li class="list-group-item">
-        @archive.AipUri()
-        @cartadd(archive)
-        </li>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-1">
+                @archive.AipUri()
+            </div>
+            <div class="col-lg-1 col-lg-offset-2">
+                @cartadd(archive)
+            </div>
+        </div>
     }
-    </ul>
+    </div>
 }
