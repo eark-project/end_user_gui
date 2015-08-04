@@ -46,8 +46,7 @@ public class OrderController extends play.mvc.Controller {
                 Environment.Current().Session().CurrentOrder(),
                 Environment.Current().Session()
         );
-        return ok(ret.Text);
-
+        return ok(ret.toString());
     }
 
 }

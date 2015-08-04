@@ -25,4 +25,8 @@ public class StandardReturn {
             Text = text;
         }};
     }
+
+    public String toString(){
+        return String.format("%b : %d %s",Succeeded,Code,Text);
+    }
 }

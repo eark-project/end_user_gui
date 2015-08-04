@@ -30,6 +30,16 @@ function emptyCart() {
     );
 }
 
+function submitCart(){
+    $.get(
+        '/cart/submit/',
+        function(data){
+            alert(data);
+            refreshCartContents();
+        }
+    );
+}
+
 function refreshCartContents()
 {
     // Refresh div element
@@ -74,4 +84,11 @@ function setCartButtonEvents(){
         emptyCart();
         return false;
     });
+
+    $('[name=submitCartAnchor]').unbind('click');
+    $('[name=submitCartAnchor]').click(function(event){
+        submitCart();
+        return false;
+    });
+
 }
