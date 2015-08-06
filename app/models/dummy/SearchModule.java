@@ -21,7 +21,7 @@ public class SearchModule implements ISearchModule {
                 String s = new Integer(i).toString();
                 Archive arc = new Archive(){{
                     AipUri("http:" + s + ".dk");
-                    ReferenceCode("uuid:" + s + ";dkqwjh");
+                    ReferenceCode("uuid:" + s + "");
                 }};
                 _Archives.add(arc);
             }

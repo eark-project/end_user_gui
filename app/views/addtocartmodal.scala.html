@@ -1,0 +1,24 @@
+@(archive: IArchive, disseminations: java.util.List[IDissemination])
+
+@modaldialog( "addToCartModal") {
+    @Messages("cart.addtitle")
+} {
+    <span>
+        <h2>@Messages("cart.availabledisseminations")</h2>
+        <br>
+    @if(disseminations.size() > 0){
+        <div class="container col-md-12">
+            @for(dis <- disseminations){
+                <div class="row">
+                    <div class="col-md-6">@dis.ToString()</div>
+                    <div class="col-md-5">@(new java.text.SimpleDateFormat("yyyy-MM-dd").format(dis.CreatedDate()))</div>
+                    <div class="col-md-1">@cartadd(archive)</div>
+                </div>
+            }
+        </div>
+    }else{
+        @Messages("none")
+    }
+        <br><br>
+    </span>
+}

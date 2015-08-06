@@ -6,6 +6,9 @@ cart.submit = Submit order
 cart.view = Cart
 cart.items = items
 cart.close = Close
+cart.addtitle = Add archive
+cart.cancel = Cancel
+cart.availabledisseminations = Available DIPs
 
 navbar.brand = E-Ark Web
 navbar.home = Home
@@ -15,3 +18,5 @@ search.nametitle = Name :
 
 userorders.username = Account
 userorders.myorders = My orders
+
+none = None

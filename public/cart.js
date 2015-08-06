@@ -2,6 +2,17 @@
  * Created by Beemen on 31/07/2015.
  */
 
+function openAddToCartModal(uuid) {
+    // Refresh div element
+    $('#modalPopupSpan').load(
+        '/cart/openadd/' + uuid + '/',
+        null,
+        function(data){
+            setCartButtonEvents();
+            $('#addToCartModal').modal('show');
+        }
+    )
+}
 function addToCart (uuid) {
     $.get(
         '/cart/add/' + uuid + '/',
@@ -68,7 +79,8 @@ function setCartButtonEvents(){
     $('[name=addToCartAnchor]').unbind('click');
     $('[name=addToCartAnchor]').click(function(event){
         var uuid = event.target.getAttribute('uuid');
-        addToCart(uuid)
+        //addToCart(uuid)
+        openAddToCartModal(uuid);
         return false;
     });
 

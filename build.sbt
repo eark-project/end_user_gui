@@ -12,4 +12,6 @@ libraryDependencies += "com.google.inject" % "guice" % "4.0"
 
 libraryDependencies += "org.codehaus.jackson" % "jackson-core-asl" % "1.9.13"
 
+libraryDependencies += "de.sven-jacobs" % "loremipsum" % "1.0"
+
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  

@@ -2,10 +2,7 @@ package ui;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
-import models.IEnvironment;
-import models.IOrderModule;
-import models.ISearchModule;
-import models.ISession;
+import models.*;
 
 
 /**
@@ -20,12 +17,20 @@ public class PlayEnvironment
     }
 
     private IOrderModule _OrderModule;
+    private IArchiveRepository _ArchiveRepository;
 
     @Override
     public IOrderModule OrderModule() {
         if(_OrderModule == null)
             _OrderModule = GetObject(IOrderModule.class);
         return _OrderModule;
+    }
+
+    @Override
+    public IArchiveRepository ArchiveRepository() {
+        if(_ArchiveRepository == null)
+            _ArchiveRepository = GetObject(IArchiveRepository.class);
+        return _ArchiveRepository;
     }
 
     @Override
@@ -42,6 +47,7 @@ public class PlayEnvironment
                 bind(ISession.class).to(PlaySession.class);
                 bind(ISearchModule.class).to(models.dummy.SearchModule.class);
                 bind(IOrderModule.class).to(models.dummy.OrderModule.class);
+                bind(IArchiveRepository.class).to(models.dummy.ArchiveRepository.class);
             }
         });
     }
