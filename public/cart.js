@@ -2,8 +2,7 @@
  * Created by Beemen on 31/07/2015.
  */
 
-function openAddToCartModal(uuid) {
-    // Refresh div element
+function openCartModal() {
     $('#modalPopupSpan').load(
         '/cart/openadd/' + uuid + '/',
         null,
@@ -13,9 +12,21 @@ function openAddToCartModal(uuid) {
         }
     )
 }
-function addToCart (uuid) {
+
+function openAddToCartModal(uuid) {
+    // Refresh div element
+    $('#addToCartModalBody').load(
+        '/cart/openadd/' + uuid + '/',
+        null,
+        function(data){
+            setCartButtonEvents();
+            $('#addToCartModal').modal('show');
+        }
+    )
+}
+function addToCart (uuid, disUuid) {
     $.get(
-        '/cart/add/' + uuid + '/',
+        '/cart/add/' + uuid + '/' + disUuid + '/',
         function(data){
             showMessage(data);
             refreshCartContents();
@@ -76,11 +87,23 @@ function showMessage(msgText, spnId){
 
 function setCartButtonEvents(){
 
+    $('[name=viewCartAnchor]').unbind('click');
+    $('[name=viewCartAnchor]').click(function(event){
+        openCartModal();
+    });
+
+    $('[name=openAddToCartAnchor]').unbind('click');
+    $('[name=openAddToCartAnchor]').click(function(event){
+        var uuid = event.target.getAttribute('uuid');
+        openAddToCartModal(uuid);
+        return false;
+    });
+
     $('[name=addToCartAnchor]').unbind('click');
     $('[name=addToCartAnchor]').click(function(event){
         var uuid = event.target.getAttribute('uuid');
-        //addToCart(uuid)
-        openAddToCartModal(uuid);
+        var disUuid = event.target.getAttribute('disUuid');
+        addToCart(uuid, disUuid);
         return false;
     });
 

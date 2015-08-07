@@ -12,6 +12,10 @@ import de.svenjacobs.loremipsum.LoremIpsum;
  * Created by Beemen on 06/08/2015.
  */
 public class ArchiveRepository implements IArchiveRepository {
+
+    LoremIpsum _LoremIpsum = new LoremIpsum();
+    Random _RandomGenerator = new Random();
+
     @Override
     public List<IDissemination> GetDIPs(IArchive archive) {
         Pattern p = Pattern.compile("[0-9]+");
@@ -24,18 +28,22 @@ public class ArchiveRepository implements IArchiveRepository {
         }
         Integer c = Integer.parseInt(s)%3;
 
-        LoremIpsum li = new LoremIpsum();
-
-        Random r = new Random();
         List<IDissemination> ret = new ArrayList<>();
         for(int i=0;i<c;i++){
             Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE, r.nextInt(1000) * -1);
+            cal.add(Calendar.DATE, _RandomGenerator.nextInt(1000) * -1);
             ret.add(new Dissemination() {{
                 CreatedDate(cal.getTime());
-                _DummyDescription = li.getWords(3,r.nextInt(50));
+                _DummyDescription = _LoremIpsum.getWords(3, _RandomGenerator.nextInt(50));
             }});
         }
         return ret;
+    }
+
+    @Override
+    public IDissemination LookupDIP(String keyString) {
+        return new Dissemination(){{
+            _DummyDescription = _LoremIpsum.getWords(3, _RandomGenerator.nextInt(50));
+        }};
     }
 }

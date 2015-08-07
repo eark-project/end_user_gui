@@ -10,4 +10,5 @@ public interface IDissemination {
     void CreatedDate(Date value);
 
     String ToString();
+    String KeyString();
 }

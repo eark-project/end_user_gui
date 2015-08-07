@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class OrderArchiveReference {
     public IArchive Archive;
+    public IDissemination Dissemination;
     public String LevelOfDescription;
     public Date AccessEndDate;
     public OrderStatus Status;

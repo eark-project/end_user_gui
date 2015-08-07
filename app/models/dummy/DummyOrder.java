@@ -117,13 +117,20 @@ public class DummyOrder implements IOrder {
 
     @Override
     public Boolean Add(IArchive archive) {
-        OrderArchiveReference ref = new OrderArchiveReference();
-        ref.Archive = archive;
-        ref.Status =new OrderStatus();
-        ref.Status.Status = "";
-        ref.Status.StatusDate = new Date();
+        return Add(archive, null);
+    }
 
-        this.Archives().add(ref);
+    @Override
+    public Boolean Add(IArchive archive, IDissemination dissemination) {
+        this.Archives().add(
+                new OrderArchiveReference(){{
+                    Archive = archive;
+                    Status =new OrderStatus(){{
+                        Status = "";
+                        StatusDate = new Date();
+                    }};
+                }}
+        );
         return true;
     }
 

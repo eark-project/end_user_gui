@@ -43,5 +43,6 @@ public interface IOrder {
 
     /*Accessor methods*/
     Boolean Add(IArchive archive);
+    Boolean Add(IArchive archive, IDissemination dissemination);
     Boolean Remove(IArchive archive);
 }

@@ -5,8 +5,8 @@ import models.IArchive;
 import models.IDissemination;
 import models.StandardReturn;
 import play.mvc.Result;
-import views.html.addtocartmodal;
-import views.html.cartviewbody;
+import views.html.addtocartmodal_body;
+import views.html.cartview_body;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class OrderController extends play.mvc.Controller {
     public Result View(){
-        return ok(cartviewbody.render(Environment.Current().Session().CurrentOrder()));
+        return ok(cartview_body.render(Environment.Current().Session().CurrentOrder()));
     }
 
     public Result Count(){
@@ -35,12 +35,16 @@ public class OrderController extends play.mvc.Controller {
     public Result OpenAddDialog(String key){
         IArchive archive = Environment.Current().SearchModule().Lookup(key);
         List<IDissemination> ret = Environment.Current().ArchiveRepository().GetDIPs(archive);
-        return ok(addtocartmodal.render(archive,ret));
+        return ok(addtocartmodal_body.render(archive, ret));
     }
 
-    public Result Add(String key, String commnets){
+    public Result Add(String key, String disKey, String commnets){
         IArchive archive = Environment.Current().SearchModule().Lookup(key);
-        Environment.Current().Session().CurrentOrder().Add(archive);
+        IDissemination dissemination = null;
+        if(disKey != null && disKey.length()>0){
+            dissemination = Environment.Current().ArchiveRepository().LookupDIP(disKey);
+        }
+        Environment.Current().Session().CurrentOrder().Add(archive, dissemination);
         return ok();
     }
 

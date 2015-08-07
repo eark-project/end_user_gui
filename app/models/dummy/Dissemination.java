@@ -26,4 +26,9 @@ public class Dissemination implements IDissemination{
     public String ToString() {
         return _DummyDescription;
     }
+
+    @Override
+    public String KeyString() {
+        return _CreatedDate.toString();
+    }
 }

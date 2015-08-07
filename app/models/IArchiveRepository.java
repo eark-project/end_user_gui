@@ -7,4 +7,5 @@ import java.util.List;
  */
 public interface IArchiveRepository {
     List<IDissemination> GetDIPs(IArchive archive);
+    IDissemination LookupDIP(String keyString);
 }

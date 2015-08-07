@@ -8,7 +8,11 @@
            <div class="row">
                <div class="col-md-6">@dis.ToString()</div>
                <div class="col-md-5">@(new java.text.SimpleDateFormat("yyyy-MM-dd").format(dis.CreatedDate()))</div>
-               <div class="col-md-1">@cartadd(archive)</div>
+               <div class="col-md-1">
+                   <button type="button" class="btn btn-default btn-sm" uuid="@archive.ReferenceCode()" disUuid="@dis.KeyString()" name="addToCartAnchor">
+                   @Messages("cart.add")
+                   </button>
+               </div>
            </div>
        }
    </div>
