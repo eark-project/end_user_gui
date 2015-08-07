@@ -1,8 +1,8 @@
 @(archive: IArchive, disseminations: java.util.List[IDissemination])
 
-<h2>@Messages("cart.availabledisseminations")</h2>
-<br>
 @if(disseminations != null && disseminations.size() > 0){
+    <h2>@Messages("cart.availabledisseminations")</h2>
+    <br>
    <div class="container col-md-12">
        @for(dis <- disseminations){
            <div class="row">
@@ -15,8 +15,15 @@
                </div>
            </div>
        }
+       <button type="button" class="btn btn-default btn-sm" uuid="@archive.ReferenceCode()" disUuid="" name="addToCartAnchor">
+        @Messages("cart.thanksnewdip")
+       </button>
    </div>
 }else{
-    @Messages("none")
+    @if(archive != null){
+        <button type="button" class="btn btn-submit btn-sm" uuid="@archive.ReferenceCode()" disUuid="" name="addToCartAnchor">
+            @Messages("cart.addtext")
+        </button>
+    }
 }
 <br><br>

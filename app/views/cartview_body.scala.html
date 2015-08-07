@@ -9,7 +9,12 @@
             <div class="col-md-4">
                 @orderItem.Archive.ReferenceCode()
             </div>
-            <div class="col-md-1 col-md-offset-3">
+            <div class="col-md-3">
+                @if(orderItem.Dissemination != null){
+                    @orderItem.Dissemination.CreatedDate()
+                }
+            </div>
+            <div class="col-md-1">
                 <button type="button" class="btn btn-default btn-sm" uuid="@orderItem.Archive.ReferenceCode()" name="removeFromCartAnchor">
                 @Messages("cart.remove")
                 </button>

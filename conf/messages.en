@@ -1,5 +1,8 @@
 main.entersearchterrm = "Enter search query"
 cart.add = +
+cart.addtext = Add to cart
+cart.thanksnewdip = No, thanks, I need a new DIP
+
 cart.remove = -
 cart.clear = Reset cart
 cart.submit = Submit order
