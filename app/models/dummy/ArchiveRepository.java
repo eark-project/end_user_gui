@@ -16,6 +16,15 @@ public class ArchiveRepository implements IArchiveRepository {
     LoremIpsum _LoremIpsum = new LoremIpsum();
     Random _RandomGenerator = new Random();
 
+    Dissemination CreateDissemination(){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, _RandomGenerator.nextInt(1000) * -1);
+        return new Dissemination() {{
+            CreatedDate(cal.getTime());
+            _DummyDescription = _LoremIpsum.getWords(3, _RandomGenerator.nextInt(50));
+        }};
+    }
+
     @Override
     public List<IDissemination> GetDIPs(IArchive archive) {
         Pattern p = Pattern.compile("[0-9]+");
@@ -30,20 +39,13 @@ public class ArchiveRepository implements IArchiveRepository {
 
         List<IDissemination> ret = new ArrayList<>();
         for(int i=0;i<c;i++){
-            Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE, _RandomGenerator.nextInt(1000) * -1);
-            ret.add(new Dissemination() {{
-                CreatedDate(cal.getTime());
-                _DummyDescription = _LoremIpsum.getWords(3, _RandomGenerator.nextInt(50));
-            }});
+            ret.add(CreateDissemination());
         }
         return ret;
     }
 
     @Override
     public IDissemination LookupDIP(String keyString) {
-        return new Dissemination(){{
-            _DummyDescription = _LoremIpsum.getWords(3, _RandomGenerator.nextInt(50));
-        }};
+        return CreateDissemination();
     }
 }

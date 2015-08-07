@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-3">
                 @if(orderItem.Dissemination != null){
-                    @orderItem.Dissemination.CreatedDate()
+                    @(new java.text.SimpleDateFormat("yyyy-MM-dd").format(orderItem.Dissemination.CreatedDate()))
                 }
             </div>
             <div class="col-md-1">

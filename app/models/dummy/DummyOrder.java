@@ -125,6 +125,7 @@ public class DummyOrder implements IOrder {
         this.Archives().add(
                 new OrderArchiveReference(){{
                     Archive = archive;
+                    Dissemination = dissemination;
                     Status =new OrderStatus(){{
                         Status = "";
                         StatusDate = new Date();
