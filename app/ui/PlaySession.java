@@ -51,7 +51,7 @@ public class PlaySession implements ISession {
         return SessionId() + "_CurrentOrder";
     }
 
-    public final HashMap<String,IEndUser> _Users = new HashMap<>();
+    public static final HashMap<String,IEndUser> _Users = new HashMap<>();
     public IEndUser User(){
         _Users.computeIfAbsent(
                 SessionId(),
