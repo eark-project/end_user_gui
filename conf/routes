@@ -7,7 +7,7 @@ GET         /                                controllers.Application.index
 
 # Search
 POST        /search                          @controllers.SearchController.Search()
-GET         /search/autocomplete?q=:q        @controllers.SearchController.AutoComplete(q: String)
+GET         /search/autocomplete/:q          @controllers.SearchController.AutoComplete(q: String)
 
 # Cart (Order)
 GET         /cart/openadd/:key/              @controllers.OrderController.OpenAddDialog(key: String)

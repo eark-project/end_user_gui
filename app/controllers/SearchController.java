@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.gson.Gson;
 import models.ArchiveSearchObject;
 import models.Environment;
 import models.IArchive;
@@ -8,6 +9,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import views.html.searchresultview;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,8 +30,13 @@ public class SearchController extends Controller{
         searchObject.name = query;
 
         List<IArchive> searchResults = Environment.Current().SearchModule().Search(searchObject);
-        // TODO: Fill JSON object
-        return null;
+        String[] ret = new String[searchResults.size()];
+        for(int i=0; i<searchResults.size(); i++){
+            ret[i] = searchResults.get(i).ReferenceCode();
+        }
+        Gson json = new Gson();
+        String s = json.toJson(ret);
+        return ok(s);
 
     }
 }
