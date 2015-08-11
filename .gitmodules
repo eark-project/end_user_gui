@@ -1,0 +1,3 @@
+[submodule "play_host_service"]
+	path = play_host_service
+	url = https://github.com/magenta-aps/play_host_service
