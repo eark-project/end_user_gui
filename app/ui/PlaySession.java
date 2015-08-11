@@ -4,9 +4,12 @@ import models.IEndUser;
 import models.IOrder;
 import models.ISession;
 import models.dummy.DummyOrder;
+import models.dummy.EndUser;
 import play.mvc.Http;
 
 import javax.persistence.criteria.Order;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 /**
  * Created by Beemen on 30/07/2015.
@@ -48,8 +51,17 @@ public class PlaySession implements ISession {
         return SessionId() + "_CurrentOrder";
     }
 
-    public IEndUser _User;
-    public IEndUser User(){return  _User;}
+    public final HashMap<String,IEndUser> _Users = new HashMap<>();
+    public IEndUser User(){
+        _Users.computeIfAbsent(
+                SessionId(),
+                k ->  new EndUser(){{
+                    Name(SessionId());
+                    UniqueId(SessionId());
+                }});
+
+        return  _Users.get(SessionId());
+    }
 
     private play.mvc.Http.Session _Session;
 
