@@ -2,17 +2,21 @@
 
 @main("Welcome to Play") {
 
-
-    <form action="/search" method="post" class="form-horizontal" role="form">
-
-        <div class="form-group">
+    <div class="container">
+        <div class="form-group col-sm-9">
             <label class="control-label col-sm-2" for="name">@Messages("search.nametitle")</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" onchange="callSearch()">
             </div>
         </div>
+    <div class="col-sm-3">
+        <button class="btn btn-primary" onclick="javascript:callSearch()">@Messages("search.search")</button>
+    </div>
+    </div>
+    <br><br><br>
+        <span id="searchResults">
+            @searchresultview(null)
+        </span>
 
-        <input type="submit" class="btn btn-primary"/>
-    </form>
 
 }

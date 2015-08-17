@@ -1,18 +1,18 @@
 @(searchResults: List[IArchive])
 
-@main("Welcome to Play") {
-    <div class="container col-lg-12">
+<div class="container col-lg-12">
+@if(searchResults != null) {
     @for(archive <- searchResults) {
         <div class="row">
             <div class="col-lg-4 col-lg-offset-1">
-                @archive.AipUri()
+            @archive.AipUri()
             </div>
             <div class="col-lg-1 col-lg-offset-2">
                 <button type="button" class="btn btn-default btn-sm" name="openAddToCartAnchor" uuid="@archive.ReferenceCode()" >
-                    @Messages("cart.add")
+                @Messages("cart.add")
                 </button>
             </div>
         </div>
     }
-    </div>
 }
+</div>

@@ -2,6 +2,18 @@
  * Created by Beemen on 31/07/2015.
  */
 
+function callSearch() {
+    $('#searchResults').load(
+        '/search',
+        {
+            name : $('#name').val()
+        },
+        function(data){
+            setCartButtonEvents();
+        }
+    )
+}
+
 function openCartModal() {
     $('#modalPopupSpan').load(
         '/cart/openadd/' + uuid + '/',
