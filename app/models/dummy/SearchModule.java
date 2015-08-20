@@ -11,16 +11,16 @@ import java.util.*;
  */
 public class SearchModule implements ISearchModule {
 
-    List<IArchive> _Archives;
+    static List<IArchive> _Archives;
 
     public SearchModule(){
         if(_Archives == null){
             _Archives = new ArrayList<>();
 
-            for (int i=0; i<100;i++){
+            for (int i=0; i<1000;i++){
                 String s = new Integer(i).toString();
                 Archive arc = new Archive(){{
-                    AipUri("http:" + s + ".dk");
+                    AipUri(String.format("http://%s-%s.dk", s, UUID.randomUUID()));
                     ReferenceCode("uuid:" + s + "");
                 }};
                 _Archives.add(arc);
@@ -31,7 +31,7 @@ public class SearchModule implements ISearchModule {
     public List<IArchive> Search(ArchiveSearchObject searchObject) {
         List<IArchive> ret = new ArrayList<>();
         for(IArchive archive : _Archives){
-            if(searchObject.name == null || archive.ReferenceCode().contains(searchObject.name))
+            if(searchObject.name == null || archive.ReferenceCode().contains(searchObject.name) || archive.AipUri().contains(searchObject.name))
                 ret.add(archive);
         }
         return ret;
