@@ -1,13 +1,15 @@
 @(archive: IArchive, disseminations: java.util.List[IDissemination])
 
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+<h2>@Messages("cart.availabledisseminations")</h2>
+</div></div>
+<div class="">
 @if(disseminations != null && disseminations.size() > 0){
-    <h2>@Messages("cart.availabledisseminations")</h2>
-    <br>
-   <div class="container col-md-12">
        @for(dis <- disseminations){
            <div class="row">
-               <div class="col-md-6">@dis.ToString()</div>
-               <div class="col-md-5">@(new java.text.SimpleDateFormat("yyyy-MM-dd").format(dis.CreatedDate()))</div>
+               <div class="col-md-5 col-md-offset-1">@dis.ToString()</div>
+               <div class="col-md-4">@(new java.text.SimpleDateFormat("yyyy-MM-dd").format(dis.CreatedDate()))</div>
                <div class="col-md-1">
                    <button type="button" class="btn btn-default btn-sm" uuid="@archive.ReferenceCode()" disUuid="@dis.KeyString()" name="addToCartAnchor">
                    @Messages("cart.add")
@@ -15,15 +17,25 @@
                </div>
            </div>
        }
-       <button type="button" class="btn btn-default btn-sm" uuid="@archive.ReferenceCode()" disUuid="" name="addToCartAnchor">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-3">
+       <button type="button" class="btn btn-default btn-md" uuid="@archive.ReferenceCode()" disUuid="" name="addToCartAnchor">
         @Messages("cart.thanksnewdip")
        </button>
-   </div>
+        </div>
+    </div>
 }else{
     @if(archive != null){
-        <button type="button" class="btn btn-submit btn-sm" uuid="@archive.ReferenceCode()" disUuid="" name="addToCartAnchor">
-            @Messages("cart.addtext")
-        </button>
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1"> @Messages("none")</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-3">
+                <button type="button" class="btn btn-default btn-md" uuid="@archive.ReferenceCode()" disUuid="" name="addToCartAnchor">
+                    @Messages("cart.newdip")
+                </button>
+            </div>
+        </div>
     }
 }
-<br><br>
+</div>
