@@ -1,6 +1,6 @@
 package controllers;
 
-import com.google.gson.Gson;
+import play.libs.Json;
 import models.ArchiveSearchObject;
 import models.Environment;
 import models.IArchive;
@@ -34,9 +34,7 @@ public class SearchController extends Controller{
         for(int i=0; i<searchResults.size(); i++){
             ret[i] = searchResults.get(i).ReferenceCode();
         }
-        Gson json = new Gson();
-        String s = json.toJson(ret);
-        return ok(s);
+        return ok(Json.toJson(ret));
 
     }
 }
