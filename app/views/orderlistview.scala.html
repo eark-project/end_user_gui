@@ -1,7 +1,7 @@
 @import java.util
 @(orders: util.List[IOrder])
 
-<div class="container col-md-12">
+
 @for(order <- orders){
     <div class="row">
         <div class="col-md-1">
@@ -9,19 +9,20 @@
         </div>
         <div class="col-md-4">
         @order.IssueDate()
-            @for(orderItem <- order.Archives()){
+        </div>
+    </div>
+        @for(orderItem <- order.Archives()){
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-6 col-md-offset-2">
                     @orderItem.Archive.AipUri()
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                     @orderItem.Archive.ReferenceCode()
                     </div>
                 </div>
             }
-        </div>
 
 
-    </div>
+
+
 }
-</div>
