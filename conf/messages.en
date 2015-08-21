@@ -2,7 +2,7 @@ main.entersearchterrm = "Enter search query"
 search.search = Search
 
 cart.add = +
-cart.addtext = Add to cart
+cart.newdip = Request a new DIP
 cart.thanksnewdip = No, thanks, I need a new DIP
 
 cart.remove = -
@@ -24,4 +24,4 @@ search.nametitle = Name :
 userorders.username = Account
 userorders.myorders = My orders
 
-none = None
+none = (None)

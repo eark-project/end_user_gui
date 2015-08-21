@@ -1,7 +1,9 @@
 @(order: models.IOrder)
 
 @modaldialog("cartModal") {
-    @Messages("cart.view") <span name="cartCount">@order.Archives().size()</span> @Messages("cart.items")
+    <div class="row">
+        @Messages("cart.view") <span name="cartCount">@order.Archives().size()</span> @Messages("cart.items")
+    </div>
 } {
     <span id="cartViewModalBody">
         @cartview_body(order)

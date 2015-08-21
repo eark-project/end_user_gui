@@ -16,8 +16,8 @@
         <script src="@routes.Assets.at("/cart.js")"></script>
     </head>
     <body>
-    <div class="container">
         @navbar(Environment.Current().Session().CurrentOrder())
+    <div class="container">
         @content
     </div>
         <script>

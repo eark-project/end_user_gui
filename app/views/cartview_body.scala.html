@@ -1,13 +1,9 @@
 @(order: models.IOrder)
 
-    <div class="container col-md-12">
 @for(orderItem <- order.Archives() ){
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-8">
                 @orderItem.Archive.AipUri()
-            </div>
-            <div class="col-md-4">
-                @orderItem.Archive.ReferenceCode()
             </div>
             <div class="col-md-3">
                 @if(orderItem.Dissemination != null){
@@ -15,22 +11,23 @@
                 }
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-default btn-sm" uuid="@orderItem.Archive.ReferenceCode()" name="removeFromCartAnchor">
+                <button type="button" class="btn btn-default btn-md" uuid="@orderItem.Archive.ReferenceCode()" name="removeFromCartAnchor">
                 @Messages("cart.remove")
                 </button>
             </div>
-
         </div>
-
 }
-    </div>
-    @if(order.Archives().size() > 0){
+@if(order.Archives().size() > 0){
+    <div class="row">
+        <div class="col-md-6">
         <button type="button" class="btn btn-default btn-md" name="clearCartAnchor">
         @Messages("cart.clear")
         </button>
-
-        <button type="button" class="btn btn-submit btn-md" name="submitCartAnchor">
+        </div>
+        <div class="col-md-2 col-md-offset-4" >
+        <button type="button" class="btn btn-default btn-md" name="submitCartAnchor">
         @Messages("cart.submit")
         </button>
-
-    }
+        </div>
+    </div>
+}
