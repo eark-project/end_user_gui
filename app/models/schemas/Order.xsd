@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="UniqueIdType">
+    <xs:restriction base="xs:string" />
+  </xs:simpleType>
+
+    <xs:simpleType name="ReferenceCodeType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="OriginType">
+        <!-- TODO: Review this value list -->
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Email" />
+            <xs:enumeration value="Fax" />
+            <xs:enumeration value="Web" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="UserReferenceType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="ArchivistReferenceType">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="OrderStatusType">
+        <xs:restriction base="xs:string">
+            <!-- TODO: Review this list -->
+            <xs:enumeration value="Created"/>
+            <xs:enumeration value="Processing"/>
+            <xs:enumeration value="Ready"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AccessRestrictionType">
+        <xs:sequence>
+            <xs:element name="AccessRestrictionCode" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="AccessRestrictionTextExplanation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="DeliveryFormatType">
+        <!-- TODO: Should this be an enumeration? -->
+        <xs:restriction base="xs:string">
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="OrderType">
+        <xs:sequence>
+            <xs:element name="OrderUniqueID" type="UniqueIdType" />
+            <xs:element name="OrderTitle" type="xs:string" />
+            <xs:element name="OrderedItemReferenceCode" type="ReferenceCodeType" maxOccurs="unbounded" />
+
+            <!-- TODO: What is this? Can it be merged with OrderedItemReferenceCode? -->
+            <xs:element name="OrderedItemLevelOfDescription" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+
+            <xs:element name="AipUri" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="OrderOrigin" type="OriginType" minOccurs="0"/>
+            <xs:element name="EndUserOrderNotes" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="ArchivistOrderNotes" type="xs:string" minOccurs="0" maxOccurs="1" />
+            <xs:element name="OrderDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+
+            <!-- TODO: How does this differ from EndUserReference ? -->
+            <xs:element name="OrderUserDossier" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
+            <!--TODO: Must be optional because it will be null when the order has been issued by a user but not validated by an archivist-->
+            <xs:element name="OrderValidationDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+
+            <xs:element name="OrderPlannedDate" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
+
+            <!--TODO: Must be optional because it will be null when the order has been issued but not seen by an archivist-->
+            <xs:element name="OrderAccessDate" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+
+            <xs:element name="EndUserReference" type="UserReferenceType" minOccurs="0" maxOccurs="1" />
+
+            <!--TODO: Must be optional because it will be null when the order has been issued but not assigned to an archivist-->
+            <xs:element name="ResponsiblePerson" type="ArchivistReferenceType" minOccurs="1" maxOccurs="1" />
+
+            <!-- TODO: Why is this a list? -->
+            <xs:element name="OrderStatus" type="OrderStatusType" minOccurs="1" maxOccurs="unbounded"/>
+
+            <!-- TODO: Why is this a list? -->
+            <xs:element name="AccessRestrictionCode" type="xs:integer" minOccurs="1" maxOccurs="unbounded"/>
+
+            <xs:element name="AccessRestriction" type="AccessRestrictionType" minOccurs="1" maxOccurs="unbounded"/>
+
+            <xs:element name="InternalNote" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+
+            <!-- TODO: Why is this an array? Is it related to AccessRestrictions? -->
+            <xs:element name="AccessEndDate" type="xs:dateTime" minOccurs="0" maxOccurs="unbounded" />
+
+            <!-- TODO: Why is this an array? -->
+            <xs:element name="DeliveryFormat" type="DeliveryFormatType" minOccurs="1" maxOccurs="unbounded" />
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="Order" type="OrderType">
+  </xs:element>
+</xs:schema>
+
