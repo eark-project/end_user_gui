@@ -38,7 +38,10 @@
     <xs:complexType name="AccessRestrictionType">
         <xs:sequence>
             <xs:element name="AccessRestrictionCode" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+
+            <!--TODO: Shouldn't this be mandatory?-->
             <xs:element name="AccessRestrictionTextExplanation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+
         </xs:sequence>
     </xs:complexType>
 
@@ -59,7 +62,10 @@
             <xs:element name="AipUri" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded"/>
             <xs:element name="OrderOrigin" type="OriginType" minOccurs="0"/>
             <xs:element name="EndUserOrderNotes" type="xs:string" minOccurs="0" maxOccurs="1" />
+
+            <!--TODO: We assume this is visible to pthe public/prder requestor - Plesse confirm -->
             <xs:element name="ArchivistOrderNotes" type="xs:string" minOccurs="0" maxOccurs="1" />
+
             <xs:element name="OrderDate" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
 
             <!-- TODO: How does this differ from EndUserReference ? -->
@@ -78,20 +84,21 @@
             <!--TODO: Must be optional because it will be null when the order has been issued but not assigned to an archivist-->
             <xs:element name="ResponsiblePerson" type="ArchivistReferenceType" minOccurs="1" maxOccurs="1" />
 
-            <!-- TODO: Why is this a list? -->
+            <!-- TODO: Why is this a list? Shouldn't it be an enumeration instead?-->
             <xs:element name="OrderStatus" type="OrderStatusType" minOccurs="1" maxOccurs="unbounded"/>
 
-            <!-- TODO: Why is this a list? -->
-            <xs:element name="AccessRestrictionCode" type="xs:integer" minOccurs="1" maxOccurs="unbounded"/>
-
+            <!-- TODO: Why is this an array? Does it correspond to Ordered items? If yes, then it should be added to OrderedItemReferenceCode-->
             <xs:element name="AccessRestriction" type="AccessRestrictionType" minOccurs="1" maxOccurs="unbounded"/>
 
+            <!--TODO: We assume this is only for archivists. Please confirm-->
+            <!--TODO: We suggest that this get replaced with a list, with each element containing text, timestamp and reference to archivist who wrote it-->
+            <!--TODO: Is this supposed to be here, or in the order management system itself?-->
             <xs:element name="InternalNote" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 
-            <!-- TODO: Why is this an array? Is it related to AccessRestrictions? -->
+            <!-- TODO: Why is this an array? Is it related to AccessRestrictions? Can it be added to OrderedItemReferenceCode?-->
             <xs:element name="AccessEndDate" type="xs:dateTime" minOccurs="0" maxOccurs="unbounded" />
 
-            <!-- TODO: Why is this an array? -->
+            <!-- TODO: Why is this an array? Shouldn't it be an enumeration instead?-->
             <xs:element name="DeliveryFormat" type="DeliveryFormatType" minOccurs="1" maxOccurs="unbounded" />
 
         </xs:sequence>
