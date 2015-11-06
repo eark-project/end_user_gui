@@ -2,7 +2,7 @@ package models.dummy;
 
 import models.ArchiveSearchObject;
 import models.IArchive;
-import models.ISearchModule;
+import modules.ISearchModule;
 
 import java.util.*;
 

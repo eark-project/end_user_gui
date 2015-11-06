@@ -3,6 +3,10 @@ package ui;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import models.*;
+import modules.IArchiveRepository;
+import modules.IEnvironment;
+import modules.IOrderModule;
+import modules.ISearchModule;
 
 
 /**

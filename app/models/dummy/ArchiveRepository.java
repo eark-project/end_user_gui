@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import de.svenjacobs.loremipsum.LoremIpsum;
+import modules.IArchiveRepository;
 
 /**
  * Created by Beemen on 06/08/2015.

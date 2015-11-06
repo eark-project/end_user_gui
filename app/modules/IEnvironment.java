@@ -1,4 +1,6 @@
-package models;
+package modules;
+
+import models.ISession;
 
 /**
  * Created by Beemen on 30/07/2015.

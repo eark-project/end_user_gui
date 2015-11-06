@@ -2,14 +2,13 @@ package controllers;
 
 import play.libs.Json;
 import models.ArchiveSearchObject;
-import models.Environment;
+import modules.Environment;
 import models.IArchive;
 import play.mvc.Result;
 import play.data.Form;
 import play.mvc.Controller;
 import views.html.searchresultview;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Environment;
+import modules.Environment;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.profile;

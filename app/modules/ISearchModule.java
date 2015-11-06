@@ -1,4 +1,7 @@
-package models;
+package modules;
+
+import models.ArchiveSearchObject;
+import models.IArchive;
 
 import java.util.List;
 

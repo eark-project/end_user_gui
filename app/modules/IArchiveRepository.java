@@ -1,4 +1,7 @@
-package models;
+package modules;
+
+import models.IArchive;
+import models.IDissemination;
 
 import java.util.List;
 
