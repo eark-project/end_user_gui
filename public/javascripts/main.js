@@ -15,15 +15,15 @@ require.config({
         // --------------
 
         // jQuery
-        "jquery": "libs/jquery-1.11.1/jquery-1.11.1.min",
+        "jquery": "../libs/jquery-1.11.1/jquery-1.11.1.min",
 
         // Plugins
         // -------
 
         // Twitter Bootstrap jQuery plugins
-        "bootstrap": "libs/bootstrap-3.3.1-dist/dist/js/bootstrap.min",
+        "bootstrap": "../libs/bootstrap-3.3.5-dist/js/bootstrap.min",
 
-        "jqueryui": "libs/jquery-ui-1.11.2.custom/jquery-ui",
+        "jqueryui": "../libs/jquery-ui-1.11.2.custom/jquery-ui",
 
         // Application Files
         // -----------------
