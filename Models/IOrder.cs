@@ -14,32 +14,17 @@ namespace end_user_gui.Models
         void OrderTitle(String value);
 
         // Get
-        public List<OrderArchiveReference> Archives();
-
-        List<DeliveryMethod> OrderOrigins();
-
-        List<String> EndUserNotes();
-
-        List<String> ArchivistNotes();
-
-        Date IssueDate();
-        void IssueDate(Date value);
-
-        IEndUser User();
-        void User(IEndUser value);
-
-        Date PlannedDate();
-        void PlannedDate(Date value);
-
-        DateText ExpectedReadyDate();
-        void ExpectedReadyDate(DateText value);
-
-        IArchivist Archivist();
-        void Archivist(IArchivist value);
-
-        List<String> InternalNotes();
-
-        List<DeliveryFormat> DeliveryFormats();
+        public List<OrderArchiveReference> Archives { get; }
+        List<DeliveryMethod> OrderOrigins { get; }
+        List<String> EndUserNotes { get; }
+        List<String> ArchivistNotes { get; }
+        DateTime IssueDate { get; set; }
+        IEndUser User { get; set; }
+        DateTime PlannedDate { get; set; }
+        DateText ExpectedReadyDate { get; set; }
+        IArchivist Archivist { get; set; }
+        List<String> InternalNotes { get; }
+        List<DeliveryFormat> DeliveryFormats { get; }
 
         /*Accessor methods*/
         Boolean Add(IArchive archive);

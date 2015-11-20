@@ -119,6 +119,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessRestriction.cs" />
+    <Compile Include="Models\ArchiveSearchObject.cs" />
+    <Compile Include="Models\DateText.cs" />
+    <Compile Include="Models\DeliveryFormat.cs" />
+    <Compile Include="Models\DeliveryMethod.cs" />
+    <Compile Include="Models\dummy\Archive.cs" />
+    <Compile Include="Models\dummy\ArchiveRepository.cs" />
+    <Compile Include="Models\dummy\Dissemination.cs" />
+    <Compile Include="Models\dummy\DummyOrder.cs" />
+    <Compile Include="Models\dummy\EndUser.cs" />
+    <Compile Include="Models\dummy\OrderModule.cs" />
+    <Compile Include="Models\dummy\SearchModule.cs" />
+    <Compile Include="Models\IArchive.cs" />
+    <Compile Include="Models\IArchivist.cs" />
+    <Compile Include="Models\IDissemination.cs" />
+    <Compile Include="Models\IEndUser.cs" />
+    <Compile Include="Models\IOrder.cs" />
+    <Compile Include="Models\IOrderTarget.cs" />
+    <Compile Include="Models\IPerson.cs" />
+    <Compile Include="Models\ISession.cs" />
+    <Compile Include="Models\OrderArchiveReference.cs" />
+    <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="Models\StandardReturn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

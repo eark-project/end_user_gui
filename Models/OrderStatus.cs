@@ -7,7 +7,7 @@ namespace end_user_gui.Models
 {
     public class OrderStatus
     {
-        public String Status;
-        public Date StatusDate;
+        public String Status { get; set; }
+        public DateTime StatusDate { get; set; }
     }
 }

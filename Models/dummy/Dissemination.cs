@@ -5,24 +5,20 @@ using System.Web;
 
 namespace end_user_gui.Models.dummy
 {
-public class Dissemination implements IDissemination{
+    public class Dissemination : IDissemination
+    {
+        public DateTime CreatedDate { get; set; }
 
-    Date _CreatedDate;
-    public Date CreatedDate() {
-        return _CreatedDate;
-    }
+        public String _DummyDescription;
 
-    public void CreatedDate(Date value) {
-        _CreatedDate = value;
-    }
+        public String ToString()
+        {
+            return _DummyDescription;
+        }
 
-    public String _DummyDescription;
-    public String ToString() {
-        return _DummyDescription;
+        public String KeyString()
+        {
+            return CreatedDate.ToString();
+        }
     }
-
-    public String KeyString() {
-        return _CreatedDate.toString();
-    }
-}
 }

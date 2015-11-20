@@ -5,26 +5,32 @@ using System.Web;
 
 namespace end_user_gui.Models.dummy
 {
-public class OrderModule : IOrderModule {
+    public class OrderModule : IOrderModule
+    {
+        private readonly Dictionary<IEndUser, List<IOrder>> _Orders = new Dictionary<IEndUser, List<IOrder>>();
 
-    private final HashMap<IEndUser,List<IOrder>>_Orders = new HashMap<>();
+        public StandardReturn SubmitOrder(IOrder order, IEndUser user)
+        {
+            if (order.Archives.Length > 0)
+            {
+                order.IssueDate = DateTime.Now;
 
-    public StandardReturn SubmitOrder(IOrder order, IEndUser user) {
-        if(order.Archives().size() > 0){
-            order.IssueDate(new Date());
+                if (!_Orders.ContainsKey(user))
+                    _Orders[user] = new List<IOrder>();
 
-            _Orders.putIfAbsent(user, new ArrayList<>());
-            _Orders.get(user).add(order);
+                _Orders[user].Add(order);
 
-            return StandardReturn.OK();
+                return StandardReturn.OK();
+            }
+            else
+            {
+                return StandardReturn.InvalidInput("");
+            }
         }
-        else {
-            return StandardReturn.InvalidInput("");
+
+        public List<IOrder> GetUserOrders(IEndUser user)
+        {
+            return _Orders.ContainsKey(user) ? new List<IOrder>() : _Orders[user];
         }
     }
-
-    public List<IOrder> GetUserOrders(IEndUser user) {
-        return _Orders.getOrDefault(user, new ArrayList<>());
-    }
-}
 }

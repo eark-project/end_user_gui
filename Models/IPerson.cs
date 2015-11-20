@@ -7,10 +7,7 @@ namespace end_user_gui.Models
 {
     public interface IPerson
     {
-        String Name();
-        void Name(String value);
-
-        String UniqueId();
-        void UniqueId(String value);
+        String Name { get; set; }
+        String UniqueId { get; set; }
     }
 }

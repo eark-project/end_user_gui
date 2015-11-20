@@ -7,40 +7,49 @@ namespace end_user_gui.Models.dummy
 {
     public class SearchModule : ISearchModule
     {
-
         static List<IArchive> _Archives;
 
-        public SearchModule(){
-        if(_Archives == null){
-            _Archives = new ArrayList<>();
+        public SearchModule()
+        {
+            if (_Archives == null)
+            {
+                _Archives = new List<IArchive>();
 
-            for (int i=0; i<1000;i++){
-                String s = new Integer(i).toString();
-                Archive arc = new Archive(){{
-                    AipUri(String.format("http://%s-%s.dk", s, UUID.randomUUID()));
-                    ReferenceCode("uuid:" + s + "");
-                }};
-                _Archives.add(arc);
+                for (int i = 0; i < 1000; i++)
+                {
+                    String s = i.ToString();
+                    Archive arc = new Archive()
+                    {
+                        AipUri = String.Format("http://{0}-{1}.dk", s, Guid.NewGuid()),
+                        ReferenceCode = "uuid:" + s + ""
+                    };
+                    _Archives.Add(arc);
+                }
             }
         }
-    }
 
-        public List<IArchive> Search(ArchiveSearchObject searchObject) {
-        List<IArchive> ret = new ArrayList<>();
-        for(IArchive archive : _Archives){
-            if(searchObject.name == null || archive.ReferenceCode().contains(searchObject.name) || archive.AipUri().contains(searchObject.name))
-                ret.add(archive);
+        public List<IArchive> Search(ArchiveSearchObject searchObject)
+        {
+            // TODO : LINQ
+            List<IArchive> ret = new List<IArchive>();
+            foreach (IArchive archive in _Archives)
+            {
+                if (searchObject.name == null || archive.ReferenceCode.Contains(searchObject.name) || archive.AipUri.Contains(searchObject.name))
+                    ret.Add(archive);
+            }
+            return ret;
         }
-        return ret;
-    }
 
 
-        public IArchive Lookup(String key) {
-        for(IArchive archive : _Archives){
-            if(archive.ReferenceCode().equals(key))
-                return archive;
+        public IArchive Lookup(String key)
+        {
+            // TODO : LINQ
+            foreach (IArchive archive in _Archives)
+            {
+                if (archive.ReferenceCode.Equals(key))
+                    return archive;
+            }
+            return null;
         }
-        return null;
-    }
     }
 }

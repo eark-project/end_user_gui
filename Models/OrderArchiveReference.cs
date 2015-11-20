@@ -7,11 +7,11 @@ namespace end_user_gui.Models
 {
     public class OrderArchiveReference
     {
-        public IArchive Archive;
-        public IDissemination Dissemination;
-        public String LevelOfDescription;
-        public Date AccessEndDate;
-        public OrderStatus Status;
-        public AccessRestriction AccessRestriction;
+        public IArchive Archive { get; set; }
+        public IDissemination Dissemination { get; set; }
+        public String LevelOfDescription { get; set; }
+        public DateTime AccessEndDate { get; set; }
+        public OrderStatus Status { get; set; }
+        public AccessRestriction AccessRestriction { get; set; }
     }
 }
