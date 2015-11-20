@@ -1,27 +1,12 @@
-package modules;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.IO;
 
-import models.ArchiveSearchObject;
-import models.IArchive;
-import models.dummy.Archive;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.simple.*;
-import org.json.simple.parser.*;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by Beemen on 06/11/2015.
- */
-public class FlatLilySearchModule implements ISearchModule {
-    @Override
+namespace end_user_gui.Modules
+{
+public class FlatLilySearchModule : ISearchModule {
     public List<IArchive> Search(ArchiveSearchObject searchObject) {
 
         String query = "q=";
@@ -56,7 +41,6 @@ public class FlatLilySearchModule implements ISearchModule {
         }
     }
 
-    @Override
     public IArchive Lookup(String key) {
         return null;
     }
@@ -98,5 +82,5 @@ public class FlatLilySearchModule implements ISearchModule {
         return builder.toString();
     }
 
-    public final String LilyUrl = "http://earkdev.ait.ac.at:8983/solr/eark1/select?";
+    public const String LilyUrl = "http://earkdev.ait.ac.at:8983/solr/eark1/select?";
 }
