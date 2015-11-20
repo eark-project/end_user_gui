@@ -1,18 +1,14 @@
-package models.dummy;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-import models.*;
-import modules.IOrderModule;
-
-import java.util.*;
-
-/**
- * Created by Beemen on 04/08/2015.
- */
-public class OrderModule implements IOrderModule {
+namespace end_user_gui.Models.dummy
+{
+public class OrderModule : IOrderModule {
 
     private final HashMap<IEndUser,List<IOrder>>_Orders = new HashMap<>();
 
-    @Override
     public StandardReturn SubmitOrder(IOrder order, IEndUser user) {
         if(order.Archives().size() > 0){
             order.IssueDate(new Date());
@@ -27,8 +23,8 @@ public class OrderModule implements IOrderModule {
         }
     }
 
-    @Override
     public List<IOrder> GetUserOrders(IEndUser user) {
         return _Orders.getOrDefault(user, new ArrayList<>());
     }
+}
 }

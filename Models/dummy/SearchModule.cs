@@ -1,19 +1,16 @@
-package models.dummy;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-import models.ArchiveSearchObject;
-import models.IArchive;
-import modules.ISearchModule;
+namespace end_user_gui.Models.dummy
+{
+    public class SearchModule : ISearchModule
+    {
 
-import java.util.*;
+        static List<IArchive> _Archives;
 
-/**
- * Created by Beemen on 30/07/2015.
- */
-public class SearchModule implements ISearchModule {
-
-    static List<IArchive> _Archives;
-
-    public SearchModule(){
+        public SearchModule(){
         if(_Archives == null){
             _Archives = new ArrayList<>();
 
@@ -27,8 +24,8 @@ public class SearchModule implements ISearchModule {
             }
         }
     }
-    @Override
-    public List<IArchive> Search(ArchiveSearchObject searchObject) {
+
+        public List<IArchive> Search(ArchiveSearchObject searchObject) {
         List<IArchive> ret = new ArrayList<>();
         for(IArchive archive : _Archives){
             if(searchObject.name == null || archive.ReferenceCode().contains(searchObject.name) || archive.AipUri().contains(searchObject.name))
@@ -37,12 +34,13 @@ public class SearchModule implements ISearchModule {
         return ret;
     }
 
-    @Override
-    public IArchive Lookup(String key) {
+
+        public IArchive Lookup(String key) {
         for(IArchive archive : _Archives){
             if(archive.ReferenceCode().equals(key))
                 return archive;
         }
         return null;
+    }
     }
 }

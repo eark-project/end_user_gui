@@ -1,23 +1,17 @@
-package models.dummy;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-import models.*;
-import models.IDissemination;
+namespace end_user_gui.Models.dummy
+{
+    public class ArchiveRepository : IArchiveRepository
+    {
 
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import de.svenjacobs.loremipsum.LoremIpsum;
-import modules.IArchiveRepository;
+        LoremIpsum _LoremIpsum = new LoremIpsum();
+        Random _RandomGenerator = new Random();
 
-/**
- * Created by Beemen on 06/08/2015.
- */
-public class ArchiveRepository implements IArchiveRepository {
-
-    LoremIpsum _LoremIpsum = new LoremIpsum();
-    Random _RandomGenerator = new Random();
-
-    Dissemination CreateDissemination(){
+        Dissemination CreateDissemination(){
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, _RandomGenerator.nextInt(1000) * -1);
         return new Dissemination() {{
@@ -26,8 +20,7 @@ public class ArchiveRepository implements IArchiveRepository {
         }};
     }
 
-    @Override
-    public List<IDissemination> GetDIPs(IArchive archive) {
+        public List<IDissemination> GetDIPs(IArchive archive) {
         Pattern p = Pattern.compile("[0-9]+");
         String inp = archive.ReferenceCode();
         Matcher m = p.matcher(inp);
@@ -45,8 +38,9 @@ public class ArchiveRepository implements IArchiveRepository {
         return ret;
     }
 
-    @Override
-    public IDissemination LookupDIP(String keyString) {
-        return CreateDissemination();
+        public IDissemination LookupDIP(String keyString)
+        {
+            return CreateDissemination();
+        }
     }
 }

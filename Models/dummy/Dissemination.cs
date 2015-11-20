@@ -1,34 +1,28 @@
-package models.dummy;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-import models.IArchive;
-import models.IDissemination;
-
-import java.util.Date;
-
-/**
- * Created by Beemen on 06/08/2015.
- */
+namespace end_user_gui.Models.dummy
+{
 public class Dissemination implements IDissemination{
 
     Date _CreatedDate;
-    @Override
     public Date CreatedDate() {
         return _CreatedDate;
     }
 
-    @Override
     public void CreatedDate(Date value) {
         _CreatedDate = value;
     }
 
     public String _DummyDescription;
-    @Override
     public String ToString() {
         return _DummyDescription;
     }
 
-    @Override
     public String KeyString() {
         return _CreatedDate.toString();
     }
+}
 }
