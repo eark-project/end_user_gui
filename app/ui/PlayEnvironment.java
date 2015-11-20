@@ -49,7 +49,7 @@ public class PlayEnvironment
             @Override
             protected void configure() {
                 bind(ISession.class).to(PlaySession.class);
-                bind(ISearchModule.class).to(models.dummy.SearchModule.class);
+                bind(ISearchModule.class).to(modules.FlatLilySearchModule.class);
                 bind(IOrderModule.class).to(models.dummy.OrderModule.class);
                 bind(IArchiveRepository.class).to(models.dummy.ArchiveRepository.class);
             }

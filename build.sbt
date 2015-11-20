@@ -16,4 +16,8 @@ libraryDependencies += "de.sven-jacobs" % "loremipsum" % "1.0"
 
 libraryDependencies += "com.google.code.gson" % "gson" % "2.3.1"
 
+libraryDependencies += "com.googlecode.json-simple" % "json-simple" % "1.1"
+
+libraryDependencies += "org.apache.httpcomponents" % "httpclient" % "4.5.1"
+
 unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
