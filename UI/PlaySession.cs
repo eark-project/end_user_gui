@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using end_user_gui.Models;
+using end_user_gui.Models.dummy;
+
+namespace end_user_gui.UI
+{
+    public class PlaySession : ISession
+    {
+        private readonly Dictionary<string, object> _Cache = new Dictionary<string, object>();
+
+        public IOrder CurrentOrder
+        {
+            get
+            {
+                String key = OrderKey;
+                Object ret = _Cache[key];
+                if (ret == null)
+                {
+                    NewOrder();
+                    ret = _Cache[key];
+                }
+                return (IOrder)ret;
+            }
+        }
+
+        public void NewOrder()
+        {
+            _Cache[OrderKey] = new DummyOrder() { User = this.User };
+        }
+
+        public String SessionId
+        {
+            get
+            {
+                var session = System.Web.HttpContext.Current.Session;
+
+                object uuid = session["uuid"];
+                if (uuid == null)
+                {
+                    uuid = Guid.NewGuid().ToString();
+                    session["uuid"] = uuid;
+                }
+                return uuid as string;
+            }
+        }
+
+        String OrderKey
+        {
+            get
+            {
+                return SessionId + "_CurrentOrder";
+            }
+        }
+
+        public static readonly Dictionary<String, IEndUser> _Users = new Dictionary<string, IEndUser>();
+        public IEndUser User
+        {
+            get
+            {
+                if (!_Users.ContainsKey(SessionId))
+                {
+                    _Users[SessionId] = new EndUser() { Name = SessionId, UniqueId = SessionId };
+                }
+
+                return _Users[SessionId];
+            }
+        }
+
+        private System.Web.SessionState.HttpSessionState _Session;
+
+        public static PlaySession Current
+        {
+            get
+            {
+                PlaySession ret = new PlaySession();
+                ret._Session = System.Web.HttpContext.Current.Session;
+                return ret;
+            }
+        }
+    }
+}
