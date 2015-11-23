@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using end_user_gui.Modules;
 
 namespace end_user_gui.Models.dummy
 {
@@ -11,7 +12,7 @@ namespace end_user_gui.Models.dummy
 
         public StandardReturn SubmitOrder(IOrder order, IEndUser user)
         {
-            if (order.Archives.Length > 0)
+            if (order.Archives.Count > 0)
             {
                 order.IssueDate = DateTime.Now;
 

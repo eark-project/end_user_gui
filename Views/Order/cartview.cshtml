@@ -1,0 +1,22 @@
+@using end_user_gui.Models
+@using end_user_gui.App_GlobalResources
+@model IOrder
+
+@{
+    string c = Model != null && Model.Archives != null ? Model.Archives.Count.ToString() : "";
+    var head = new MvcHtmlString(
+                "<div class=\"row\">" +
+                Messages.cart_view +
+                "<span name=\"cartCount\">" + c + "</span>" + Messages.cart_items +
+                "</div>");
+    var content = new MvcHtmlString(
+                "<span id=\"cartViewModalBody\">" +
+                Html.Partial("~/Views/Order/cartview_body.cshtml", Model) +
+                "</span>"
+                );
+
+    Html.RenderPartial(
+        "modaldialog",
+        new Tuple<string, MvcHtmlString, MvcHtmlString>("cartModal", head, content)
+    );
+}

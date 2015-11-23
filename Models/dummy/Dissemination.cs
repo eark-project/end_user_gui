@@ -11,14 +11,17 @@ namespace end_user_gui.Models.dummy
 
         public String _DummyDescription;
 
-        public String ToString()
+        public override String ToString()
         {
             return _DummyDescription;
         }
 
-        public String KeyString()
+        public String KeyString
         {
-            return CreatedDate.ToString();
+            get
+            {
+                return CreatedDate.ToString();
+            }
         }
     }
 }

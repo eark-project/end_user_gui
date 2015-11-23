@@ -9,7 +9,6 @@ namespace end_user_gui.UI
 {
     public class PlayEnvironment : IEnvironment
     {
-
         public ISearchModule SearchModule()
         {
             return GetObject<ISearchModule>();
@@ -52,7 +51,7 @@ namespace end_user_gui.UI
             where T : class
         {
             var targetType = _Types[typeof(T)];
-            return targetType.InvokeMember(null, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.CreateInstance, null, null, null) as T;
+            return targetType.InvokeMember(null, System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.CreateInstance | System.Reflection.BindingFlags.Instance, null, null, null) as T;
         }
     }
 }

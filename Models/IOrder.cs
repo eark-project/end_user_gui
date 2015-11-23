@@ -7,14 +7,11 @@ namespace end_user_gui.Models
 {
     public interface IOrder
     {
-        String OrderUniqueID();
-        void OrderUniqueID(String value);
-
-        String OrderTitle();
-        void OrderTitle(String value);
+        String OrderUniqueID { get; set; }
+        String OrderTitle { get; set; }
 
         // Get
-        public List<OrderArchiveReference> Archives { get; }
+        List<OrderArchiveReference> Archives { get; }
         List<DeliveryMethod> OrderOrigins { get; }
         List<String> EndUserNotes { get; }
         List<String> ArchivistNotes { get; }

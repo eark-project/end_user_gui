@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-/**
- * Created by Beemen on 30/07/2015.
- */
+using end_user_gui.Models;
 
 namespace end_user_gui.Controllers
 {
@@ -14,24 +11,22 @@ namespace end_user_gui.Controllers
     {
         public ActionResult Search()
         {
-            Form<ArchiveSearchObject> form = Form.form(ArchiveSearchObject.class);
-            form = form.bindFromRequest();
-            ArchiveSearchObject searchObject = form.get();
-            List<IArchive> searchResults = Environment.Current().SearchModule().Search(searchObject);
-            return ok(searchresultview.render(searchResults));
+            // TODO: Replace with a Form object
+            ArchiveSearchObject searchObject = new ArchiveSearchObject() { name = HttpContext.Request["name"] };
+            List<IArchive> searchResults = end_user_gui.Modules.Environment.Current().SearchModule().Search(searchObject);
+            return View("searchresultview", searchResults);
         }
 
-        public ActionResult AutoComplete(String query)
+        public JsonResult AutoComplete(String query)
         {
             ArchiveSearchObject searchObject = new ArchiveSearchObject();
             searchObject.name = query;
 
-            List<IArchive> searchResults = Environment.Current().SearchModule().Search(searchObject);
-            String[] ret = new String[searchResults.size()];
-            for(int i=0; i<searchResults.size(); i++){
-                ret[i] = searchResults.get(i).ReferenceCode();
-            }
-            return ok(Json.toJson(ret));
+            List<IArchive> searchResults = end_user_gui.Modules.Environment.Current().SearchModule().Search(searchObject);
+            String[] ret = searchResults.Select(sr => sr.ReferenceCode).ToArray();
+
+            // TODO: Fill result
+            return new JsonResult();
         }
     }
 }

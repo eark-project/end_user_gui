@@ -8,9 +8,9 @@ namespace end_user_gui.Controllers
 {
     public class Application : Controller
     {
-        public static ActionResult Index()
+        public string Index()
         {
-            return ok(index.render("Your new application is ready."));
+            return "Your new application is ready.";
         }
     }
 }

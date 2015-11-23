@@ -1,0 +1,38 @@
+@using end_user_gui.Models
+@using end_user_gui.App_GlobalResources
+@model IOrder
+
+@foreach (var orderItem in Model.Archives)
+{
+    <div class="row">
+        <div class="col-md-8">
+            @orderItem.Archive.AipUri
+        </div>
+        <div class="col-md-3">
+            @if (orderItem.Dissemination != null)
+            {
+                @orderItem.Dissemination.CreatedDate.ToString("yyyy-MM-dd")
+            }
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-default btn-md" uuid="@orderItem.Archive.ReferenceCode" name="removeFromCartAnchor">
+                @Messages.cart_remove
+            </button>
+        </div>
+    </div>
+}
+@if (Model.Archives.Count > 0)
+{
+    <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-default btn-md" name="clearCartAnchor">
+                @Messages.cart_clear
+            </button>
+        </div>
+        <div class="col-md-2 col-md-offset-4">
+            <button type="button" class="btn btn-default btn-md" name="submitCartAnchor">
+                @Messages.cart_submit
+            </button>
+        </div>
+    </div>
+}

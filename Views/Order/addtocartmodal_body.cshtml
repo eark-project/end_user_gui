@@ -1,0 +1,46 @@
+@using end_user_gui.Models;
+@using end_user_gui.App_GlobalResources;
+@model Tuple<IArchive, List<IDissemination>>
+<div class="row">
+    <div class="col-md-6 col-md-offset-1">
+        <h2>@Messages.cart_availabledisseminations</h2>
+    </div>
+</div>
+<div class="">
+    @if (Model != null && Model.Item2 != null && Model.Item2.Count > 0)
+    {
+        foreach (var dis in Model.Item2)
+        {
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">@dis.ToString()</div>
+                <div class="col-md-4">@dis.CreatedDate.ToString("yyyy-MM-dd")</div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-default btn-sm" uuid="@Model.Item1.ReferenceCode" disuuid="@dis.KeyString" name="addToCartAnchor">
+                        @Messages.cart_add
+                    </button>
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+                <button type="button" class="btn btn-default btn-md" uuid="@Model.Item1.ReferenceCode" disuuid="" name="addToCartAnchor">
+                    @Messages.cart_thanksnewdip
+                </button>
+            </div>
+        </div>
+    }
+    else
+    {
+        if (Model != null && Model.Item1 != null)
+        {
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1"> @Messages.none</div>
+                <div class="col-md-3 col-md-offset-3">
+                    <button type="button" class="btn btn-default btn-md" uuid="@Model.Item1.ReferenceCode" disuuid="" name="addToCartAnchor">
+                        @Messages.cart_newdip)
+                    </button>
+                </div>
+            </div>
+        }
+    }
+</div>

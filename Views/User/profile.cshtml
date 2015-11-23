@@ -1,0 +1,26 @@
+@using end_user_gui.Models
+@using end_user_gui.Modules
+@using end_user_gui.App_GlobalResources
+
+@model IEnvironment
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">@Messages.userorders_username</a></li>
+    <li><a data-toggle="tab" href="#myorders">@Messages.userorders_myorders</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+        <h3>@Messages.userorders_username</h3>
+        <p>@Messages.userorders_username</p>
+    </div>
+    <div id="myorders" class="tab-pane fade">
+        <h3>@Messages.userorders_myorders</h3>
+        <p>
+            @Html.Partial(
+                "orderlistview",
+                Model.OrderModule().GetUserOrders(Model.Session().User())
+            )
+        </p>
+    </div>
+</div>

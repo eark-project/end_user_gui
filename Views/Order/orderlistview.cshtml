@@ -1,0 +1,26 @@
+@using end_user_gui.Models
+@using end_user_gui.App_GlobalResources
+@model List<IOrder>
+
+@foreach (var order in Model)
+{
+    <div class="row">
+        <div class="col-md-1">
+            @order.OrderUniqueID
+        </div>
+        <div class="col-md-4">
+            @order.IssueDate
+        </div>
+    </div>
+    foreach (var orderItem in order.Archives)
+    {
+        <div class="row">
+            <div class="col-md-6 col-md-offset-2">
+                @orderItem.Archive.AipUri
+            </div>
+            <div class="col-md-3">
+                @orderItem.Archive.ReferenceCode
+            </div>
+        </div>
+    }
+}

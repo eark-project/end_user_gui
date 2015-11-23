@@ -1,0 +1,22 @@
+@using end_user_gui.Models
+@using end_user_gui.App_GlobalResources
+@model Tuple<String, HtmlString, HtmlString>
+<!-- (divId: String)(title: Html)(content: Html)
+-->
+<div id="@Model.Item1" class="modal static">
+    <!-- Modal HTML -->
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">@Model.Item2</h4>
+            </div>
+            <div class="modal-body">
+                @Model.Item3
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Messages.cart_close</button>
+            </div>
+        </div>
+    </div>
+</div>

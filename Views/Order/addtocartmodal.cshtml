@@ -1,0 +1,12 @@
+@using end_user_gui.Models;
+@model Tuple<IArchive, List<IDissemination>>
+
+@{
+    var html = MvcHtmlString.Create(
+        "<span id=\"addToCartModalBody\">" +
+        @Html.Partial("addtocartmodal_body", Model) +
+        "</span>"
+        );
+    var t = new Tuple<string, MvcHtmlString>("addToCartModal", html);
+    Html.RenderPartial("modaldialog", t);
+}

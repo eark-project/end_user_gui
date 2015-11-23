@@ -2,41 +2,43 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using end_user_gui.Modules;
+using System.Text.RegularExpressions;
 
 namespace end_user_gui.Models.dummy
 {
     public class ArchiveRepository : IArchiveRepository
     {
-
-        LoremIpsum _LoremIpsum = new LoremIpsum();
         Random _RandomGenerator = new Random();
 
-        Dissemination CreateDissemination(){
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, _RandomGenerator.nextInt(1000) * -1);
-        return new Dissemination() {{
-            CreatedDate(cal.getTime());
-            _DummyDescription = _LoremIpsum.getWords(3, _RandomGenerator.nextInt(50));
-        }};
-    }
-
-        public List<IDissemination> GetDIPs(IArchive archive) {
-        Pattern p = Pattern.compile("[0-9]+");
-        String inp = archive.ReferenceCode();
-        Matcher m = p.matcher(inp);
-
-        String s = "";
-        while (m.find()){
-            s += inp.substring(m.start(),m.end());
+        Dissemination CreateDissemination()
+        {
+            DateTime cal = new DateTime(_RandomGenerator.Next(1900, 2015), _RandomGenerator.Next(1, 12), _RandomGenerator.Next(1, 28));
+            return new Dissemination()
+            {
+                CreatedDate = cal,
+                _DummyDescription = new NLipsum.Core.Paragraph(1, 10).ToString()
+            };
         }
-        Integer c = Integer.parseInt(s)%3;
 
-        List<IDissemination> ret = new ArrayList<>();
-        for(int i=0;i<c;i++){
-            ret.add(CreateDissemination());
+        public List<IDissemination> GetDIPs(IArchive archive)
+        {
+            string p = "[0-9]+";
+            String inp = archive.ReferenceCode;
+            String s = "";
+            foreach (var m in Regex.Matches(inp, p))
+            {
+                s += m.ToString();
+            }
+            var c = int.Parse(s) % 3;
+
+            var ret = new List<IDissemination>();
+            for (int i = 0; i < c; i++)
+            {
+                ret.Add(CreateDissemination());
+            }
+            return ret;
         }
-        return ret;
-    }
 
         public IDissemination LookupDIP(String keyString)
         {

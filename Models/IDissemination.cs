@@ -9,6 +9,6 @@ namespace end_user_gui.Models
     {
         DateTime CreatedDate { get; set; }
         String ToString();
-        String KeyString;
+        String KeyString { get; }
     }
 }

@@ -1,9 +1,0 @@
-@(archive: IArchive, disseminations: java.util.List[IDissemination])
-
-@modaldialog( "addToCartModal") {
-    @Messages("cart.addtitle")
-} {
-    <span id="addToCartModalBody">
-        @addtocartmodal_body(archive, disseminations);
-    </span>
-}

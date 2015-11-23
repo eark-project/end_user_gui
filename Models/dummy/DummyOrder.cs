@@ -9,17 +9,30 @@ namespace end_user_gui.Models.dummy
     {
         public String OrderUniqueID { get; set; }
         public String OrderTitle { get; set; }
-        public readonly List<OrderArchiveReference> Archives = new List<OrderArchiveReference>();
-        public List<DeliveryMethod> OrderOrigins = new List<DeliveryMethod>();
-        public List<String> EndUserNotes = new List<string>();
-        public List<String> ArchivistNotes = new List<string>();
+
+        private List<OrderArchiveReference> _Archives = new List<OrderArchiveReference>();
+        public List<OrderArchiveReference> Archives { get { return _Archives; } }
+
+        private List<DeliveryMethod> _OrderOrigins = new List<DeliveryMethod>();
+        public List<DeliveryMethod> OrderOrigins { get { return _OrderOrigins; } }
+
+        private List<String> _EndUserNotes = new List<string>();
+        public List<String> EndUserNotes { get { return _EndUserNotes; } }
+
+        private List<String> _ArchivistNotes = new List<string>();
+        public List<String> ArchivistNotes { get { return _ArchivistNotes; } }
+
         public DateTime IssueDate { get; set; }
         public IEndUser User { get; set; }
         public DateTime PlannedDate { get; set; }
         public DateText ExpectedReadyDate { get; set; }
         public IArchivist Archivist { get; set; }
-        public readonly List<String> InternalNotes = new List<string>();
-        public readonly List<DeliveryFormat> DeliveryFormats = new List<DeliveryFormat>();
+
+        private List<String> _InternalNotes = new List<string>();
+        public List<String> InternalNotes { get { return _InternalNotes; } }
+
+        private List<DeliveryFormat> _DeliveryFormats = new List<DeliveryFormat>();
+        public List<DeliveryFormat> DeliveryFormats { get { return _DeliveryFormats; } }
 
         public Boolean Add(IArchive archive)
         {

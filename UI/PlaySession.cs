@@ -16,12 +16,11 @@ namespace end_user_gui.UI
             get
             {
                 String key = OrderKey;
-                Object ret = _Cache[key];
-                if (ret == null)
+                if (!_Cache.ContainsKey(key))
                 {
                     NewOrder();
-                    ret = _Cache[key];
                 }
+                Object ret = _Cache[key];
                 return (IOrder)ret;
             }
         }

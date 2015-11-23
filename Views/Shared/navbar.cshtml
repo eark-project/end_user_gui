@@ -1,18 +1,20 @@
-@(order: IOrder)
+@using end_user_gui.Models
+@using end_user_gui.App_GlobalResources
+@model IOrder
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand">@Messages("navbar.brand")</a>
+            <a class="navbar-brand">@Messages.navbar_brand</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">@Messages("navbar.home")</a></li>
-                <li class="active"><a href="/profile">@Messages("navbar.profile")</a></li>
+                <li class="active"><a href="/">@Messages.navbar_home</a></li>
+                <li class="active"><a href="/profile">@Messages.navbar_profile</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="active">
                     <button type="button" class="btn btn-link btn-lg" data-toggle="modal" data-target="#cartModal" data-backdrop="static" name="cartViewButton">
-                        @Messages("cart.view")
+                        @Messages.cart_view
                         <span name="cartCount"></span>
                     </button>
                 </li>
@@ -20,5 +22,7 @@
         </div>
     </div>
 </nav>
-@cartview(order)
-@addtocartmodal(null,null)
+@{
+    Html.RenderPartial("~/Views/Order/cartview.cshtml", Model);
+    Html.RenderPartial("addtocartmodal", new Tuple<string, HtmlString, HtmlString>(null, null, null));
+}
