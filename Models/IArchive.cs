@@ -9,5 +9,6 @@ namespace end_user_gui.Models
     {
         String ReferenceCode { get; set; }
         String AipUri { get; set; }
+        List<IArchiveFile> Files { get; }
     }
 }

@@ -7,7 +7,6 @@ using System.Text;
 using end_user_gui.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using end_user_gui.Models;
 using end_user_gui.Models.dummy;
 
 namespace end_user_gui.Modules
@@ -20,9 +19,13 @@ namespace end_user_gui.Modules
             if (string.IsNullOrEmpty(searchObject.name))
                 query += "*:*";
             else
-                query = searchObject.name;
+                query += searchObject.name;
 
-            String url = LilyUrl + query + "&wt=json";
+            String url = LilyUrl
+                + query
+                + "&wt=json"
+                + "&rows=1000";
+
             String response = getStringResult(url);
 
             try
@@ -30,21 +33,28 @@ namespace end_user_gui.Modules
                 var obj = Newtonsoft.Json.Linq.JObject.Parse(response);
                 var responseObject = obj["response"];
                 JArray docs = responseObject["docs"] as JArray;
+                var files = docs
+                    .Select(
+                        doc => new ArchiveFile()
+                        {
+                            Path = (string)doc["path"],
+                            Size = long.Parse(doc["size"].ToString()),
+                            Contents = (string)doc["contents"],
+                            ContentType = (string)doc["contentType"],
+                        } as IArchiveFile
+                    )
+                    .ToList();
 
-                // TODO: LINQ
-                List<IArchive> ret = new List<IArchive>();
-                foreach (var docObj in docs)
-                {
-                    var doc = docObj;
-                    String path = (String)doc["path"];
-                    Archive arc = new Archive()
+                return files
+                    .GroupBy(doc => doc.Path.Substring(0, 36))
+                    .Select(grp => new Archive()
                     {
-                        AipUri = path,
-                        ReferenceCode = path,
-                    };
-                    ret.Add(arc);
-                }
-                return ret;
+                        AipUri = grp.Key,
+                        ReferenceCode = grp.Key,
+                        Files = grp.ToList()
+                    } as IArchive)
+                    .ToList();
+
             }
             catch (Exception ex)
             {
