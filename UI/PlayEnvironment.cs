@@ -40,7 +40,7 @@ namespace end_user_gui.UI
         {
             // TODO: put real injection here
             _Types[typeof(ISession)] = typeof(PlaySession);
-            _Types[typeof(ISearchModule)] = typeof(Modules.FlatLilySearchModule);
+            _Types[typeof(ISearchModule)] = typeof(Models.dummy.SearchModule);
             _Types[typeof(IOrderModule)] = typeof(Models.dummy.OrderModule);
             _Types[typeof(IArchiveRepository)] = typeof(Models.dummy.ArchiveRepository);
         }

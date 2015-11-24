@@ -22,7 +22,7 @@ namespace end_user_gui.Models.dummy
                     Archive arc = new Archive()
                     {
                         AipUri = String.Format("http://{0}-{1}.dk", s, Guid.NewGuid()),
-                        ReferenceCode = "uuid:" + s + ""
+                        ReferenceCode = "uuid_" + s + ""
                     };
                     _Archives.Add(arc);
                 }

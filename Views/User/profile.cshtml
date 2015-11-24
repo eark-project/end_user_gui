@@ -2,6 +2,10 @@
 @using end_user_gui.Modules
 @using end_user_gui.App_GlobalResources
 
+@{
+    Layout = "~/Views/Shared/main.cshtml";
+}
+
 @model IEnvironment
 
 <ul class="nav nav-tabs">
@@ -18,8 +22,8 @@
         <h3>@Messages.userorders_myorders</h3>
         <p>
             @Html.Partial(
-                "orderlistview",
-                Model.OrderModule().GetUserOrders(Model.Session().User())
+                "~/Views/Order/orderlistview.cshtml",
+                Model.OrderModule().GetUserOrders(Model.Session().User)
             )
         </p>
     </div>

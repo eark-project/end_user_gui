@@ -9,7 +9,7 @@ namespace end_user_gui.UI
 {
     public class PlaySession : ISession
     {
-        private readonly Dictionary<string, object> _Cache = new Dictionary<string, object>();
+        private static Dictionary<string, object> _Cache = new Dictionary<string, object>();
 
         public IOrder CurrentOrder
         {
@@ -34,7 +34,7 @@ namespace end_user_gui.UI
         {
             get
             {
-                var session = System.Web.HttpContext.Current.Session;
+                var session = System.Web.HttpContext.Current.Application;
 
                 object uuid = session["uuid"];
                 if (uuid == null)

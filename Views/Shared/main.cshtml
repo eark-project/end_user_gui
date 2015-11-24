@@ -8,12 +8,11 @@
     <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png" />
     <link rel="stylesheet" href="@Url.Content("~/public/libs/bootstrap-3.3.5-dist/css/bootstrap.min.css")" />
     <script data-main="@Url.Content("~/public/javascripts/main")" src="@Url.Content("~/public/libs/requirejs-2.1.20/minifiedrequire.js")"></script>
-        
 </head>
 <body>
     @{
         var order = end_user_gui.Modules.Environment.Current().Session().CurrentOrder;
-        RenderPage("navbar.cshtml", order);
+        Html.RenderPartial("~/Views/Shared/navbar.cshtml", order);
     }
     <div class="container">
         @RenderBody()

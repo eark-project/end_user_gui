@@ -7,6 +7,8 @@ namespace end_user_gui.Models.dummy
 {
     public class Dissemination : IDissemination
     {
+        public Guid UUID = Guid.NewGuid();
+
         public DateTime CreatedDate { get; set; }
 
         public String _DummyDescription;
@@ -20,7 +22,7 @@ namespace end_user_gui.Models.dummy
         {
             get
             {
-                return CreatedDate.ToString();
+                return UUID.ToString();
             }
         }
     }

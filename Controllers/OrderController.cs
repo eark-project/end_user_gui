@@ -34,8 +34,8 @@ namespace end_user_gui.Controllers
         public ActionResult OpenAddDialog(String key)
         {
             IArchive archive = mod.Environment.Current().SearchModule().Lookup(key);
-            List<IDissemination> ret = mod.Environment.Current().ArchiveRepository().GetDIPs(archive);
-            return View("addtocartmodal_body", new Tuple<IArchive, List<IDissemination>>(archive, ret));
+            List<IDissemination> ret = mod.Environment.Current().ArchiveRepository().GetDIPs(archive);            
+            return PartialView("addtocartmodal_body", new Tuple<IArchive, List<IDissemination>>(archive, ret));
         }
 
         public ActionResult Add(String key, String disKey, String commnets)

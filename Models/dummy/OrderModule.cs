@@ -31,7 +31,7 @@ namespace end_user_gui.Models.dummy
 
         public List<IOrder> GetUserOrders(IEndUser user)
         {
-            return _Orders.ContainsKey(user) ? new List<IOrder>() : _Orders[user];
+            return _Orders.ContainsKey(user) ? _Orders[user] : new List<IOrder>();
         }
     }
 }
