@@ -21,21 +21,47 @@ namespace end_user_gui.Modules
             else
                 query += searchObject.name;
 
-            String url = LilyUrl
+            long docStartIndex = 0, docBatchSize = 100;
+
+            Func<string> urlMaker = () =>
+                LilyUrl
                 + query
                 + "&wt=json"
-                + "&rows=1000";
+                + "&start=" + docStartIndex
+                + "&rows=" + docBatchSize;
 
-            String response = getStringResult(url);
+            String response = getStringResult(urlMaker());
 
             try
             {
                 var obj = Newtonsoft.Json.Linq.JObject.Parse(response);
                 var responseObject = obj["response"];
                 JArray docs = responseObject["docs"] as JArray;
+                var numFound = long.Parse(responseObject["numFound"].ToString());
 
-                var archives = docs
-                    .GroupBy(doc => doc["path"].ToString().Substring(0, 36))
+                // Add first result set
+                var allDocs = new List<JToken>();
+                allDocs.AddRange(docs.AsEnumerable());
+
+                Func<IEnumerable<JToken>, IEnumerable<IGrouping<string, JToken>>> grouper =
+                    tokens => tokens.GroupBy(doc => doc["path"].ToString().Substring(0, 36));
+
+                // Add more results until the desired group range has been reached
+                while (grouper(allDocs).Count() <= searchObject.StartIndex + searchObject.MaxResults
+                    && allDocs.Count + docs.Count < numFound)
+                {
+                    docStartIndex += docBatchSize;
+                    response = getStringResult(urlMaker());
+                    obj = Newtonsoft.Json.Linq.JObject.Parse(response);
+                    responseObject = obj["response"];
+                    docs = responseObject["docs"] as JArray;
+                    allDocs.AddRange(docs.AsEnumerable());
+                }
+
+                // Now fill the return object
+                var archives = grouper(allDocs)
+                    .Skip(searchObject.StartIndex)
+                    .Take(searchObject.MaxResults)
                     .Select(grp => new Archive()
                     {
                         AipUri = grp.Key,
@@ -43,7 +69,7 @@ namespace end_user_gui.Modules
                         Files = grp.Select(
                             doc => new ArchiveFile()
                             {
-                                Path = doc["path"].ToString().Substring(36),
+                                Path = doc["path"].ToString().Substring(grp.Key.Length),
                                 Size = long.Parse(doc["size"].ToString()),
                                 Contents = (string)doc["contents"],
                                 ContentType = (string)doc["contentType"],
