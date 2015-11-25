@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using end_user_gui.Models;
 using mod = end_user_gui.Modules;
+using PagedList;
 
 namespace end_user_gui.Controllers
 {
@@ -12,10 +13,21 @@ namespace end_user_gui.Controllers
     {
         public ActionResult Search()
         {
-            // TODO: Replace with a Form object
-            ArchiveSearchObject searchObject = new ArchiveSearchObject() { name = HttpContext.Request["name"] };
+            var pageNumber = int.Parse(HttpContext.Request["page"] ?? "1");
+
+            ArchiveSearchObject searchObject = new ArchiveSearchObject()
+            {
+                name = HttpContext.Request["name"],
+                StartIndex = pageNumber - 1
+            };
+            searchObject.StartIndex *= searchObject.MaxResults;
+
             List<IArchive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
-            return View("searchresultview", searchResults);
+
+            var list = new StaticPagedList<IArchive>(searchResults, pageNumber, searchObject.MaxResults, 1000);
+
+            ViewBag.CurrentFilter = searchObject.name;
+            return View("searchresultview", list);
         }
 
         public JsonResult AutoComplete(String query)

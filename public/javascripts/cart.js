@@ -11,11 +11,14 @@ define(["jquery","jqueryui","cart"], function ($,ui,c) {
 
     // Returns an object literal
     return {
-        "callSearch" : function() {
+        "callSearch": function (page) {
+            if (!page)
+                page = 1;
             $('#searchResults').load(
                 '/search',
                 {
-                    name : $('#name').val()
+                    name: $('#name').val(),
+                    page: page
                 },
                 function(data){
                     require(["cart"], function(c){

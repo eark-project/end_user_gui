@@ -1,6 +1,8 @@
 @using end_user_gui.Models
 @using end_user_gui.App_GlobalResources
-@model List<IArchive>
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<IArchive>
 <p></p>
 <div class="list-group">
     @if (Model != null)
@@ -10,6 +12,12 @@
                 @Messages.search_foundtitle
             </div>
         </div>
+        <p>
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(
+                Model,
+                page => page.ToString())
+        </p>
         foreach (var archive in Model)
         {
             <div class="list-group-item" name="package" uuid="@(archive.ReferenceCode)" open="false">
@@ -40,7 +48,8 @@
 </div>
 
 <script>
-    require(["/public/javascripts/searchresultview.js"], function (s) {
+    require(["searchresultview"], function (s) {
         s.attachEvents();
+        s.attachPagerEvents();
     });
 </script>

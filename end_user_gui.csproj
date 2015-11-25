@@ -47,6 +47,12 @@
     <Reference Include="NLipsum.Core">
       <HintPath>packages\NLipsum.1.0.0\lib\net20\NLipsum.Core.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -163,6 +169,7 @@
     <Compile Include="UI\PlaySession.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -171,6 +178,8 @@
     <Content Include="public\javascripts\main.js" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="public\javascripts\searchresultview.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -198,8 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
-    <Folder Include="Scripts\" />
+    <Folder Include="packages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -48,7 +48,7 @@ namespace end_user_gui.Modules
 
                 // Add more results until the desired group range has been reached
                 while (grouper(allDocs).Count() <= searchObject.StartIndex + searchObject.MaxResults
-                    && allDocs.Count + docs.Count < numFound)
+                    && allDocs.Count < numFound)
                 {
                     docStartIndex += docBatchSize;
                     response = getStringResult(urlMaker());
