@@ -33,27 +33,26 @@ namespace end_user_gui.Modules
                 var obj = Newtonsoft.Json.Linq.JObject.Parse(response);
                 var responseObject = obj["response"];
                 JArray docs = responseObject["docs"] as JArray;
-                var files = docs
-                    .Select(
-                        doc => new ArchiveFile()
-                        {
-                            Path = (string)doc["path"],
-                            Size = long.Parse(doc["size"].ToString()),
-                            Contents = (string)doc["contents"],
-                            ContentType = (string)doc["contentType"],
-                        } as IArchiveFile
-                    )
-                    .ToList();
 
-                return files
-                    .GroupBy(doc => doc.Path.Substring(0, 36))
+                var archives = docs
+                    .GroupBy(doc => doc["path"].ToString().Substring(0, 36))
                     .Select(grp => new Archive()
                     {
                         AipUri = grp.Key,
                         ReferenceCode = grp.Key,
-                        Files = grp.ToList()
+                        Files = grp.Select(
+                            doc => new ArchiveFile()
+                            {
+                                Path = doc["path"].ToString().Substring(36),
+                                Size = long.Parse(doc["size"].ToString()),
+                                Contents = (string)doc["contents"],
+                                ContentType = (string)doc["contentType"],
+                            } as IArchiveFile)
+                        .ToList()
                     } as IArchive)
                     .ToList();
+
+                return archives;
 
             }
             catch (Exception ex)

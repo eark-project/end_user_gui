@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using end_user_gui.Models;
+using mod = end_user_gui.Modules;
 
 namespace end_user_gui.Controllers
 {
@@ -13,7 +14,7 @@ namespace end_user_gui.Controllers
         {
             // TODO: Replace with a Form object
             ArchiveSearchObject searchObject = new ArchiveSearchObject() { name = HttpContext.Request["name"] };
-            List<IArchive> searchResults = end_user_gui.Modules.Environment.Current().SearchModule().Search(searchObject);
+            List<IArchive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
             return View("searchresultview", searchResults);
         }
 
@@ -22,7 +23,7 @@ namespace end_user_gui.Controllers
             ArchiveSearchObject searchObject = new ArchiveSearchObject();
             searchObject.name = query;
 
-            List<IArchive> searchResults = end_user_gui.Modules.Environment.Current().SearchModule().Search(searchObject);
+            List<IArchive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
             String[] ret = searchResults.Select(sr => sr.ReferenceCode).ToArray();
 
             // TODO: Fill result
