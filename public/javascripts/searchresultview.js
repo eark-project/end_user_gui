@@ -19,7 +19,7 @@
         },
 
         "attachEvents": function () {
-            $('[name="package"]').click(function () {
+            $('[name="expandPackage"]').click(function () {
                 var uuid = this.getAttribute('uuid');
                 var div = $('#packageFiles_' + uuid)
                 div.toggle();

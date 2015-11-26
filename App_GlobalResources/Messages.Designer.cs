@@ -214,6 +214,15 @@ namespace end_user_gui.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string search_expandcollapse {
+            get {
+                return ResourceManager.GetString("search_expandcollapse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found matches.
         /// </summary>
         public static string search_foundtitle {

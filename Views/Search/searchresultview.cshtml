@@ -20,9 +20,9 @@
         </p>
         foreach (var archive in Model)
         {
-            <div class="list-group-item" name="package" uuid="@(archive.ReferenceCode)" open="false">
+            <div class="list-group-item" name="package">
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-1">
+                    <div class="col-md-4 col-md-offset-1">
                         @archive.AipUri
                     </div>
                     <div class="col-lg-1 col-lg-offset-2">
@@ -30,7 +30,12 @@
                             @Messages.cart_add
                         </button>
                     </div>
-                </div>
+                    <div class="col-lg-1 col-lg-offset-2" name="expandPackage" uuid="@(archive.ReferenceCode)">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-collapse-down"></span> @Messages.search_expandcollapse
+                        </button>
+                    </div>
+                    </div>
 
                 <div name="packageFiles" id="packageFiles_@(archive.ReferenceCode)" style="display:none">
                     @foreach (var file in archive.Files)

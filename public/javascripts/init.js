@@ -1,20 +1,20 @@
 /**
  * Created by Beemen on 05/11/2015.
  */
-define(["jquery", "bootstrap", "searchresultview"], function ($, b, c) {
+define(["jquery", "bootstrap", "cart", "searchresultview"], function ($, b, c, s) {
 
     $(function(){
 
         $('#name').keyup(function(){
-                c.callSearch();
+                s.callSearch();
         });
 
         $('#btnSearch').click(function(){
-                c.callSearch();
+                s.callSearch();
         });
 
-        c.setCartButtonEvents();
-        c.callSearch();
+        s.callSearch();
+        //c.setCartButtonEvents(); // implicit in callSearch()
     });
 });
 

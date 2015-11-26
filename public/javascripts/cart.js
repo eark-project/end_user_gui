@@ -11,7 +11,8 @@ define(["jquery","jqueryui","cart"], function ($,ui,c) {
 
     // Returns an object literal
     return {
-        "openCartModal" : function () {
+        "openCartModal": function (event) {
+            event.stopPropagation();
             $('#modalPopupSpan').load(
                 '/cart/openadd/' + uuid + '/',
                 null,
@@ -36,6 +37,7 @@ define(["jquery","jqueryui","cart"], function ($,ui,c) {
                     });
                 }
             )
+            return false;
         },
 
         "addToCart" : function (uuid, disUuid) {
