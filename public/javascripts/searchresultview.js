@@ -16,10 +16,7 @@
         },
 
         "attachPagerEvents": function () {
-            var pageLinks = $(
-                '[class="pagination-container"] li:not([class]) a,' +
-                '[class="pagination-container"] li[class="active"] a'
-                );
+            var pageLinks = $('#searchResults [class="pagination-container"] li a');
 
             pageLinks.each(function () {
                 $(this).attr('page', $(this).attr('href'));
