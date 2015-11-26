@@ -27,6 +27,7 @@ namespace end_user_gui.Modules
                 LilyUrl
                 + query
                 + "&wt=json"
+                + "&fl=path,size,contentType"
                 + "&start=" + docStartIndex
                 + "&rows=" + docBatchSize;
 
@@ -71,7 +72,7 @@ namespace end_user_gui.Modules
                             {
                                 Path = doc["path"].ToString().Substring(grp.Key.Length),
                                 Size = long.Parse(doc["size"].ToString()),
-                                Contents = (string)doc["contents"],
+                                //Contents = (string)doc["contents"],
                                 ContentType = (string)doc["contentType"],
                             } as IArchiveFile)
                         .ToList()
