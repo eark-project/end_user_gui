@@ -61,15 +61,6 @@ namespace end_user_gui.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +.
-        /// </summary>
-        public static string cart_add {
-            get {
-                return ResourceManager.GetString("cart_add", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Add archive.
         /// </summary>
         public static string cart_addtitle {

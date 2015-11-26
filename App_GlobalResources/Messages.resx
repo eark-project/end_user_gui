@@ -123,9 +123,6 @@
   <data name="search_search" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="cart_add" xml:space="preserve">
-    <value>+</value>
-  </data>
   <data name="cart_newdip" xml:space="preserve">
     <value>Request a new DIP</value>
   </data>

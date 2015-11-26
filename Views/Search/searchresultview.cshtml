@@ -27,15 +27,16 @@
                     </div>
                     <div class="col-lg-1 col-lg-offset-2">
                         <button type="button" class="btn btn-default btn-sm" name="openAddToCartAnchor" uuid="@archive.ReferenceCode">
-                            @Messages.cart_add
+                            <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </div>
                     <div class="col-lg-1 col-lg-offset-2" name="expandPackage" uuid="@(archive.ReferenceCode)">
                         <button type="button" class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-collapse-down"></span> @Messages.search_expandcollapse
                         </button>
+
                     </div>
-                    </div>
+                </div>
 
                 <div name="packageFiles" id="packageFiles_@(archive.ReferenceCode)" style="display:none">
                     @foreach (var file in archive.Files)
