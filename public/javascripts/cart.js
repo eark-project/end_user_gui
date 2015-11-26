@@ -11,24 +11,6 @@ define(["jquery","jqueryui","cart"], function ($,ui,c) {
 
     // Returns an object literal
     return {
-        "callSearch": function (page) {
-            if (!page)
-                page = 1;
-            $('#searchResults').load(
-                '/search',
-                {
-                    name: $('#name').val(),
-                    page: page
-                },
-                function(data){
-                    require(["cart"], function(c){
-                        c.setCartButtonEvents();
-                    });
-
-                }
-            )
-        },
-
         "openCartModal" : function () {
             $('#modalPopupSpan').load(
                 '/cart/openadd/' + uuid + '/',

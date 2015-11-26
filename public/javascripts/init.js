@@ -1,7 +1,7 @@
 /**
  * Created by Beemen on 05/11/2015.
  */
-define(["jquery", "bootstrap","cart"], function($,b,c) {
+define(["jquery", "bootstrap", "searchresultview"], function ($, b, c) {
 
     $(function(){
 

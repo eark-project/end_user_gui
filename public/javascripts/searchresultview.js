@@ -1,5 +1,23 @@
 ﻿define(['jquery'], function ($) {
     return {
+        "callSearch": function (page) {
+            if (!page)
+                page = 1;
+            $('#searchResults').load(
+                '/search',
+                {
+                    name: $('#name').val(),
+                    page: page
+                },
+                function (data) {
+                    require(["cart"], function (c) {
+                        c.setCartButtonEvents();
+                    });
+
+                }
+            )
+        },
+
         "attachEvents": function () {
             $('[name="package"]').click(function () {
                 var uuid = this.getAttribute('uuid');
@@ -9,7 +27,7 @@
 
             $('[name="gotopage"]').click(function () {
                 var page = this.getAttribute('page');
-                require(["cart"], function (c) {
+                require(["searchresultview"], function (c) {
                     c.callSearch(page);
                 });
             });
@@ -24,7 +42,7 @@
             });
             pageLinks.click(function () {
                 var page = this.getAttribute('page');
-                require(["cart"], function (c) {
+                require(["searchresultview"], function (c) {
                     c.callSearch(page);
                 });
             });
