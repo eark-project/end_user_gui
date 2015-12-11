@@ -13,21 +13,28 @@ namespace end_user_gui.Controllers
     {
         public ActionResult Search()
         {
-            var pageNumber = int.Parse(HttpContext.Request["page"] ?? "1");
-
-            ArchiveSearchObject searchObject = new ArchiveSearchObject()
+            try
             {
-                name = HttpContext.Request["name"],
-                StartIndex = pageNumber - 1
-            };
-            searchObject.StartIndex *= searchObject.MaxResults;
+                var pageNumber = int.Parse(HttpContext.Request["page"] ?? "1");
 
-            List<IArchive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
+                ArchiveSearchObject searchObject = new ArchiveSearchObject()
+                {
+                    name = HttpContext.Request["name"],
+                    StartIndex = pageNumber - 1
+                };
+                searchObject.StartIndex *= searchObject.MaxResults;
 
-            var list = new StaticPagedList<IArchive>(searchResults, pageNumber, searchObject.MaxResults, 1000);
+                List<IArchive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
 
-            ViewBag.CurrentFilter = searchObject.name;
-            return View("searchresultview", list);
+                var list = new StaticPagedList<IArchive>(searchResults, pageNumber, searchObject.MaxResults, 1000);
+
+                ViewBag.CurrentFilter = searchObject.name;
+                return View("searchresultview", list);
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public JsonResult AutoComplete(String query)

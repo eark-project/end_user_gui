@@ -45,7 +45,11 @@ namespace end_user_gui.Modules
                 allDocs.AddRange(docs.AsEnumerable());
 
                 Func<IEnumerable<JToken>, IEnumerable<IGrouping<string, JToken>>> grouper =
-                    tokens => tokens.GroupBy(doc => doc["path"].ToString().Substring(0, 36));
+                    tokens => tokens.GroupBy(doc =>
+                    {
+                        var path = doc["path"].ToString();
+                        return path.Substring(0, Math.Min(36, path.Length));
+                    });
 
                 // Add more results until the desired group range has been reached
                 while (grouper(allDocs).Count() <= searchObject.StartIndex + searchObject.MaxResults
