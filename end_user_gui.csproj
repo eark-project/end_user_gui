@@ -194,7 +194,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\profile.cshtml" />
-    <Content Include="Views\Home\Index0.cshtml" />
     <Content Include="Views\Shared\main.cshtml" />
     <Content Include="Views\Shared\modaldialog.cshtml" />
     <Content Include="Views\Shared\navbar.cshtml" />
