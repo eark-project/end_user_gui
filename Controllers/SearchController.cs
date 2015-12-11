@@ -24,9 +24,10 @@ namespace end_user_gui.Controllers
                 };
                 searchObject.StartIndex *= searchObject.MaxResults;
 
-                List<IArchive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
+                var searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
+                var searchResultCount = mod.Environment.Current().SearchModule().SearchCount(searchObject);
 
-                var list = new StaticPagedList<IArchive>(searchResults, pageNumber, searchObject.MaxResults, 1000);
+                var list = new StaticPagedList<IArchive>(searchResults, pageNumber, searchObject.MaxResults, searchResultCount);
 
                 ViewBag.CurrentFilter = searchObject.name;
                 return View("searchresultview", list);

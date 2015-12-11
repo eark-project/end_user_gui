@@ -100,6 +100,17 @@ namespace end_user_gui.Modules
             return FindArchives(query, searchObject.StartIndex, searchObject.MaxResults);
         }
 
+        public int SearchCount(ArchiveSearchObject searchObject)
+        {
+            searchObject = new ArchiveSearchObject()
+            {
+                StartIndex = 0,
+                MaxResults = 10000,
+                name = searchObject.name
+            };
+            return Search(searchObject).Count();
+        }
+
         public IArchive Lookup(String key)
         {
             var query = string.Format("q=path:{0}", key);

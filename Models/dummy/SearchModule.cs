@@ -52,5 +52,11 @@ namespace end_user_gui.Models.dummy
             }
             return null;
         }
+
+
+        public int SearchCount(ArchiveSearchObject searchObject)
+        {
+            return _Archives.Count;
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace end_user_gui.Modules
     public interface ISearchModule
     {
         List<IArchive> Search(ArchiveSearchObject searchObject);
+        int SearchCount(ArchiveSearchObject searchObject);
         IArchive Lookup(String key);
     }
 }
