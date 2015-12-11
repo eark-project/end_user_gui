@@ -37,10 +37,7 @@ namespace end_user_gui.Modules
                 var responseObject = obj["response"];
                 JArray docs = responseObject["docs"] as JArray;
                 var numFound = long.Parse(responseObject["numFound"].ToString());
-
-                // Add first result set
-                var allDocs = new List<JToken>();
-                allDocs.AddRange(docs.AsEnumerable());
+                var numScanned = docs.Count;
 
                 Func<IEnumerable<JToken>, IEnumerable<IGrouping<string, JToken>>> grouper =
                     tokens => tokens.GroupBy(doc =>
@@ -49,16 +46,25 @@ namespace end_user_gui.Modules
                         return path.Substring(0, Math.Min(36, path.Length));
                     });
 
+                Predicate<JToken> isValid = (t) => t["path"].ToString().Length >= 36;
+
+                // Add first result set
+                var allDocs = new List<JToken>();
+                allDocs.AddRange(docs.AsEnumerable().Where(t => isValid(t)));
+
                 // Add more results until the desired group range has been reached
                 while (grouper(allDocs).Count() <= targetStartIndex + targetMaxResults
-                    && allDocs.Count < numFound)
+                    && numScanned < numFound)
                 {
                     docStartIndex += docBatchSize;
                     response = getStringResult(urlMaker());
                     obj = Newtonsoft.Json.Linq.JObject.Parse(response);
                     responseObject = obj["response"];
                     docs = responseObject["docs"] as JArray;
-                    allDocs.AddRange(docs.AsEnumerable());
+                    numScanned += docs.Count;
+                    if (docs.Count == 0)
+                        break;
+                    allDocs.AddRange(docs.AsEnumerable().Where(t => isValid(t)));
                 }
 
                 // Now fill the return object
