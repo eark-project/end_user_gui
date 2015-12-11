@@ -12,10 +12,5 @@ define(["jquery", "bootstrap", "cart", "searchresultview"], function ($, b, c, s
         $('#btnSearch').click(function(){
                 s.callSearch();
         });
-
-        s.callSearch();
-        //c.setCartButtonEvents(); // implicit in callSearch()
     });
 });
-
-

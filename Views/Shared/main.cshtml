@@ -10,7 +10,7 @@
     <link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
     <script data-main="@Url.Content("~/public/javascripts/main")" src="@Url.Content("~/public/libs/requirejs-2.1.20/minifiedrequire.js")"></script>
     @RenderSection("PageScripts", false)
-    
+
 </head>
 <body>
     @{
@@ -20,7 +20,17 @@
     <div class="container">
         @RenderBody()
     </div>
-    <script>
+    <script language="javascript">
+
+        require(['searchresultview'], function (s) {
+            s.callSearch();
+        });
+
+        require(['cart'], function (c) {
+            c.setCartButtonEvents(); // implicit in callSearch()
+            c.refreshCartContents();
+        });
+
     </script>
 </body>
 </html>
