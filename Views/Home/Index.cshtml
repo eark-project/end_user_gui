@@ -1,0 +1,23 @@
+@using end_user_gui.App_GlobalResources;
+
+@{
+    Layout = "~/Views/Shared/main.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-7 col-md-offset-1">
+        <div class="form-group">
+            <label class="control-label col-md-2" for="name">@Messages.search_nametitle</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="name" name="name" autocomplete="off">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <button id="btnSearch" class="btn btn-primary">@Messages.search_search</button>
+    </div>
+</div>
+<div id="searchResults">
+    @Html.Partial("~/Views/Search/searchresultview.cshtml", null)
+</div>
