@@ -16,7 +16,7 @@ define(["jquery","jqueryui","cart"], function ($,ui,c) {
             $('#modalPopupSpan').load(
                 '/cart/openadd/' + uuid + '/',
                 null,
-                function(data){
+                function (data) {
                     require(["cart"], function(c) {
                         c.setCartButtonEvents();
                         $('#addToCartModal').modal('show');
@@ -30,7 +30,7 @@ define(["jquery","jqueryui","cart"], function ($,ui,c) {
             $('#addToCartModalBody').load(
                 '/cart/openadd/' + uuid + '/',
                 null,
-                function(data){
+                function (data) {
                     require(["cart"], function(c) {
                         c.setCartButtonEvents();
                         $('#addToCartModal').modal('show');

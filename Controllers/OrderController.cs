@@ -31,10 +31,11 @@ namespace end_user_gui.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }
 
-        public ActionResult OpenAddDialog(String key)
+        [Route("cart/openadd/{iii}")]
+        public ActionResult OpenAddDialog(String iii)
         {
-            IArchive archive = mod.Environment.Current().SearchModule().Lookup(key);
-            List<IDissemination> ret = mod.Environment.Current().ArchiveRepository().GetDIPs(archive);            
+            IArchive archive = mod.Environment.Current().SearchModule().Lookup(iii);
+            List<IDissemination> ret = mod.Environment.Current().ArchiveRepository().GetDIPs(archive);
             return PartialView("addtocartmodal_body", new Tuple<IArchive, List<IDissemination>>(archive, ret));
         }
 

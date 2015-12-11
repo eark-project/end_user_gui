@@ -13,24 +13,22 @@ namespace end_user_gui.Modules
 {
     public class FlatLilySearchModule : ISearchModule
     {
-        public List<IArchive> Search(ArchiveSearchObject searchObject)
+        string CreateUrl(string query, long docStartIndex, long docBatchSize)
         {
-            String query = "q=";
-            if (string.IsNullOrEmpty(searchObject.name))
-                query += "*:*";
-            else
-                query += searchObject.name;
-
-            long docStartIndex = 0, docBatchSize = 100;
-
-            Func<string> urlMaker = () =>
-                LilyUrl
+            return LilyUrl
                 + query
                 + "&wt=json"
                 + "&fl=path,size,contentType"
                 + "&start=" + docStartIndex
                 + "&rows=" + docBatchSize;
+        }
 
+
+        private List<IArchive> FindArchives(String query, int targetStartIndex, int targetMaxResults)
+        {
+            long docStartIndex = 0, docBatchSize = 100;
+
+            Func<string> urlMaker = () => CreateUrl(query, docStartIndex, docBatchSize);
             String response = getStringResult(urlMaker());
 
             try
@@ -52,7 +50,7 @@ namespace end_user_gui.Modules
                     });
 
                 // Add more results until the desired group range has been reached
-                while (grouper(allDocs).Count() <= searchObject.StartIndex + searchObject.MaxResults
+                while (grouper(allDocs).Count() <= targetStartIndex + targetMaxResults
                     && allDocs.Count < numFound)
                 {
                     docStartIndex += docBatchSize;
@@ -65,8 +63,8 @@ namespace end_user_gui.Modules
 
                 // Now fill the return object
                 var archives = grouper(allDocs)
-                    .Skip(searchObject.StartIndex)
-                    .Take(searchObject.MaxResults)
+                    .Skip(targetStartIndex)
+                    .Take(targetMaxResults)
                     .Select(grp => new Archive()
                     {
                         AipUri = grp.Key,
@@ -84,7 +82,6 @@ namespace end_user_gui.Modules
                     .ToList();
 
                 return archives;
-
             }
             catch (Exception ex)
             {
@@ -92,9 +89,21 @@ namespace end_user_gui.Modules
             }
         }
 
+        public List<IArchive> Search(ArchiveSearchObject searchObject)
+        {
+            String query = "q=";
+            if (string.IsNullOrEmpty(searchObject.name))
+                query += "*:*";
+            else
+                query += searchObject.name;
+
+            return FindArchives(query, searchObject.StartIndex, searchObject.MaxResults);
+        }
+
         public IArchive Lookup(String key)
         {
-            return null;
+            var query = string.Format("q=path:{0}", key);
+            return FindArchives(query, 0, 1).FirstOrDefault();
         }
 
         public String getStringResult(String url)

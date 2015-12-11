@@ -42,7 +42,7 @@ namespace end_user_gui.UI
             _Types[typeof(ISession)] = typeof(PlaySession);
             _Types[typeof(ISearchModule)] = typeof(Modules.FlatLilySearchModule);
             _Types[typeof(IOrderModule)] = typeof(Models.dummy.OrderModule);
-            _Types[typeof(IArchiveRepository)] = typeof(Models.dummy.ArchiveRepository);
+            _Types[typeof(IArchiveRepository)] = typeof(Modules.ArchiveRepository);
         }
 
         private readonly Dictionary<Type, Type> _Types = new Dictionary<Type, Type>();

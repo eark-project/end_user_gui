@@ -13,6 +13,8 @@ namespace end_user_gui_aspnet
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+
             //# Search
             //POST        /search                          @controllers.SearchController.Search()
             routes.MapRoute(
@@ -25,13 +27,6 @@ namespace end_user_gui_aspnet
 
 
             //# Cart (Order)
-            //GET         /cart/openadd/:key/              @controllers.OrderController.OpenAddDialog(key: String)
-            routes.MapRoute(
-                name: "cart open add modal",
-                url: "cart/openadd/{key}/",
-                defaults: new { controller = "Order", action = "OpenAddDialog" }
-                );
-
             //GET         /cart/add/:key//                 @controllers.OrderController.Add(key: String, disKey = null, commnets = null)
             routes.MapRoute(
                 name: "cart add",
