@@ -74,7 +74,7 @@
                     {
                         <div class="row">
                             <div class="col-md-6 col-md-offset-2" style="text-align:left">
-                                <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(archive.ReferenceCode, file.Path));}">
+                                <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(archive.ReferenceCode, file.Path));}" target="_blank">
                                     @file.Path
                                 </a>
                                 <span>&nbsp;(@SizeString(file.Size))</span>
