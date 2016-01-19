@@ -12,7 +12,7 @@
     @RenderSection("PageScripts", false)
 
 </head>
-<body>
+<body style="overflow-y:scroll">
     @{
         var order = end_user_gui.Modules.Environment.Current().Session().CurrentOrder;
         Html.RenderPartial("~/Views/Shared/navbar.cshtml", order);
