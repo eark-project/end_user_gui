@@ -55,16 +55,17 @@
                     <div class="col-md-4 col-md-offset-1">
                         @archive.AipUri
                     </div>
-                    <div class="col-lg-1 col-lg-offset-2">
-                        <button type="button" class="btn btn-default btn-sm" name="openAddToCartAnchor" uuid="@archive.ReferenceCode">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </div>
-                    <div class="col-lg-1 col-lg-offset-2" name="expandPackage" uuid="@(archive.ReferenceCode)">
+
+                    <div class="col-md-1 col-md-offset-4" name="expandPackage" uuid="@(archive.ReferenceCode)">
                         <button type="button" class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-collapse-down"></span> @Messages.search_expandcollapse
                         </button>
+                    </div>
 
+                    <div class="col-md-1">
+                        <button type="button" class="btn btn-default btn-sm" name="openAddToCartAnchor" uuid="@archive.ReferenceCode">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
                     </div>
                 </div>
 
