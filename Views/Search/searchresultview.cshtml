@@ -8,16 +8,16 @@
     string SizeString(long size)
     {
         var vals = new List<KeyValuePair<long, string>>();
-        vals.Add(new KeyValuePair<long,string>(1125899906842624,"PB"));
-        vals.Add(new KeyValuePair<long,string>(1099511627776,"TB"));
-        vals.Add(new KeyValuePair<long,string>(1073741824,"GB"));
-        vals.Add(new KeyValuePair<long,string>(1048576,"MB"));
-        vals.Add(new KeyValuePair<long,string>(1024,"KB"));
+        vals.Add(new KeyValuePair<long, string>(1125899906842624, "PB"));
+        vals.Add(new KeyValuePair<long, string>(1099511627776, "TB"));
+        vals.Add(new KeyValuePair<long, string>(1073741824, "GB"));
+        vals.Add(new KeyValuePair<long, string>(1048576, "MB"));
+        vals.Add(new KeyValuePair<long, string>(1024, "KB"));
         //vals.Add(new KeyValuePair<long,string>(0,"B"));
 
-        foreach(var kvp in vals)
+        foreach (var kvp in vals)
         {
-            if(size>=kvp.Key)
+            if (size >= kvp.Key)
                 return string.Format("{0} {1}",
                     Math.Round((double)size / (double)kvp.Key),
                     kvp.Value
@@ -30,51 +30,58 @@
 <div class="list-group">
     @if (Model != null)
     {
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @Messages.search_foundtitle
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Messages.search_foundtitle
+            </div>
         </div>
-    </div>
-    <p>
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-        @Html.PagedListPager(
+        <p>
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(
                 Model,
-                page => page.ToString())
-    </p>
+                page => page.ToString(),
+                new PagedListRenderOptions()
+                {
+                    DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                    DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                })
+        </p>
         foreach (var archive in Model)
         {
-        <div class="list-group-item" name="package">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-1">
-                    @archive.AipUri
-                </div>
-                <div class="col-lg-1 col-lg-offset-2">
-                    <button type="button" class="btn btn-default btn-sm" name="openAddToCartAnchor" uuid="@archive.ReferenceCode">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </div>
-                <div class="col-lg-1 col-lg-offset-2" name="expandPackage" uuid="@(archive.ReferenceCode)">
-                    <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-collapse-down"></span> @Messages.search_expandcollapse
-                    </button>
-
-                </div>
-            </div>
-
-            <div name="packageFiles" id="packageFiles_@(archive.ReferenceCode)" style="display:none">
-                @foreach (var file in archive.Files)
-                    {
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-2" style="text-align:left">
-                            <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(archive.ReferenceCode, file.Path));}">
-                                @file.Path
-                            </a>
-                            <span>&nbsp;(@SizeString(file.Size))</span>
-                        </div>
+            <div class="list-group-item" name="package">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-1">
+                        @archive.AipUri
                     </div>
+                    <div class="col-lg-1 col-lg-offset-2">
+                        <button type="button" class="btn btn-default btn-sm" name="openAddToCartAnchor" uuid="@archive.ReferenceCode">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                    <div class="col-lg-1 col-lg-offset-2" name="expandPackage" uuid="@(archive.ReferenceCode)">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-collapse-down"></span> @Messages.search_expandcollapse
+                        </button>
+
+                    </div>
+                </div>
+
+                <div name="packageFiles" id="packageFiles_@(archive.ReferenceCode)" style="display:none">
+                    @foreach (var file in archive.Files)
+                    {
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-2" style="text-align:left">
+                                <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(archive.ReferenceCode, file.Path));}">
+                                    @file.Path
+                                </a>
+                                <span>&nbsp;(@SizeString(file.Size))</span>
+                            </div>
+                        </div>
                     }
+                </div>
             </div>
-        </div>
         }
     }
 </div>
