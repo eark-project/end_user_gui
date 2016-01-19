@@ -44,5 +44,11 @@ namespace end_user_gui.Models.dummy
         {
             return CreateDissemination();
         }
+
+
+        public string FileUrl(string referenceCode, string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

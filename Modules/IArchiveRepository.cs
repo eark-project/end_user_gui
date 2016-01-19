@@ -10,5 +10,6 @@ namespace end_user_gui.Modules
     {
         List<IDissemination> GetDIPs(IArchive archive);
         IDissemination LookupDIP(String keyString);
+        string FileUrl(string referenceCode, string path);
     }
 }

@@ -43,7 +43,8 @@
                     {
                         <div class="row">
                             <div class="col-md-5 col-md-offset-3">
-                                @file.Path
+                                <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(archive.ReferenceCode, file.Path));}">
+                                    @file.Path
                             </div>
                         </div>
                     }

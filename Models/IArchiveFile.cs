@@ -11,6 +11,6 @@ namespace end_user_gui.Models
         string ContentType { get; set; }
         long Size { get; set; }
         string Path { get; set; }
-        string Contents { get; set; }
+        byte[] Contents { get; set; }
     }
 }

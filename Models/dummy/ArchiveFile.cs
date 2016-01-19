@@ -10,6 +10,6 @@ namespace end_user_gui.Models.dummy
         public string ContentType { get; set; }
         public long Size { get; set; }
         public string Path { get; set; }
-        public string Contents { get; set; }
+        public byte[] Contents { get; set; }
     }
 }
