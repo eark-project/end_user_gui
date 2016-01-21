@@ -1,26 +1,41 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace end_user_gui.Models
 {
     public class Order
     {
+        [Key]
         public String OrderUniqueID { get; set; }
         public String OrderTitle { get; set; }
 
         // Get
         public List<OrderArchiveReference> Archives { get; set; } = new List<OrderArchiveReference>();
+
         public List<DeliveryMethod> OrderOrigins { get; set; }
+
+        [NotMapped]
         public List<String> EndUserNotes { get; set; }
+
+        [NotMapped]
         public List<String> ArchivistNotes { get; set; }
+
         public DateTime IssueDate { get; set; }
+
+        [NotMapped]
         public EndUser User { get; set; }
         public DateTime PlannedDate { get; set; }
         public DateText ExpectedReadyDate { get; set; }
+
+        [NotMapped]
         public Archivist Archivist { get; set; }
+
+        [NotMapped]
         public List<String> InternalNotes { get; set; }
+
+        [NotMapped]
         public List<DeliveryFormat> DeliveryFormats { get; set; }
 
         /*Accessor methods*/

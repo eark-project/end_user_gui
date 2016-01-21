@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -140,6 +141,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601211624277_Mig1.cs" />
+    <Compile Include="Migrations\201601211624277_Mig1.Designer.cs">
+      <DependentUpon>201601211624277_Mig1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessRestriction.cs" />
     <Compile Include="Models\ArchiveSearchObject.cs" />
     <Compile Include="Models\DateText.cs" />
@@ -154,6 +160,7 @@
     <Compile Include="Models\Dissemination.cs" />
     <Compile Include="Models\EndUser.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderContext.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ISession.cs" />
     <Compile Include="Models\OrderArchiveReference.cs" />
@@ -223,6 +230,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601211624277_Mig1.resx">
+      <DependentUpon>201601211624277_Mig1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
