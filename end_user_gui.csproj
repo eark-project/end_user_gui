@@ -154,7 +154,6 @@
     <Compile Include="Models\Dissemination.cs" />
     <Compile Include="Models\EndUser.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\IOrderTarget.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ISession.cs" />
     <Compile Include="Models\OrderArchiveReference.cs" />
