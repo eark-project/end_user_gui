@@ -7,7 +7,7 @@ namespace end_user_gui.Models
 {
     public interface ISession
     {
-        IOrder CurrentOrder { get; }
+        Order CurrentOrder { get; }
         void NewOrder();
         EndUser User {get;}
     }

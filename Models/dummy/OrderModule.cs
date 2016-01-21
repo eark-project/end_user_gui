@@ -8,16 +8,16 @@ namespace end_user_gui.Models.dummy
 {
     public class OrderModule : IOrderModule
     {
-        private readonly Dictionary<EndUser, List<IOrder>> _Orders = new Dictionary<EndUser, List<IOrder>>();
+        private readonly Dictionary<EndUser, List<Order>> _Orders = new Dictionary<EndUser, List<Order>>();
 
-        public StandardReturn SubmitOrder(IOrder order, EndUser user)
+        public StandardReturn SubmitOrder(Order order, EndUser user)
         {
             if (order.Archives.Count > 0)
             {
                 order.IssueDate = DateTime.Now;
 
                 if (!_Orders.ContainsKey(user))
-                    _Orders[user] = new List<IOrder>();
+                    _Orders[user] = new List<Order>();
 
                 _Orders[user].Add(order);
 
@@ -29,9 +29,9 @@ namespace end_user_gui.Models.dummy
             }
         }
 
-        public List<IOrder> GetUserOrders(EndUser user)
+        public List<Order> GetUserOrders(EndUser user)
         {
-            return _Orders.ContainsKey(user) ? _Orders[user] : new List<IOrder>();
+            return _Orders.ContainsKey(user) ? _Orders[user] : new List<Order>();
         }
     }
 }

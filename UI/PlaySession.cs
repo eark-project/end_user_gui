@@ -11,7 +11,7 @@ namespace end_user_gui.UI
     {
         private static Dictionary<string, object> _Cache = new Dictionary<string, object>();
 
-        public IOrder CurrentOrder
+        public Order CurrentOrder
         {
             get
             {
@@ -21,13 +21,13 @@ namespace end_user_gui.UI
                     NewOrder();
                 }
                 Object ret = _Cache[key];
-                return (IOrder)ret;
+                return (Order)ret;
             }
         }
 
         public void NewOrder()
         {
-            _Cache[OrderKey] = new DummyOrder() { User = this.User };
+            _Cache[OrderKey] = new Order() { User = this.User };
         }
 
         public String SessionId

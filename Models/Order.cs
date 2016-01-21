@@ -3,37 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace end_user_gui.Models.dummy
+namespace end_user_gui.Models
 {
-    public class DummyOrder : IOrder
+    public class Order
     {
         public String OrderUniqueID { get; set; }
         public String OrderTitle { get; set; }
 
-        private List<OrderArchiveReference> _Archives = new List<OrderArchiveReference>();
-        public List<OrderArchiveReference> Archives { get { return _Archives; } }
-
-        private List<DeliveryMethod> _OrderOrigins = new List<DeliveryMethod>();
-        public List<DeliveryMethod> OrderOrigins { get { return _OrderOrigins; } }
-
-        private List<String> _EndUserNotes = new List<string>();
-        public List<String> EndUserNotes { get { return _EndUserNotes; } }
-
-        private List<String> _ArchivistNotes = new List<string>();
-        public List<String> ArchivistNotes { get { return _ArchivistNotes; } }
-
+        // Get
+        public List<OrderArchiveReference> Archives { get; set; }
+        public List<DeliveryMethod> OrderOrigins { get; set; }
+        public List<String> EndUserNotes { get; set; }
+        public List<String> ArchivistNotes { get; set; }
         public DateTime IssueDate { get; set; }
         public EndUser User { get; set; }
         public DateTime PlannedDate { get; set; }
         public DateText ExpectedReadyDate { get; set; }
         public Archivist Archivist { get; set; }
+        public List<String> InternalNotes { get; set; }
+        public List<DeliveryFormat> DeliveryFormats { get; set; }
 
-        private List<String> _InternalNotes = new List<string>();
-        public List<String> InternalNotes { get { return _InternalNotes; } }
-
-        private List<DeliveryFormat> _DeliveryFormats = new List<DeliveryFormat>();
-        public List<DeliveryFormat> DeliveryFormats { get { return _DeliveryFormats; } }
-
+        /*Accessor methods*/
         public Boolean Add(Archive archive)
         {
             return Add(archive, null);
