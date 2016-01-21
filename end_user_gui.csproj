@@ -39,6 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -142,17 +150,16 @@
     <Compile Include="Models\dummy\ArchiveRepository.cs" />
     <Compile Include="Models\dummy\Dissemination.cs" />
     <Compile Include="Models\dummy\DummyOrder.cs" />
-    <Compile Include="Models\dummy\EndUser.cs" />
     <Compile Include="Models\dummy\OrderModule.cs" />
     <Compile Include="Models\dummy\SearchModule.cs" />
     <Compile Include="Models\IArchive.cs" />
     <Compile Include="Models\IArchiveFile.cs" />
-    <Compile Include="Models\IArchivist.cs" />
+    <Compile Include="Models\Archivist.cs" />
     <Compile Include="Models\IDissemination.cs" />
-    <Compile Include="Models\IEndUser.cs" />
+    <Compile Include="Models\EndUser.cs" />
     <Compile Include="Models\IOrder.cs" />
     <Compile Include="Models\IOrderTarget.cs" />
-    <Compile Include="Models\IPerson.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\ISession.cs" />
     <Compile Include="Models\OrderArchiveReference.cs" />
     <Compile Include="Models\OrderStatus.cs" />
@@ -212,7 +219,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_GlobalResources\Messages.resx">
