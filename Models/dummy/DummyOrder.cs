@@ -23,10 +23,10 @@ namespace end_user_gui.Models.dummy
         public List<String> ArchivistNotes { get { return _ArchivistNotes; } }
 
         public DateTime IssueDate { get; set; }
-        public IEndUser User { get; set; }
+        public EndUser User { get; set; }
         public DateTime PlannedDate { get; set; }
         public DateText ExpectedReadyDate { get; set; }
-        public IArchivist Archivist { get; set; }
+        public Archivist Archivist { get; set; }
 
         private List<String> _InternalNotes = new List<string>();
         public List<String> InternalNotes { get { return _InternalNotes; } }

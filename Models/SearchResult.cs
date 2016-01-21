@@ -5,7 +5,9 @@ using System.Web;
 
 namespace end_user_gui.Models
 {
-    public interface IEndUser : IPerson
+    public class SearchResult
     {
+        public IArchive Archive;
+        public String FileName;
     }
 }

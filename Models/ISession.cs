@@ -9,6 +9,6 @@ namespace end_user_gui.Models
     {
         IOrder CurrentOrder { get; }
         void NewOrder();
-        IEndUser User {get;}
+        EndUser User {get;}
     }
 }

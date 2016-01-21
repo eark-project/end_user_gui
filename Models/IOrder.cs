@@ -16,10 +16,10 @@ namespace end_user_gui.Models
         List<String> EndUserNotes { get; }
         List<String> ArchivistNotes { get; }
         DateTime IssueDate { get; set; }
-        IEndUser User { get; set; }
+        EndUser User { get; set; }
         DateTime PlannedDate { get; set; }
         DateText ExpectedReadyDate { get; set; }
-        IArchivist Archivist { get; set; }
+        Archivist Archivist { get; set; }
         List<String> InternalNotes { get; }
         List<DeliveryFormat> DeliveryFormats { get; }
 

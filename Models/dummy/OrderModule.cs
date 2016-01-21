@@ -8,9 +8,9 @@ namespace end_user_gui.Models.dummy
 {
     public class OrderModule : IOrderModule
     {
-        private readonly Dictionary<IEndUser, List<IOrder>> _Orders = new Dictionary<IEndUser, List<IOrder>>();
+        private readonly Dictionary<EndUser, List<IOrder>> _Orders = new Dictionary<EndUser, List<IOrder>>();
 
-        public StandardReturn SubmitOrder(IOrder order, IEndUser user)
+        public StandardReturn SubmitOrder(IOrder order, EndUser user)
         {
             if (order.Archives.Count > 0)
             {
@@ -29,7 +29,7 @@ namespace end_user_gui.Models.dummy
             }
         }
 
-        public List<IOrder> GetUserOrders(IEndUser user)
+        public List<IOrder> GetUserOrders(EndUser user)
         {
             return _Orders.ContainsKey(user) ? _Orders[user] : new List<IOrder>();
         }

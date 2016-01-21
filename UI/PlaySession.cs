@@ -54,8 +54,8 @@ namespace end_user_gui.UI
             }
         }
 
-        public static readonly Dictionary<String, IEndUser> _Users = new Dictionary<string, IEndUser>();
-        public IEndUser User
+        public static readonly Dictionary<String, EndUser> _Users = new Dictionary<string, EndUser>();
+        public EndUser User
         {
             get
             {

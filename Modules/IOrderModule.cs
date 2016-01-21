@@ -8,7 +8,7 @@ namespace end_user_gui.Modules
 {
     public interface IOrderModule
     {
-        StandardReturn SubmitOrder(IOrder order, IEndUser session);
-        List<IOrder> GetUserOrders(IEndUser user);
+        StandardReturn SubmitOrder(IOrder order, EndUser session);
+        List<IOrder> GetUserOrders(EndUser user);
     }
 }

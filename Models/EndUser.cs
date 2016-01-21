@@ -5,7 +5,7 @@ using System.Web;
 
 namespace end_user_gui.Models
 {
-    public interface IArchivist : IPerson
+    public class EndUser : Person
     {
     }
 }
