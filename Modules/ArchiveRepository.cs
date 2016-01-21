@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Net;
+using end_user_gui.Models;
 
 namespace end_user_gui.Modules
 {
@@ -11,7 +12,7 @@ namespace end_user_gui.Modules
         public static readonly string BaseUrl = "http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.";
         public static readonly string Suffix = "/field/n$content/data?ns.n=org.eu.eark";
 
-        public List<Models.IDissemination> GetDIPs(Models.IArchive archive)
+        public List<Models.IDissemination> GetDIPs(Models.Archive archive)
         {
             // No DIPs available for now - keep empty
             return new List<Models.IDissemination>();
@@ -34,12 +35,12 @@ namespace end_user_gui.Modules
             return url;
         }
 
-        public Models.IArchiveFile LoadFile(string referenceCode, string path)
+        public Models.ArchiveFile LoadFile(string referenceCode, string path)
         {
             var url = FileUrl(referenceCode, path);
             var client = new WebClient();
             var data = client.DownloadData(url);
-            return new Models.dummy.ArchiveFile()
+            return new ArchiveFile()
             {
                 Contents = data,
                 ContentType = "",

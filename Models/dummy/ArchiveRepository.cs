@@ -21,7 +21,7 @@ namespace end_user_gui.Models.dummy
             };
         }
 
-        public List<IDissemination> GetDIPs(IArchive archive)
+        public List<IDissemination> GetDIPs(Archive archive)
         {
             string p = "[0-9]+";
             String inp = archive.ReferenceCode;

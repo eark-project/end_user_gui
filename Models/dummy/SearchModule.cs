@@ -8,13 +8,13 @@ namespace end_user_gui.Models.dummy
 {
     public class SearchModule : ISearchModule
     {
-        static List<IArchive> _Archives;
+        static List<Archive> _Archives;
 
         public SearchModule()
         {
             if (_Archives == null)
             {
-                _Archives = new List<IArchive>();
+                _Archives = new List<Archive>();
 
                 for (int i = 0; i < 1000; i++)
                 {
@@ -29,11 +29,11 @@ namespace end_user_gui.Models.dummy
             }
         }
 
-        public List<IArchive> Search(ArchiveSearchObject searchObject)
+        public List<Archive> Search(ArchiveSearchObject searchObject)
         {
             // TODO : LINQ
-            List<IArchive> ret = new List<IArchive>();
-            foreach (IArchive archive in _Archives)
+            List<Archive> ret = new List<Archive>();
+            foreach (Archive archive in _Archives)
             {
                 if (searchObject.name == null || archive.ReferenceCode.Contains(searchObject.name) || archive.AipUri.Contains(searchObject.name))
                     ret.Add(archive);
@@ -42,10 +42,10 @@ namespace end_user_gui.Models.dummy
         }
 
 
-        public IArchive Lookup(String key)
+        public Archive Lookup(String key)
         {
             // TODO : LINQ
-            foreach (IArchive archive in _Archives)
+            foreach (Archive archive in _Archives)
             {
                 if (archive.ReferenceCode.Equals(key))
                     return archive;

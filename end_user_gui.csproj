@@ -145,15 +145,13 @@
     <Compile Include="Models\DateText.cs" />
     <Compile Include="Models\DeliveryFormat.cs" />
     <Compile Include="Models\DeliveryMethod.cs" />
-    <Compile Include="Models\dummy\Archive.cs" />
-    <Compile Include="Models\dummy\ArchiveFile.cs" />
     <Compile Include="Models\dummy\ArchiveRepository.cs" />
     <Compile Include="Models\dummy\Dissemination.cs" />
     <Compile Include="Models\dummy\DummyOrder.cs" />
     <Compile Include="Models\dummy\OrderModule.cs" />
     <Compile Include="Models\dummy\SearchModule.cs" />
-    <Compile Include="Models\IArchive.cs" />
-    <Compile Include="Models\IArchiveFile.cs" />
+    <Compile Include="Models\Archive.cs" />
+    <Compile Include="Models\ArchiveFile.cs" />
     <Compile Include="Models\Archivist.cs" />
     <Compile Include="Models\IDissemination.cs" />
     <Compile Include="Models\EndUser.cs" />

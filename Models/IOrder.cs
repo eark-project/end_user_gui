@@ -24,8 +24,8 @@ namespace end_user_gui.Models
         List<DeliveryFormat> DeliveryFormats { get; }
 
         /*Accessor methods*/
-        Boolean Add(IArchive archive);
-        Boolean Add(IArchive archive, IDissemination dissemination);
-        Boolean Remove(IArchive archive);
+        Boolean Add(Archive archive);
+        Boolean Add(Archive archive, IDissemination dissemination);
+        Boolean Remove(Archive archive);
     }
 }

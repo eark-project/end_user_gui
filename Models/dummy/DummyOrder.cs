@@ -34,12 +34,12 @@ namespace end_user_gui.Models.dummy
         private List<DeliveryFormat> _DeliveryFormats = new List<DeliveryFormat>();
         public List<DeliveryFormat> DeliveryFormats { get { return _DeliveryFormats; } }
 
-        public Boolean Add(IArchive archive)
+        public Boolean Add(Archive archive)
         {
             return Add(archive, null);
         }
 
-        public Boolean Add(IArchive archive, IDissemination dissemination)
+        public Boolean Add(Archive archive, IDissemination dissemination)
         {
             this.Archives.Add(
                     new OrderArchiveReference()
@@ -56,7 +56,7 @@ namespace end_user_gui.Models.dummy
             return true;
         }
 
-        public Boolean Remove(IArchive archive)
+        public Boolean Remove(Archive archive)
         {
             // TODO: LINQ
             foreach (OrderArchiveReference orderArchiveReference in this.Archives)

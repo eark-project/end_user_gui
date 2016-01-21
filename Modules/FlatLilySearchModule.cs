@@ -24,7 +24,7 @@ namespace end_user_gui.Modules
         }
 
 
-        private List<IArchive> FindArchives(String query, int targetStartIndex, int targetMaxResults)
+        private List<Archive> FindArchives(String query, int targetStartIndex, int targetMaxResults)
         {
             long docStartIndex = 0, docBatchSize = 100;
 
@@ -82,9 +82,9 @@ namespace end_user_gui.Modules
                                 Size = long.Parse(doc["size"].ToString()),
                                 //Contents = (string)doc["contents"],
                                 ContentType = (string)doc["contentType"],
-                            } as IArchiveFile)
+                            } as ArchiveFile)
                         .ToList()
-                    } as IArchive)
+                    } as Archive)
                     .ToList();
 
                 return archives;
@@ -95,7 +95,7 @@ namespace end_user_gui.Modules
             }
         }
 
-        public List<IArchive> Search(ArchiveSearchObject searchObject)
+        public List<Archive> Search(ArchiveSearchObject searchObject)
         {
             String query = "q=";
             if (string.IsNullOrEmpty(searchObject.name))
@@ -117,7 +117,7 @@ namespace end_user_gui.Modules
             return Search(searchObject).Count();
         }
 
-        public IArchive Lookup(String key)
+        public Archive Lookup(String key)
         {
             var query = string.Format("q=path:{0}", key);
             return FindArchives(query, 0, 1).FirstOrDefault();

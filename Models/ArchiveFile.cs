@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace end_user_gui.Models.dummy
+namespace end_user_gui.Models
 {
-    public class ArchiveFile : IArchiveFile
+    public class ArchiveFile
     {
         public string ContentType { get; set; }
         public long Size { get; set; }
