@@ -1,6 +1,6 @@
 @using end_user_gui.Models
 @using end_user_gui.App_GlobalResources
-@model IOrder
+@model Order
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -24,5 +24,5 @@
 </nav>
 @{
     Html.RenderPartial("~/Views/Order/cartview.cshtml", Model);
-    Html.RenderPartial("~/Views/Order/addtocartmodal.cshtml", new Tuple<IArchive, List<IDissemination>>(null, null));
+    Html.RenderPartial("~/Views/Order/addtocartmodal.cshtml", new Tuple<Archive, List<Dissemination>>(null, null));
 }

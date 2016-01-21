@@ -11,7 +11,7 @@ namespace end_user_gui.Models
         public String OrderTitle { get; set; }
 
         // Get
-        public List<OrderArchiveReference> Archives { get; set; }
+        public List<OrderArchiveReference> Archives { get; set; } = new List<OrderArchiveReference>();
         public List<DeliveryMethod> OrderOrigins { get; set; }
         public List<String> EndUserNotes { get; set; }
         public List<String> ArchivistNotes { get; set; }
