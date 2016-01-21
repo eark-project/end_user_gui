@@ -21,7 +21,7 @@ namespace end_user_gui.Models.dummy
             };
         }
 
-        public List<IDissemination> GetDIPs(Archive archive)
+        public List<Dissemination> GetDIPs(Archive archive)
         {
             string p = "[0-9]+";
             String inp = archive.ReferenceCode;
@@ -32,7 +32,7 @@ namespace end_user_gui.Models.dummy
             }
             var c = int.Parse(s) % 3;
 
-            var ret = new List<IDissemination>();
+            var ret = new List<Dissemination>();
             for (int i = 0; i < c; i++)
             {
                 ret.Add(CreateDissemination());
@@ -40,7 +40,7 @@ namespace end_user_gui.Models.dummy
             return ret;
         }
 
-        public IDissemination LookupDIP(String keyString)
+        public Dissemination LookupDIP(String keyString)
         {
             return CreateDissemination();
         }

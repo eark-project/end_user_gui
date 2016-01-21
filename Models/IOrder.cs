@@ -25,7 +25,7 @@ namespace end_user_gui.Models
 
         /*Accessor methods*/
         Boolean Add(Archive archive);
-        Boolean Add(Archive archive, IDissemination dissemination);
+        Boolean Add(Archive archive, Dissemination dissemination);
         Boolean Remove(Archive archive);
     }
 }

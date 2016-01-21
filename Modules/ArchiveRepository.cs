@@ -12,13 +12,13 @@ namespace end_user_gui.Modules
         public static readonly string BaseUrl = "http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.";
         public static readonly string Suffix = "/field/n$content/data?ns.n=org.eu.eark";
 
-        public List<Models.IDissemination> GetDIPs(Models.Archive archive)
+        public List<Models.Dissemination> GetDIPs(Models.Archive archive)
         {
             // No DIPs available for now - keep empty
-            return new List<Models.IDissemination>();
+            return new List<Models.Dissemination>();
         }
 
-        public Models.IDissemination LookupDIP(string keyString)
+        public Models.Dissemination LookupDIP(string keyString)
         {
             // No DIPs available for now - keep null
             return null;

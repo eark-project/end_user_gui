@@ -39,7 +39,7 @@ namespace end_user_gui.Models.dummy
             return Add(archive, null);
         }
 
-        public Boolean Add(Archive archive, IDissemination dissemination)
+        public Boolean Add(Archive archive, Dissemination dissemination)
         {
             this.Archives.Add(
                     new OrderArchiveReference()

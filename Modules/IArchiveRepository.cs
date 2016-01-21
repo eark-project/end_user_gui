@@ -8,8 +8,8 @@ namespace end_user_gui.Modules
 {
     public interface IArchiveRepository
     {
-        List<IDissemination> GetDIPs(Archive archive);
-        IDissemination LookupDIP(String keyString);
+        List<Dissemination> GetDIPs(Archive archive);
+        Dissemination LookupDIP(String keyString);
         string FileUrl(string referenceCode, string path);
     }
 }
