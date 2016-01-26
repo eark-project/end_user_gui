@@ -10,5 +10,6 @@ namespace end_user_gui.Models
     public class OrderContext : DbContext
     {
         public DbSet<Order> Orders { get; set; }
+        public DbSet<EndUser> EndUsers { get; set; }
     }
 }

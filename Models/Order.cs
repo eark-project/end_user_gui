@@ -24,10 +24,11 @@ namespace end_user_gui.Models
 
         public DateTime IssueDate { get; set; }
 
-        [NotMapped]
-        public EndUser User { get; set; }
-        public DateTime PlannedDate { get; set; }
-        public DateText ExpectedReadyDate { get; set; }
+        public virtual EndUser User { get; set; }
+
+        public DateTime? PlannedDate { get; set; }
+
+        public DateText ExpectedReadyDate { get; set; } = new DateText();
 
         [NotMapped]
         public Archivist Archivist { get; set; }
@@ -53,8 +54,8 @@ namespace end_user_gui.Models
                         Dissemination = dissemination,
                         Status = new OrderStatus()
                         {
-                            Status = "",
-                            StatusDate = new DateTime(),
+                            Status = null,
+                            StatusDate = null
                         }
                     }
             );

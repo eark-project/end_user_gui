@@ -12,7 +12,7 @@ namespace end_user_gui.Models
     [ComplexType]
     public class AccessRestriction
     {
-        public int Code;
-        public String Text;
+        public int Code { get; set; }
+        public String Text { get; set; }
     }
 }
