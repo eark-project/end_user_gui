@@ -1,6 +1,6 @@
 [submodule "play_host_service"]
-	path = play_host_service
+	path = end_user/play_host_service
 	url = https://github.com/magenta-aps/play_host_service
 [submodule "iis_reverse_proxy"]
-	path = iis_reverse_proxy
+	path = end_user/iis_reverse_proxy
 	url = https://github.com/magenta-aps/iis_reverse_proxy

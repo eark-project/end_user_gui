@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "end_user_gui", "end_user_gui.csproj", "{9838E868-5CE8-4B76-AF04-2CA4D629542E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "end_user_gui", "end_user\end_user_gui.csproj", "{9838E868-5CE8-4B76-AF04-2CA4D629542E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
