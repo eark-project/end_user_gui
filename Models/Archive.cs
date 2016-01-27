@@ -12,5 +12,8 @@ namespace end_user_gui.Models
         public String ReferenceCode { get; set; }
         public String AipUri { get; set; }
         public List<ArchiveFile> Files { get; set; }
+
+        [NotMapped]
+        public ArchiveMetadata Metadata { get; set; }
     }
 }

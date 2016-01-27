@@ -148,8 +148,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessRestriction.cs" />
+    <Compile Include="Models\ArchiveFormat.cs" />
     <Compile Include="Models\ArchiveMetadata.cs" />
     <Compile Include="Models\ArchiveSearchObject.cs" />
+    <Compile Include="Models\ArchiveType.cs" />
     <Compile Include="Models\DateText.cs" />
     <Compile Include="Models\DeliveryFormat.cs" />
     <Compile Include="Models\DeliveryMethod.cs" />
