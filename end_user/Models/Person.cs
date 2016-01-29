@@ -8,9 +8,9 @@ namespace end_user_gui.Models
 {
     public class Person
     {
-        public String Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Key]
-        public String UniqueId { get; set; }
+        public string UniqueId { get; set; }
     }
 }

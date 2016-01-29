@@ -8,7 +8,10 @@ namespace end_user_gui.Models
     public class Order
     {
         [Key]
+        [Display(Name = "Order name")]
         public String OrderUniqueID { get; set; }
+
+        [Display(Name = "Order name")]
         public String OrderTitle { get; set; }
 
         // Get
@@ -22,15 +25,17 @@ namespace end_user_gui.Models
         [NotMapped]
         public List<String> ArchivistNotes { get; set; }
 
+        [Display(Name = "Date of submission")]
         public DateTime IssueDate { get; set; }
 
+        [Display(Name = "End user")]
         public virtual EndUser User { get; set; }
 
         public DateTime? PlannedDate { get; set; }
 
+        [Display(Name = "Date of delivery")]
         public DateText ExpectedReadyDate { get; set; } = new DateText();
 
-        [NotMapped]
         public Archivist Archivist { get; set; }
 
         [NotMapped]

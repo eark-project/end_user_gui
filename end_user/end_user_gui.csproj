@@ -142,9 +142,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601261459525_init.cs" />
-    <Compile Include="Migrations\201601261459525_init.Designer.cs">
-      <DependentUpon>201601261459525_init.cs</DependentUpon>
+    <Compile Include="Migrations\201601281516272_init.cs" />
+    <Compile Include="Migrations\201601281516272_init.Designer.cs">
+      <DependentUpon>201601281516272_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccessRestriction.cs" />
@@ -236,8 +236,8 @@
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601261459525_init.resx">
-      <DependentUpon>201601261459525_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201601281516272_init.resx">
+      <DependentUpon>201601281516272_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

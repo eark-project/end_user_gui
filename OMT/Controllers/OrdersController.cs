@@ -17,6 +17,14 @@ namespace OMT.Controllers
         // GET: Orders
         public ActionResult Index()
         {
+            using (var context = new OrderContext())
+            {
+                var ss = context.Archivists                    
+                    .Select(a=> new SelectListItem() {  Text = a.Name, Value = a.UniqueId})
+                    .ToList();
+                ss.Insert(0, new SelectListItem());
+                ViewBag.Archivists = ss;
+            }
             return View(db.Orders.ToList());
         }
 
