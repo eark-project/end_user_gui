@@ -1,6 +1,14 @@
-﻿@model end_user_gui.Models.Order
+﻿
+@model end_user_gui.Models.Order
 
-@Html.DropDownListFor(
-                        m => m.Archivist.UniqueId,
-                        new SelectList(ViewBag.Archivists, "Value", "Text", Model.Archivist.UniqueId)
-                        )
+@Html.DisplayFor(modelItem => Model.Archivist.Name)
+
+@Ajax.ActionLink("(Change)",
+    "SelectArchivist",
+    "Orders",
+    new { orderId = Model.OrderUniqueID },
+    new AjaxOptions()
+    {
+        UpdateTargetId = ViewData["elementId"].ToString()
+    }
+    )

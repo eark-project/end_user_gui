@@ -119,6 +119,24 @@ namespace OMT.Controllers
                     .Select(a => new SelectListItem() { Text = a.Name, Value = a.UniqueId })
                     .ToList();
                 var order = context.Orders.Where(o => o.OrderUniqueID == orderId).Include(o => o.Archivist).SingleOrDefault();
+                ViewData["elementId"] = "selArch_" + order.OrderUniqueID;
+
+                return PartialView("AssignedToSelect", order);
+            }
+        }
+
+        public PartialViewResult SetArchivist(string orderId, bool set, string archivistId)
+        {
+            using (var context = new OrderContext())
+            {
+                var order = context.Orders.Where(o => o.OrderUniqueID == orderId).Include(o => o.Archivist).SingleOrDefault();
+                if (set)
+                {
+                    order.Archivist = context.Archivists.Where(a => a.UniqueId == archivistId).FirstOrDefault();
+                    context.SaveChanges();
+                }
+
+                ViewData["elementId"] = "selArch_" + order.OrderUniqueID;
 
                 return PartialView("AssignedTo", order);
             }

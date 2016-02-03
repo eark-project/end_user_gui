@@ -54,17 +54,11 @@
             <td>
                 @{
                     var elmId = "selArch_" + item.OrderUniqueID;
+                    var dd = new ViewDataDictionary();
+                    dd.Add("elementId", elmId);
                 }
                 <span id="@elmId">
-                    @Html.DisplayFor(modelItem => item.Archivist.Name)
-
-                    @Ajax.ActionLink("(Change)",
-                    "SelectArchivist",
-                    new { orderId = item.OrderUniqueID },
-                    new AjaxOptions()
-                    {
-                        UpdateTargetId = elmId
-                    })
+                    @{Html.RenderPartial("AssignedTo", item, dd);}
                 </span>
             </td>
             <td>
@@ -72,7 +66,6 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.OrderUniqueID })
             </td>
         </tr>
-    }
+                        }
 
 </table>
-
