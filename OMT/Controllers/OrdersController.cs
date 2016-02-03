@@ -19,13 +19,12 @@ namespace OMT.Controllers
         {
             using (var context = new OrderContext())
             {
-                var ss = context.Archivists                    
-                    .Select(a=> new SelectListItem() {  Text = a.Name, Value = a.UniqueId})
+                var ss = context.Archivists
+                    .Select(a => new SelectListItem() { Text = a.Name, Value = a.UniqueId })
                     .ToList();
-                ss.Insert(0, new SelectListItem());
                 ViewBag.Archivists = ss;
             }
-            return View(db.Orders.ToList());
+            return View(db.Orders.Include(o => o.Archivist).ToList());
         }
 
         // GET: Orders/Details/5
@@ -112,6 +111,19 @@ namespace OMT.Controllers
             return View(order);
         }
 
+        public PartialViewResult SelectArchivist(string orderId)
+        {
+            using (var context = new OrderContext())
+            {
+                ViewBag.Archivists = context.Archivists
+                    .Select(a => new SelectListItem() { Text = a.Name, Value = a.UniqueId })
+                    .ToList();
+                var order = context.Orders.Where(o => o.OrderUniqueID == orderId).Include(o => o.Archivist).SingleOrDefault();
+
+                return PartialView("AssignedTo", order);
+            }
+        }
+
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -131,5 +143,7 @@ namespace OMT.Controllers
             }
             base.Dispose(disposing);
         }
+
+
     }
 }

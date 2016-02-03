@@ -1,0 +1,6 @@
+﻿@model end_user_gui.Models.Order
+
+@Html.DropDownListFor(
+                        m => m.Archivist.UniqueId,
+                        new SelectList(ViewBag.Archivists, "Value", "Text", Model.Archivist.UniqueId)
+                        )

@@ -4,8 +4,6 @@
 }
 
 <h2>Orders</h2>
-
-
 <table class="table">
     <tr>
         <th>
@@ -54,9 +52,20 @@
                 Add status here
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Archivist.Name)
-                sss
-                @Html.DropDownListFor(modelItem => item.Archivist.UniqueId, (List<SelectListItem>)ViewBag.Archivists)
+                @{
+                    var elmId = "selArch_" + item.OrderUniqueID;
+                }
+                <span id="@elmId">
+                    @Html.DisplayFor(modelItem => item.Archivist.Name)
+
+                    @Ajax.ActionLink("(Change)",
+                    "SelectArchivist",
+                    new { orderId = item.OrderUniqueID },
+                    new AjaxOptions()
+                    {
+                        UpdateTargetId = elmId
+                    })
+                </span>
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.OrderUniqueID }) |
@@ -66,3 +75,4 @@
     }
 
 </table>
+
