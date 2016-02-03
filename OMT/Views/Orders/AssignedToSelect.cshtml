@@ -9,7 +9,7 @@
 @Html.DropDownList(
     "abc",
     listElelemnts,
-    new { onchange = "updateLink()" }
+    new { onchange = "updateLink('"+ ViewData["elementId"] + "')" }
     )
 
 @Ajax.ActionLink("Save",
@@ -28,9 +28,9 @@
     )
 
 <script>
-    function updateLink() {
-        var sel = $('#@{Output.Write(ViewData["elementId"]);} select option:selected');
-        var a = $('#@{Output.Write(ViewData["elementId"]);} a[save]');
+    function updateLink(elementId) {
+        var sel = $('#' + elementId + ' select option:selected');
+        var a = $('#' + elementId + ' a[save]');
         if (!a.attr('orgHref')) {
             a.attr('orgHref', a.attr('href'));
         }
@@ -38,6 +38,7 @@
             'href',
             a.attr('orgHref') + '&archivistId=' + sel.val()
         );
+        console.log(sel.text());
     }
 </script>
 
