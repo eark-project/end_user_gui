@@ -59,12 +59,14 @@ namespace end_user_gui.UI
         {
             get
             {
-                if (!_Users.ContainsKey(SessionId))
+                var user = HttpContext.Current.User.Identity;
+
+                if (!_Users.ContainsKey(user.Name))
                 {
-                    _Users[SessionId] = new EndUser() { Name = SessionId, UniqueId = SessionId };
+                    _Users[user.Name] = new EndUser() { Name = user.Name, UniqueId = user.Name };
                 }
 
-                return _Users[SessionId];
+                return _Users[user.Name];
             }
         }
 
