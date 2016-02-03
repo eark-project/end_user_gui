@@ -1,10 +1,17 @@
 ﻿@model end_user_gui.Models.Order
+@{
 
-@Html.DropDownListFor(
-    m => m.Archivist.UniqueId,
-    new SelectList(ViewBag.Archivists, "Value", "Text", Model.Archivist.UniqueId),
-    new { onchange = "updateLink()"}
+    var l = new List<SelectListItem>(ViewBag.Archivists as IEnumerable<SelectListItem>);
+    l.Insert(0, new SelectListItem() { Text = "(none)", Value = "---" });
+    var listElelemnts = new SelectList(l, "Value", "Text", Model.Archivist?.UniqueId);
+}
+
+@Html.DropDownList(
+    "abc",
+    listElelemnts,
+    new { onchange = "updateLink()" }
     )
+
 @Ajax.ActionLink("Save",
     "SetArchivist",
     "Orders",
@@ -15,21 +22,20 @@
     },
     new AjaxOptions()
     {
-        UpdateTargetId = ViewData["elementId"].ToString()        
+        UpdateTargetId = ViewData["elementId"].ToString()
     },
-    new { save=true }
+    new { save = true }
     )
 
 <script>
     function updateLink() {
         var sel = $('#@{Output.Write(ViewData["elementId"]);} select option:selected');
         var a = $('#@{Output.Write(ViewData["elementId"]);} a[save]');
-        if (!a.attr('orgHref'))
-        {
+        if (!a.attr('orgHref')) {
             a.attr('orgHref', a.attr('href'));
         }
         a.attr(
-            'href', 
+            'href',
             a.attr('orgHref') + '&archivistId=' + sel.val()
         );
     }

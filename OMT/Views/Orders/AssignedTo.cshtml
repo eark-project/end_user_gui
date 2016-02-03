@@ -2,6 +2,11 @@
 @model end_user_gui.Models.Order
 
 @Html.DisplayFor(modelItem => Model.Archivist.Name)
+@{ if (Model.Archivist == null)
+    {
+        Output.Write("(none)");
+    }
+}
 
 @Ajax.ActionLink("(Change)",
     "SelectArchivist",
