@@ -1,41 +1,50 @@
 ﻿
 @model end_user_gui.Models.Order
+@{ 
+    var spanId = "selStat_" + Model.OrderUniqueID;
+}
 
 @Html.EnumDropDownListFor(
     o => o.Status.Status,
-    new { onchange = "updateStatusLink('" + ViewData["elementId"] + "')" }
+    new { onchange = "updateStatusLink(this)" }
     )
 
 @Ajax.ActionLink("Save",
     "SetStatus",
     "Orders",
-    new
+    new // Route values - href
     {
-        orderId = Model.OrderUniqueID,
-        set = true,
+        orderId = Model.OrderUniqueID
     },
     new AjaxOptions()
     {
-        UpdateTargetId = ViewData["elementId"].ToString()
+        UpdateTargetId = spanId
     },
-    new { save = true }
+    new { save = true} // HTML attributes
     )
 
 <script>
-    function updateStatusLink(elementId) {
-        var sel = $('#' + elementId + ' select');
+    function containerSpanId(elm) {
+        var span = elm;
+        while (span.tagName.toLowerCase() != 'span')
+            span = span.parentElement;
+        elementId = span.getAttribute('id');
+        return elementId;
+    }
+
+    function updateStatusLink(select) {
+
+        var elementId = containerSpanId(select)
         var a = $('#' + elementId + ' a[save]');
         if (!a.attr('orgHref')) {
             a.attr('orgHref', a.attr('href'));
         }
         a.attr(
             'href',
-            a.attr('orgHref') + '&statusId=' + sel.val()
+            a.attr('orgHref') + '&statusId=' + select.value + '&set=true'
         );
-        console.log(sel.attr('id'));
-        console.log(sel.val());
-        console.log(sel.text());
     }
+
 </script>
 
 @Ajax.ActionLink("Cancel",
@@ -45,10 +54,10 @@
     {
         orderId = Model.OrderUniqueID,
         set = false,
-        status = ""
-    },
+        statusId = ""
+    }, 
     new AjaxOptions()
     {
-        UpdateTargetId = ViewData["elementId"].ToString()
+        UpdateTargetId = spanId
     }
     )

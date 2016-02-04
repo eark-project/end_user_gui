@@ -147,22 +147,20 @@ namespace OMT.Controllers
             using (var context = new OrderContext())
             {
                 var order = context.Orders.Where(o => o.OrderUniqueID == orderId).SingleOrDefault();
-                ViewData["elementId"] = "selStat_" + order.OrderUniqueID;
-
                 return PartialView("StatusSelect", order);
             }
         }
 
-        public PartialViewResult SetStatus(string orderId, bool set, int? statusId)
+        public PartialViewResult SetStatus(string orderId, bool? set, int? statusId)
         {
             using (var context = new OrderContext())
             {
                 var order = context.Orders.Where(o => o.OrderUniqueID == orderId).Include(o => o.Archivist).SingleOrDefault();
-                if (set)
+                if (set.HasValue && set.Value)
                 {
                     order.Status = new OrderStatus()
                     {
-                        Status = (end_user_gui.Models.OrderStatusTypes)statusId,
+                        Status = statusId.HasValue ? (OrderStatusTypes)statusId : null as OrderStatusTypes?,
                         StatusDate = DateTime.Now
                     };
 
