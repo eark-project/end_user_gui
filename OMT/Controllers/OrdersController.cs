@@ -34,7 +34,7 @@ namespace OMT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Include(o => o.Archives).FirstOrDefault(o=>o.OrderUniqueID == id);
             if (order == null)
             {
                 return HttpNotFound();

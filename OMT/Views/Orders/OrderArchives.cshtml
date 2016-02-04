@@ -1,0 +1,73 @@
+﻿@model IEnumerable<end_user_gui.Models.OrderArchiveReference>
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Archive.ReferenceCode)
+        </th>
+        <th>
+            IP Type
+        </th>
+        <th>
+            IP Format
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccessRestriction)
+        </th>
+        <th>
+            Modifications
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Archive.Metadata.CreatedDate)
+        </th>
+        <th>
+            Delivery date
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            Send to Archivist
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                (N/A)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Archive.ReferenceCode)
+            </td>
+            <td>
+                (N/A)
+            </td>
+            <td>
+                (N/A)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccessRestriction)
+            </td>
+            <td>
+                (N/A)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Archive.Metadata.CreatedDate)
+            </td>
+            <td>
+                (N/A)
+            </td>
+            <td>
+                (N/A)
+            </td>
+            <td>
+                (N/A)
+            </td>
+        </tr>
+    }
+
+</table>

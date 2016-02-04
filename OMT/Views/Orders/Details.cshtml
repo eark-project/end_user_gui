@@ -1,4 +1,6 @@
-﻿@model end_user_gui.Models.Order
+﻿@using end_user_gui.Models
+
+@model Order
 
 @{
     ViewBag.Title = "Details";
@@ -44,7 +46,7 @@
 
     </dl>
 </div>
+@Html.Partial("OrderArchives", Model.Archives)
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderUniqueID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
