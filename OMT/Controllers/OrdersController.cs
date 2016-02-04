@@ -166,9 +166,6 @@ namespace OMT.Controllers
 
                     context.SaveChanges();
                 }
-
-                ViewData["elementId"] = "selStat_" + order.OrderUniqueID;
-
                 return PartialView("Status", order);
             }
         }

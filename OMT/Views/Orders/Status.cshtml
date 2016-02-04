@@ -1,6 +1,10 @@
 ﻿
 @model end_user_gui.Models.Order
 
+@{
+    var spanId = "selStat_" + Model.OrderUniqueID;
+}
+
 @Html.DisplayFor(modelItem => Model.Status.Status)
 @{ if (Model.Status == null || Model.Status.Status == null)
     {
@@ -9,12 +13,13 @@
 }
 @Html.DisplayFor(modelItem => Model.Status.StatusDate)
 
-@Ajax.ActionLink("(Change)",
+@Ajax.ActionLink(
+    "(Change)",
     "SelectStatus",
     "Orders",
     new { orderId = Model.OrderUniqueID },
     new AjaxOptions()
     {
-        UpdateTargetId = ViewData["elementId"].ToString()
+        UpdateTargetId = spanId
     }
-    )
+)
