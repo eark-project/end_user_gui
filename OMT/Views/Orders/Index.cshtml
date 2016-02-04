@@ -49,7 +49,14 @@
                 @Html.DisplayFor(modelItem => item.User.Name)
             </td>
             <td>
-                Add status here
+                @{
+                    var statElmId = "selStat_" + item.OrderUniqueID;
+                    var d = new ViewDataDictionary();
+                    d.Add("elementId", statElmId);
+                }
+                <span id="@statElmId">
+                    @{Html.RenderPartial("Status", item, d);}
+                </span>
             </td>
             <td>
                 @{

@@ -9,7 +9,14 @@ namespace end_user_gui.Models
     [ComplexType]
     public class OrderStatus
     {
-        public String Status { get; set; }
+        public OrderStatusTypes? Status { get; set; }
         public DateTime? StatusDate { get; set; }
+    }
+
+    public enum OrderStatusTypes
+    {
+        Created,
+        Processing,
+        Ready
     }
 }

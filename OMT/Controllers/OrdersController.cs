@@ -34,7 +34,7 @@ namespace OMT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Include(o => o.Archives).FirstOrDefault(o=>o.OrderUniqueID == id);
+            Order order = db.Orders.Include(o => o.Archives).FirstOrDefault(o => o.OrderUniqueID == id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -139,6 +139,39 @@ namespace OMT.Controllers
                 ViewData["elementId"] = "selArch_" + order.OrderUniqueID;
 
                 return PartialView("AssignedTo", order);
+            }
+        }
+
+        public PartialViewResult SelectStatus(string orderId)
+        {
+            using (var context = new OrderContext())
+            {
+                var order = context.Orders.Where(o => o.OrderUniqueID == orderId).SingleOrDefault();
+                ViewData["elementId"] = "selStat_" + order.OrderUniqueID;
+
+                return PartialView("StatusSelect", order);
+            }
+        }
+
+        public PartialViewResult SetStatus(string orderId, bool set, int? statusId)
+        {
+            using (var context = new OrderContext())
+            {
+                var order = context.Orders.Where(o => o.OrderUniqueID == orderId).Include(o => o.Archivist).SingleOrDefault();
+                if (set)
+                {
+                    order.Status = new OrderStatus()
+                    {
+                        Status = (end_user_gui.Models.OrderStatusTypes)statusId,
+                        StatusDate = DateTime.Now
+                    };
+
+                    context.SaveChanges();
+                }
+
+                ViewData["elementId"] = "selStat_" + order.OrderUniqueID;
+
+                return PartialView("Status", order);
             }
         }
 

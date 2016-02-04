@@ -31,6 +31,8 @@ namespace end_user_gui.Models
         [Display(Name = "End user")]
         public virtual EndUser User { get; set; }
 
+        public OrderStatus Status { get; set; }
+
         public DateTime? PlannedDate { get; set; }
 
         [Display(Name = "Date of delivery")]
@@ -59,7 +61,7 @@ namespace end_user_gui.Models
                         Dissemination = dissemination,
                         Status = new OrderStatus()
                         {
-                            Status = null,
+                            Status = OrderStatusTypes.Created,
                             StatusDate = null
                         }
                     }

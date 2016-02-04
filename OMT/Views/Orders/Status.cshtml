@@ -1,0 +1,20 @@
+﻿
+@model end_user_gui.Models.Order
+
+@Html.DisplayFor(modelItem => Model.Status.Status)
+@{ if (Model.Status == null || Model.Status.Status == null)
+    {
+        Output.Write("(none)");
+    }
+}
+@Html.DisplayFor(modelItem => Model.Status.StatusDate)
+
+@Ajax.ActionLink("(Change)",
+    "SelectStatus",
+    "Orders",
+    new { orderId = Model.OrderUniqueID },
+    new AjaxOptions()
+    {
+        UpdateTargetId = ViewData["elementId"].ToString()
+    }
+    )

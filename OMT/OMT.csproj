@@ -249,6 +249,8 @@
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\AssignedTo.cshtml" />
     <Content Include="Views\Orders\OrderArchives.cshtml" />
+    <Content Include="Views\Orders\Status.cshtml" />
+    <Content Include="Views\Orders\StatusSelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
