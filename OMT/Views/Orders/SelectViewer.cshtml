@@ -1,0 +1,42 @@
+﻿@{ 
+/*
+Layout = "SelectViewer";
+ViewBag.KeyColumn = (name of the field to be used as key for record)
+ViewBag.Id = (identifier for this particular record);
+ViewBag.SpanPrefix = (identifier for field);
+ViewBag.Controller = (name of the responsible controller);
+ViewBag.IsNull = (is the value null)
+*/
+}
+@functions
+{
+    public virtual string getSpanId(){
+        return ViewBag.SpanPrefix + ViewBag.Id;
+    }
+
+    public RouteValueDictionary routeValues()
+    {
+        var ret = new RouteValueDictionary();
+        ret.Add(ViewBag.KeyColumn, ViewBag.Id);
+        return ret;
+    }
+}
+@{
+    if (ViewBag.IsNull)
+    {
+        Output.Write("(none)");
+    }
+}
+@RenderSection("Display")
+
+@Ajax.ActionLink(
+    "(Change)",
+    "SelectStatus",
+    (string)ViewBag.Controller,
+    routeValues(),
+    new AjaxOptions()
+    {
+        UpdateTargetId = getSpanId()
+    }
+)
+
