@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
 /*
     Layout = "SelectSelector.cshtml";
     ViewBag.KeyColumn = (name of key column);
@@ -62,27 +62,3 @@
         UpdateTargetId = getSpanId()
     }
     )
-
-
-<script>
-    function containerSpanId(elm) {
-        var span = elm;
-        while (span.tagName.toLowerCase() != 'span')
-            span = span.parentElement;
-        elementId = span.getAttribute('id');
-        return elementId;
-    }
-
-    function updateStatusLink(select) {
-
-        var elementId = containerSpanId(select)
-        var a = $('#' + elementId + ' a[save]');
-        if (!a.attr('orgHref')) {
-            a.attr('orgHref', a.attr('href'));
-        }
-        a.attr(
-            'href',
-            a.attr('orgHref') + '&@{Output.Write(ViewBag.Column);}=' + select.value + '&set=true'
-        );
-    }
-</script>

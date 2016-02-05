@@ -13,6 +13,6 @@
 @section Select{
     @Html.EnumDropDownListFor(
     o => o.Status.Status,
-    new { onchange = "updateStatusLink(this)" }
+    new { onchange = "updateSelectSaveLink(this, 'statusId')" }
     )
 }
