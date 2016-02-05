@@ -252,6 +252,7 @@
     <Content Include="Views\Orders\Status.cshtml" />
     <Content Include="Views\Orders\StatusSelect.cshtml" />
     <Content Include="Views\Orders\SelectViewer.cshtml" />
+    <Content Include="Views\Orders\SelectSelector.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,63 +1,18 @@
-﻿
-@model end_user_gui.Models.Order
+﻿@model end_user_gui.Models.Order
+
 @{ 
-    var spanId = "selStat_" + Model.OrderUniqueID;
+    Layout = "SelectSelector.cshtml";
+    ViewBag.KeyColumn = "orderId";
+    ViewBag.Column = "statusId";
+    ViewBag.Id = Model.OrderUniqueID;
+    ViewBag.SpanPrefix = "selStat_";
+    ViewBag.Controller = "Orders";
+    ViewBag.Action = "SetStatus";
 }
 
-@Html.EnumDropDownListFor(
+@section Select{
+    @Html.EnumDropDownListFor(
     o => o.Status.Status,
     new { onchange = "updateStatusLink(this)" }
     )
-
-@Ajax.ActionLink("Save",
-    "SetStatus",
-    "Orders",
-    new // Route values - href
-    {
-        orderId = Model.OrderUniqueID
-    },
-    new AjaxOptions()
-    {
-        UpdateTargetId = spanId
-    },
-    new { save = true} // HTML attributes
-    )
-
-<script>
-    function containerSpanId(elm) {
-        var span = elm;
-        while (span.tagName.toLowerCase() != 'span')
-            span = span.parentElement;
-        elementId = span.getAttribute('id');
-        return elementId;
-    }
-
-    function updateStatusLink(select) {
-
-        var elementId = containerSpanId(select)
-        var a = $('#' + elementId + ' a[save]');
-        if (!a.attr('orgHref')) {
-            a.attr('orgHref', a.attr('href'));
-        }
-        a.attr(
-            'href',
-            a.attr('orgHref') + '&statusId=' + select.value + '&set=true'
-        );
-    }
-
-</script>
-
-@Ajax.ActionLink("Cancel",
-    "SetStatus",
-    "Orders",
-    new
-    {
-        orderId = Model.OrderUniqueID,
-        set = false,
-        statusId = ""
-    }, 
-    new AjaxOptions()
-    {
-        UpdateTargetId = spanId
-    }
-    )
+}
