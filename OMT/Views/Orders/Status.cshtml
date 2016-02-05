@@ -1,11 +1,12 @@
-﻿
-@model end_user_gui.Models.Order
+﻿@model end_user_gui.Models.Order
+
 @{
     Layout = "SelectViewer.cshtml";
     ViewBag.KeyColumn = "orderId";
     ViewBag.Id = Model.OrderUniqueID;
     ViewBag.SpanPrefix = "selStat_";
     ViewBag.Controller = "Orders";
+    ViewBag.Action = "SelectStatus";
     ViewBag.IsNull = Model.Status == null || Model.Status.Status == null;
 }
 

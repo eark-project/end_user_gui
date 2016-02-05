@@ -1,4 +1,15 @@
-﻿@functions
+﻿@{ 
+/*
+    Layout = "SelectSelector.cshtml";
+    ViewBag.KeyColumn = (name of key column);
+    ViewBag.Column = (name of column to be set);
+    ViewBag.Id = (key value of the record);
+    ViewBag.SpanPrefix = (prefix for identifying the element);
+    ViewBag.Controller = (controller name);
+    ViewBag.Action = (action name);
+*/
+}
+@functions
 {
     public virtual string getSpanId()
     {
@@ -18,6 +29,13 @@
         ret.Add(ViewBag.KeyColumn, ViewBag.Id);
         ret.Add("set", false);
         ret.Add(ViewBag.Column, "");
+        return ret;
+    }
+
+    Dictionary<string, object> saveHtmlAttributes()
+    {
+        var ret = new Dictionary<string, object>();
+        ret["save"] = true;
         return ret;
     }
 }

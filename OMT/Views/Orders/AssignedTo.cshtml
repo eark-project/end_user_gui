@@ -1,19 +1,15 @@
-﻿
-@model end_user_gui.Models.Order
+﻿@model end_user_gui.Models.Order
 
-@Html.DisplayFor(modelItem => Model.Archivist.Name)
-@{ if (Model.Archivist == null)
-    {
-        Output.Write("(none)");
-    }
+@{
+    Layout = "SelectViewer.cshtml";
+    ViewBag.KeyColumn = "orderId";
+    ViewBag.Id = Model.OrderUniqueID;
+    ViewBag.SpanPrefix = "selArch_";
+    ViewBag.Controller = "Orders";
+    ViewBag.Action = "SelectArchivist";
+    ViewBag.IsNull = Model.Archivist == null ;
 }
 
-@Ajax.ActionLink("(Change)",
-    "SelectArchivist",
-    "Orders",
-    new { orderId = Model.OrderUniqueID },
-    new AjaxOptions()
-    {
-        UpdateTargetId = ViewData["elementId"].ToString()
-    }
-    )
+@section Display{
+    @Html.DisplayFor(modelItem => Model.Archivist.Name)
+}

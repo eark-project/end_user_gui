@@ -31,7 +31,7 @@ ViewBag.IsNull = (is the value null)
 
 @Ajax.ActionLink(
     "(Change)",
-    "SelectStatus",
+    (string)ViewBag.Action,
     (string)ViewBag.Controller,
     routeValues(),
     new AjaxOptions()
