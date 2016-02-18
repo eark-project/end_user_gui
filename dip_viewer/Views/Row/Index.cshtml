@@ -1,0 +1,40 @@
+﻿@model dip_viewer.Controllers.RowController.IndexParameters
+
+@Html.PagedListPager(
+    Model.RowData as PagedList.IPagedList<string[]>,
+    page => Url.Action("Index", new { package = Model.Package, schema = Model.Table.getSchema(), table = Model.Table.getName(), pageNumber = page }),
+    new PagedList.Mvc.PagedListRenderOptions() {
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+        DisplayLinkToNextPage = PagedListDisplayMode.Always,
+        Display = PagedListDisplayMode.Always, DelimiterBetweenPageNumbers = " ", DisplayPageCountAndCurrentLocation = true,
+    }
+    )
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (ColumnStructure column in Model.Table.getColumns().toArray())
+            {
+                    <th>
+                        @column.getName()
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rowData in Model.RowData)
+            {
+                <tr>
+                    @foreach (var colData in rowData)
+                    {
+                        <td>
+                            @colData
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
