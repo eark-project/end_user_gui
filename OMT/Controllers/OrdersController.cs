@@ -24,7 +24,7 @@ namespace OMT.Controllers
                     .ToList();
                 ViewBag.Archivists = ss;
             }
-            return View(db.Orders.Include(o => o.Archivist).ToList());
+            return View(db.Orders.OrderBy(o => o.IssueDate).Include(o => o.Archivist).ToList());
         }
 
         // GET: Orders/Details/5

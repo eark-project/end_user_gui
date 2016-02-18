@@ -30,6 +30,12 @@ namespace end_user_gui.Modules
                     if (order.User == null)
                         order.User = endUser;
 
+                    order.Status = new OrderStatus()
+                    {
+                        Status = OrderStatusTypes.Created,
+                        StatusDate = DateTime.Now
+                    };
+
                     try
                     {
                         context.Orders.Add(order);
