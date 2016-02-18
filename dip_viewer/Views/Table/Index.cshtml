@@ -1,0 +1,10 @@
+﻿@model IEnumerable<TableStructure>
+
+<ul class="nav nav-tabs nav-stacked">
+    @foreach (TableStructure table in Model)
+    {
+        <li>
+            @Html.ActionLink(table.getName(), "Index", "Row", new { package = ViewBag.Package, schema = table.getSchema(), table = table.getName() }, new { })            
+        </li>
+    }
+</ul>
