@@ -2,15 +2,35 @@
 
 @Html.PagedListPager(
     Model.RowData as PagedList.IPagedList<string[]>,
-    page => Url.Action("Index", new { package = Model.Package, schema = Model.Table.getSchema(), table = Model.Table.getName(), pageNumber = page }),
-    new PagedList.Mvc.PagedListRenderOptions() {
+    page => page.ToString(),
+    new PagedList.Mvc.PagedListRenderOptions()
+    {
         DisplayLinkToFirstPage = PagedListDisplayMode.Always,
         DisplayLinkToLastPage = PagedListDisplayMode.Always,
         DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
         DisplayLinkToNextPage = PagedListDisplayMode.Always,
-        Display = PagedListDisplayMode.Always, DelimiterBetweenPageNumbers = " ", DisplayPageCountAndCurrentLocation = true,
+        Display = PagedListDisplayMode.Always,
+        DelimiterBetweenPageNumbers = " ",
+        DisplayPageCountAndCurrentLocation = true,
+        FunctionToTransformEachPageLink = (liTag, aTag) =>
+        {
+
+            if (aTag.Attributes.ContainsKey("href"))
+            {
+                int pNum;
+                if (int.TryParse(aTag.Attributes["href"], out pNum))
+                {
+                    var url = Url.Action("Index", new { package = Model.Package, schema = Model.Table.getSchema(), table = Model.Table.getName(), pageNumber = pNum });
+                    aTag.Attributes["onclick"] = string.Format("loadTab(this,'{0}',{1});", Model.Table.getName(), pNum);
+                    aTag.Attributes["href"] = "#";
+                }
+            }
+            liTag.InnerHtml = aTag.ToString();
+            return liTag;
+        }
     }
     )
+
 <div class="container">
     <table class="table">
         <thead>

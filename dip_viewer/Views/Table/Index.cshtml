@@ -13,7 +13,7 @@
         @foreach (TableStructure table in Model)
         {
             <li>
-                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this);">@table.getName()</a>
+                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this, '@table.getName()');">@table.getName()</a>
             </li>
         }
     </ul>
@@ -24,8 +24,8 @@
         </div>
         @foreach (TableStructure table in Model)
         {
-            <div id="@divId(table)" class="tab-pane" data-role="page"
-                 url="@Url.Action("Index", "Row", new { package = ViewBag.Package, schema = table.getSchema(), table = table.getName() })">
+            <div id="d_@table.getName()" class="tab-pane" data-role="page"
+                 data-orgurl="@Url.Action("Index", "Row", new { package = ViewBag.Package, schema = table.getSchema(), table = table.getName(), pageNumber=1 })">
                 @table.getName() Here
             </div>
         }
@@ -33,11 +33,22 @@
 </div>
 
 <script>
-    function loadTab(anchor) {
-        var div = $(anchor.getAttribute('href'));
-        $.get(div.attr('url'), function (data) {
+    function loadTab(anchor, tableName, pageNum) {
+        var div = $('#d_' + tableName);
+        console.log(div);
+        var divElm = div[0];
+
+        if (pageNum)
+            divElm.dataset.page = pageNum;
+        if (!divElm.dataset.page)
+            divElm.dataset.page = 1;
+        var page = divElm.dataset.page;
+
+        var url = divElm.dataset.orgurl;
+        url = url.substr(0, url.length - 1) + page;
+
+        $.get(url, function (data) {
             div.html(data);
         });
-        div.load()
     }
 </script>
