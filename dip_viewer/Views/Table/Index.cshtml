@@ -1,10 +1,43 @@
 ﻿@model IEnumerable<TableStructure>
 
-<ul class="nav nav-tabs nav-stacked">
-    @foreach (TableStructure table in Model)
+@functions {
+    string divId(TableStructure t)
     {
-        <li>
-            @Html.ActionLink(table.getName(), "Index", "Row", new { package = ViewBag.Package, schema = table.getSchema(), table = table.getName() }, new { })            
-        </li>
+        return "d_" + t.getName();
     }
-</ul>
+}
+
+<div class="container">
+    <ul class="nav nav-tabs-justified col-sm-3">
+        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        @foreach (TableStructure table in Model)
+        {
+            <li>
+                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this);">@table.getName()</a>
+            </li>
+        }
+    </ul>
+
+    <div class="tab-content col-sm-9 tab-pane">
+        <div id="tableData" class="tab-pane active" data-role="page">
+            <h3>Database explorer</h3>
+        </div>
+        @foreach (TableStructure table in Model)
+        {
+            <div id="@divId(table)" class="tab-pane" data-role="page"
+                 url="@Url.Action("Index", "Row", new { package = ViewBag.Package, schema = table.getSchema(), table = table.getName() })">
+                @table.getName() Here
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function loadTab(anchor) {
+        var div = $(anchor.getAttribute('href'));
+        $.get(div.attr('url'), function (data) {
+            div.html(data);
+        });
+        div.load()
+    }
+</script>
