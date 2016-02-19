@@ -8,7 +8,7 @@
 }
 
 <div class="container">
-    <ul class="nav nav-tabs-justified col-sm-3">
+    <ul class="nav nav-pills nav-stacked col-sm-3">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         @foreach (TableStructure table in Model)
         {
@@ -18,7 +18,7 @@
         }
     </ul>
 
-    <div class="tab-content col-sm-9 tab-pane">
+    <div class="tab-content col-sm-9">
         <div id="tableData" class="tab-pane active" data-role="page">
             <h3>Database explorer</h3>
         </div>
