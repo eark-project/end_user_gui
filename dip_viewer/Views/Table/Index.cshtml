@@ -9,22 +9,25 @@
 
 <div class="container">
     <ul class="nav nav-pills nav-stacked col-sm-3">
-        <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+        <li class="active"><a data-toggle="tab" href="#tableHome">Home</a></li>
         @foreach (TableStructure table in Model)
         {
             <li>
-                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this, '@table.getName()');">@table.getName()</a>
+                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this, '@table.getName()');">
+                    @table.getName()
+                    <span class="badge" style="text-align:right">@table.getRows()</span>
+                </a>
             </li>
         }
     </ul>
 
     <div class="tab-content panel" style="overflow-x:auto; ">
-        <div id="tableData" class="tab-pane active" data-role="page">
+        <div id="tableHome" class="tab-pane active" data-role="page">
             <h3>Database explorer</h3>
         </div>
         @foreach (TableStructure table in Model)
         {
-            <div id="d_@table.getName()" class="tab-pane" data-role="page"
+            <div id="d_@table.getName()" class="tab-pane well-lg" data-role="page"
                  data-orgurl="@Url.Action("Index", "Row", new { package = ViewBag.Package, schema = table.getSchema(), table = table.getName(), pageNumber=1 })">
                 @table.getName() Here
             </div>
