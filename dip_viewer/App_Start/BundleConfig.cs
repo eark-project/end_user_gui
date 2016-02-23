@@ -31,8 +31,9 @@ namespace dip_viewer
                       "~/Scripts/ladda.min.js",
                       "~/Scripts/spin.min.js"
                       ));
-            bundles.Add(new StyleBundle("~/bundles/ladda-css").Include(
-                      "~/Content/ladda.min.css"
+
+            bundles.Add(new StyleBundle("~/Content/ladda-css").Include(
+                      "~/Content/ladda-themeless.min.css"
                       ));
         }
     }

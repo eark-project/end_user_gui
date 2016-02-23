@@ -211,6 +211,7 @@
     <Content Include="Content\ladda.css" />
     <Content Include="Content\ladda.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="dist\HtmlPage1.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
