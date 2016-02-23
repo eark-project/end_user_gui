@@ -7,8 +7,8 @@
     }
 }
 
-<div class="container">
-    <ul class="nav nav-pills nav-stacked col-sm-3">
+<div class="container-fluid">
+    <ul class="nav nav-pills nav-stacked col-sm-2">
         <li class="active"><a data-toggle="tab" href="#tableHome">Home</a></li>
         @foreach (TableStructure table in Model)
         {
@@ -21,7 +21,7 @@
         }
     </ul>
 
-    <div class="tab-content panel" style="overflow-x:auto; ">
+    <div class="tab-content panel col-sm-10" style="overflow-x:inherit; ">
         <div id="tableHome" class="tab-pane active" data-role="page">
             <h3>Database explorer</h3>
         </div>
