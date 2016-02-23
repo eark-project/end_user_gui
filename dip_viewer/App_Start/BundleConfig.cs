@@ -26,6 +26,14 @@ namespace dip_viewer
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ladda-js").Include(
+                      "~/Scripts/ladda.min.js",
+                      "~/Scripts/spin.min.js"
+                      ));
+            bundles.Add(new StyleBundle("~/bundles/ladda-css").Include(
+                      "~/Content/ladda.min.css"
+                      ));
         }
     }
 }

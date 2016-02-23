@@ -13,7 +13,7 @@
         @foreach (TableStructure table in Model)
         {
             <li>
-                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this, '@table.getName()');">
+                <a href="#@divId(table)" data-toggle="tab" onclick="loadTab(this, '@table.getName()');" class="btn btn-primary btn-lg ladda-button" data-style="expand-right">
                     @table.getName()
                     <span class="badge" style="text-align:right">@table.getRows()</span>
                 </a>
