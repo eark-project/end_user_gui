@@ -42,7 +42,7 @@
         <thead>
             <tr>
                 @foreach (ColumnStructure column in Model.Table.getColumns().toArray())
-            {
+                {
                     <th>
                         @column.getName()
                     </th>
@@ -53,10 +53,47 @@
             @foreach (var rowData in Model.RowData)
             {
                 <tr>
+                    @{
+                        var colIndex = -1;
+                    }
                     @foreach (var colData in rowData)
                     {
                         <td>
-                            @colData
+                            @{
+                                colIndex++;
+                                if (colData == null || colData.Length < 100)
+                                {
+                                    @colData;
+                                }
+                                else
+                                {
+                                    var cellIndex = Guid.NewGuid().ToString().Replace("-","");
+                                    
+                                    @colData.Substring(0, 100);
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#cell_@cellIndex">...</button>
+                                    <!-- Modal -->
+                                    <div class="modal" id="cell_@cellIndex" role="dialog">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">
+                                                        @{
+                                                            Output.Write(string.Format("{0}.{1}", Model.Table.getName(), (Model.Table.getColumns().get(colIndex) as ColumnStructure).getName()));
+                                                        }
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body" style="text-wrap:normal; word-wrap:break-word">
+                                                    @Html.Encode(@colData)
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
                         </td>
                     }
                 </tr>
