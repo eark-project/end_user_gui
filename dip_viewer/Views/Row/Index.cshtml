@@ -12,6 +12,7 @@
         Display = PagedListDisplayMode.Always,
         DelimiterBetweenPageNumbers = " ",
         DisplayPageCountAndCurrentLocation = true,
+        LiElementClasses = new string[] { "btn-lg" },
         FunctionToTransformEachPageLink = (liTag, aTag) =>
         {
 
@@ -23,6 +24,8 @@
                     var url = Url.Action("Index", new { package = Model.Package, schema = Model.Table.getSchema(), table = Model.Table.getName(), pageNumber = pNum });
                     aTag.Attributes["onclick"] = string.Format("loadTab(this,'{0}',{1});", Model.Table.getName(), pNum);
                     aTag.Attributes["href"] = "#";
+
+                    // Ladda stuff
                     aTag.AddCssClass("ladda-button");
                     aTag.Attributes["data-style"] = "slide-up";
                     aTag.Attributes["data-spinner-color"] = "red";
