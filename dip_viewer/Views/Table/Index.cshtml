@@ -37,9 +37,13 @@
 
 <script>
     function loadTab(anchor, tableName, pageNum) {
+
         var div = $('#d_' + tableName);
         console.log(div);
         var divElm = div[0];
+
+        var ladElm = Ladda.create(anchor);
+        ladElm.start();
 
         if (pageNum)
             divElm.dataset.page = pageNum;
@@ -52,15 +56,8 @@
 
         $.get(url, function (data) {
             div.html(data);
+            ladElm.stop();
+            ladElm.remove();
         });
     }
-
-    
 </script>
-
-@section Scripts{
-<script>
-        // sss
-        Ladda.bind('a[isTable="true"]');
-</script>
-    }
