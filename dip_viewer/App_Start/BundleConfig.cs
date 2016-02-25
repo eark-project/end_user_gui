@@ -28,8 +28,8 @@ namespace dip_viewer
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/ladda-js").Include(
-                      "~/Scripts/ladda.min.js",
-                      "~/Scripts/spin.min.js"
+                      "~/Scripts/spin.min.js",
+                      "~/Scripts/ladda.min.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/ladda-css").Include(
