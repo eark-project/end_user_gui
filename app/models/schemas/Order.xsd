@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <!-- We should add an introduction to describe which parts of this XSD can be customized. Customization is required in some lists e.g. OrderStatusType and maybe also elseware. -->
+
+  
   <xs:simpleType name="UniqueIdType">
     <xs:restriction base="xs:string" />
   </xs:simpleType>
