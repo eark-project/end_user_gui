@@ -31,6 +31,7 @@
         <xs:restriction base="xs:string">
             <!-- TODO: Review this list -->
             <!--Kuldar: Next to Created you can have Sent/Received. Next to Ready you can have Declined, Approved, Delivered to User. Any examples from other Order Processing applications in e-commerce or so?  -->
+	    <!-- Thor: We can populate the list doing the pilots. It's basically workflow steps. The values will also be used in the api for OMT -->
             <xs:enumeration value="Created"/>
             <xs:enumeration value="Processing"/>
             <xs:enumeration value="Ready"/>
@@ -55,7 +56,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <!-- Kuldar: Archival objects/items are hierarchical -- archive, series, file, record, computer file. These hierarchies are called "Level of Description"  -->
+    <!-- Kuldar: Archival objects/items are hierarchical - archive, series, file, record, computer file. These hierarchies are called "Level of Description"  -->
     <xs:simpleType name="LevelOfDescriptionType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Package" />
