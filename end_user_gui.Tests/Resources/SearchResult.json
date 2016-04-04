@@ -1,0 +1,225 @@
+{
+  "start": 1,
+  "count": 1,
+  "hits": 1,
+  "session": "0",
+  "data": {
+    "level": "fonds",
+    "did": {
+      "unitid": {
+        "countrycode": "AT",
+        "identifier": "A/SCI/1/1/1",
+        "type": "persistent",
+        "label": "current",
+        "#text": "A/SCI/1/1/1"
+      },
+      "unittitle": "Einstein's estate",
+      "unitdate": {
+        "normal": "1879/1955",
+        "#text": "1879-1955"
+      },
+      "physdesc": { "extent": "More than 300 scientific papers published by Einstein" },
+      "repository": "eark",
+      "origination": "Albert Einstein"
+    },
+    "bioghist": { "p": "Albert Einstein was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics. Einstein's work is also known for its influence on the philosophy of science. Einstein is best known in popular culture for his mass–energy equivalence formula E = mc2 (which has been dubbed \"the world's most famous equation\"). He received the 1921 Nobel Prize in Physics for his \"services to theoretical physics\", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory." },
+    "scopecontent": { "p": "Collection of articles" },
+    "accessrestrict": { "p": "Open for consultation." },
+    "otherfindaid": { "p": "An item level list is available." },
+    "dsc": {
+      "c01": [
+        {
+          "level": "collection",
+          "did": {
+            "unitid": {
+              "countrycode": "AT",
+              "identifier": "A/SCI/1/1/1/1",
+              "type": "persistent",
+              "label": "current",
+              "#text": "A/SCI/1/1/1/1"
+            },
+            "unittitle": "Letters",
+            "unitdate": {
+              "normal": "1910/1955",
+              "#text": "1910-1955"
+            },
+            "physdesc": { "extent": "359 Letters" },
+            "origination": "Albert Einstein"
+          },
+          "bioghist": { "p": "During his lifetime Albert Einstein exchanged letters with a lot of people." },
+          "c02": [
+            {
+              "level": "series",
+              "did": {
+                "unitid": {
+                  "countrycode": "AT",
+                  "identifier": "A/SCI/1/1/1/1/1",
+                  "type": "persistent",
+                  "label": "current",
+                  "#text": "A/SCI/1/1/1/1/1"
+                },
+                "unittitle": "Early correspondence between Einstein and Marić",
+                "unitdate": {
+                  "normal": "1930/1949",
+                  "#text": "1930-1949"
+                },
+                "physdesc": { "extent": "20 Letters" },
+                "origination": "Albert Einstein"
+              },
+              "bioghist": { "p": "The discovery and publication in 1987 of an early correspondence between Einstein and Marić revealed that they had had a daughter, called \"Lieserl\" in their letters, born in early 1902 in Novi Sad where Marić was staying with her parents. Marić returned to Switzerland without the child, whose real name and fate are unknown. Einstein probably never saw his daughter. The contents of his letter to Marić in September 1903 suggest that the girl was either adopted or died of scarlet fever in infancy." },
+              "c03": {
+                "level": "file",
+                "did": {
+                  "unitid": {
+                    "countrycode": "AT",
+                    "identifier": "A/SCI/1/1/1/1/1/1",
+                    "type": "persistent",
+                    "label": "current",
+                    "#text": "A/SCI/1/1/1/1/1/1"
+                  },
+                  "unittitle": "Unpublished letter from Albert Einstein to Mileva Maric ",
+                  "unitdate": {
+                    "normal": "1923/1923",
+                    "#text": "1923-1923"
+                  },
+                  "physdesc": { "extent": "1 Image file" },
+                  "dao": {
+                    "id": "urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/imgs/data/Letter-Einstein-Maric.png",
+                    "xlink:href": "http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fimgs%2Fdata%2FLetter-Einstein-Maric%5C.png/field/n$content/data?ns.n=org.eu.eark",
+                    "daodesc": { "p": "Image of a letter between Einstein and Maric" }
+                  }
+                }
+              }
+            },
+            {
+              "level": "series",
+              "did": {
+                "unitid": {
+                  "countrycode": "AT",
+                  "identifier": "A/SCI/1/1/1/1/2",
+                  "type": "persistent",
+                  "label": "current",
+                  "#text": "A/SCI/1/1/1/1/2"
+                },
+                "unittitle": "Political letters",
+                "unitdate": {
+                  "normal": "1920/1940",
+                  "#text": "1920-1940"
+                },
+                "origination": "Albert Einstein"
+              },
+              "bioghist": { "p": "Albert Einstein was widely known during his lifetime for his work with the theory of relativity and physics in general. His political opinions were of public interest through the middle of the 20th century due to his fame and involvement in political, humanitarian and academic projects around the world. He was often called upon to give judgments and opinions on matters often unrelated to theoretical physics or mathematics. Einstein's visible position in society allowed him to speak and write frankly, even provocatively, at a time when many people were silenced due to the rise of the Nazi movement." },
+              "c03": {
+                "level": "file",
+                "did": {
+                  "unitid": {
+                    "countrycode": "AT",
+                    "identifier": "A/SCI/1/1/1/1/2/1",
+                    "type": "persistent",
+                    "label": "current",
+                    "#text": "A/SCI/1/1/1/1/2/1"
+                  },
+                  "unittitle": "Letter to Roosevelt",
+                  "unitdate": {
+                    "normal": "1939/1939",
+                    "#text": "1939-1939"
+                  },
+                  "physdesc": { "extent": "1 Image" },
+                  "origination": "Einstein",
+                  "dao": {
+                    "id": "urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/imgs/data/Einstein-Roosevelt-letter.png",
+                    "xlink:href": "http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fimgs%2Fdata%2FEinstein-Roosevelt-letter%5C.png/field/n$content/data?ns.n=org.eu.eark",
+                    "daodesc": { "p": "Einstein-Roosevelt letter" }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "level": "collection",
+          "did": {
+            "unitid": {
+              "countrycode": "AT",
+              "identifier": "A/SCI/1/1/1/2",
+              "type": "persistent",
+              "label": "current",
+              "#text": "A/SCI/1/1/1/2"
+            },
+            "unittitle": "Articles",
+            "unitdate": {
+              "normal": "1950",
+              "#text": "1920"
+            },
+            "physdesc": { "extent": "300 articles" },
+            "origination": "Einstein"
+          },
+          "bioghist": { "p": "Throughout his life, Einstein published hundreds of books and articles. He published more than 300 scientific papers and 150 non-scientific ones. On 5 December 2014, universities and archives announced the release of Einstein's papers, comprising more than 30,000 unique documents. Einstein's intellectual achievements and originality have made the word \"Einstein\" synonymous with \"genius\". In addition to the work he did by himself he also collaborated with other scientists on additional projects including the Bose–Einstein statistics, the Einstein refrigerator and others." },
+          "c02": {
+            "level": "series",
+            "did": {
+              "unitid": {
+                "countrycode": "AT",
+                "identifier": "A/SCI/1/1/1/2/1",
+                "type": "persistent",
+                "label": "current",
+                "#text": "A/SCI/1/1/1/2/1"
+              },
+              "unittitle": "Theory of Relativity",
+              "unitdate": {
+                "normal": "1915/1915",
+                "#text": "1915-1915"
+              }
+            },
+            "c03": [
+              {
+                "level": "file",
+                "did": {
+                  "unitid": {
+                    "countrycode": "AT",
+                    "identifier": "A/SCI/1/1/1/2/1/1",
+                    "type": "persistent",
+                    "label": "current",
+                    "#text": "A/SCI/1/1/1/2/1/1"
+                  },
+                  "unittitle": "General relativity",
+                  "unitdate": {
+                    "normal": "1915/1915",
+                    "#text": "1915-1915"
+                  },
+                  "dao": {
+                    "id": "urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/docs/data/General relativity.pdf",
+                    "xlink:href": "http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fdocs%2Fdata%2FGeneral%20relativity%5C.pdf/field/n$content/data?ns.n=org.eu.eark",
+                    "daodesc": { "p": "General relativity" }
+                  }
+                }
+              },
+              {
+                "level": "file",
+                "did": {
+                  "unitid": {
+                    "countrycode": "AT",
+                    "identifier": "A/SCI/1/1/1/2/1/2",
+                    "type": "persistent",
+                    "label": "current",
+                    "#text": "A/SCI/1/1/1/2/1/2"
+                  },
+                  "unittitle": "Special relativity",
+                  "unitdate": {
+                    "normal": "1905/1905",
+                    "#text": "1905-1905"
+                  },
+                  "dao": {
+                    "id": "urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/docs/data/Special relativity.pdf",
+                    "xlink:href": "http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fdocs%2Fdata%2FSpecial%20relativity%5C.pdf/field/n$content/data?ns.n=org.eu.eark",
+                    "daodesc": { "p": "Special relativity" }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
