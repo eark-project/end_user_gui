@@ -175,6 +175,7 @@
     <Compile Include="Models\OrderStatus.cs" />
     <Compile Include="Models\StandardReturn.cs" />
     <Compile Include="Modules\ArchiveRepository.cs" />
+    <Compile Include="Modules\EADSearchModule.cs" />
     <Compile Include="Modules\Environment.cs" />
     <Compile Include="Modules\FlatLilySearchModule.cs" />
     <Compile Include="Modules\IArchiveRepository.cs" />
@@ -183,6 +184,11 @@
     <Compile Include="Modules\ISearchModule.cs" />
     <Compile Include="Modules\OrderModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\PlayEnvironment.cs" />
     <Compile Include="UI\PlaySession.cs" />
   </ItemGroup>
@@ -196,6 +202,10 @@
     <Content Include="public\javascripts\main.js" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="public\javascripts\searchresultview.js" />
+    <Content Include="Resources\EADSearch.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\SampleEAD.xml" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Web.config" />
@@ -245,6 +255,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602041350338_orderStatus.resx">
       <DependentUpon>201602041350338_orderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

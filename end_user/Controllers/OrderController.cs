@@ -11,7 +11,7 @@ namespace end_user_gui.Controllers
 {
     public class OrderController : Controller
     {
-        public ActionResult View()
+        public new ActionResult View()
         {
             return View("cartview_body", end_user_gui.Modules.Environment.Current().Session().CurrentOrder);
         }
