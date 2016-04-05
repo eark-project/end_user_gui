@@ -12,5 +12,8 @@ namespace end_user_gui.Models
         public int StartIndex = 0;
         public int MaxResults = 10;
         //public String UUID;
+        public bool Metadata = false;
+        public bool SearchInTitle = true;
+        public bool SearchInDescription = true;
     }
 }

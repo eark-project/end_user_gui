@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 namespace end_user_gui.Modules
 {
-    public class EADSearchModule : ISearchModule
+    public class EADSearchModule : IMetadataearchModule
     {
         public const string PostUrl = "http://earkdev.ait.ac.at/exist/rest/db/apps/eark/";
 

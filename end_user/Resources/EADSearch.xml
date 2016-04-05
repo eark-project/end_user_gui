@@ -16,12 +16,16 @@
     
     let $archDescNode := $doc//ead:archdesc
     let $title := $doc//ead:eadheader//ead:titleproper
+    let $id := substring( string(($archDescNode//ead:dao/@id)[1]), 10,36)
+    
     where (
+        ($id != '') 
+        and
         (string-length($descriptionQuery) = 0 or contains($archDescNode//text(), $descriptionQuery) )
         and 
         (string-length($titleQuery)       = 0 or contains ($title//text(), $titleQuery))
     )
-    return <package id="{substring( string(($archDescNode//ead:dao/@id)[1]), 10,36)}" title="{$title}" description="{$archDescNode//text()}" />
+    return <package id="{$id}" title="{$title}" description="{$archDescNode//text()}" />
     ]]>
   </text>
   <!--

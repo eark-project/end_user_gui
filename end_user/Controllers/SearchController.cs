@@ -21,19 +21,22 @@ namespace end_user_gui.Controllers
                 {
                     name = HttpContext.Request["name"],
                     Description = HttpContext.Request["description"],
+                    Metadata = Convert.ToBoolean(HttpContext.Request["meta"]),
+                    SearchInTitle = Convert.ToBoolean(HttpContext.Request["searchintitle"]),
+                    SearchInDescription = Convert.ToBoolean(HttpContext.Request["searchindescription"]),
                     StartIndex = pageNumber - 1
                 };
                 searchObject.StartIndex *= searchObject.MaxResults;
-
-                var searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
-                var searchResultCount = mod.Environment.Current().SearchModule().SearchCount(searchObject);
+                mod.ISearchModule searchModule = searchObject.Metadata ? mod.Environment.Current().MetadataSearchModule() : mod.Environment.Current().ContentSearchModule();
+                var searchResults = searchModule.Search(searchObject);
+                var searchResultCount = searchModule.SearchCount(searchObject);
 
                 var list = new StaticPagedList<Archive>(searchResults, pageNumber, searchObject.MaxResults, searchResultCount);
 
                 ViewBag.CurrentFilter = searchObject.name;
                 return View("searchresultview", list);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
@@ -44,7 +47,7 @@ namespace end_user_gui.Controllers
             ArchiveSearchObject searchObject = new ArchiveSearchObject();
             searchObject.name = query;
 
-            List<Archive> searchResults = mod.Environment.Current().SearchModule().Search(searchObject);
+            List<Archive> searchResults = mod.Environment.Current().ContentSearchModule().Search(searchObject);
             String[] ret = searchResults.Select(sr => sr.ReferenceCode).ToArray();
 
             // TODO: Fill result

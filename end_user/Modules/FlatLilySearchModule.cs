@@ -11,7 +11,7 @@ using end_user_gui.Models.dummy;
 
 namespace end_user_gui.Modules
 {
-    public class FlatLilySearchModule : ISearchModule
+    public class FlatLilySearchModule : IContentSearchModule
     {
         string CreateUrl(string query, long docStartIndex, long docBatchSize)
         {

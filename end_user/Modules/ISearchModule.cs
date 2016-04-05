@@ -12,4 +12,10 @@ namespace end_user_gui.Modules
         int SearchCount(ArchiveSearchObject searchObject);
         Archive Lookup(String key);
     }
+
+    public interface IContentSearchModule : ISearchModule
+    { }
+
+    public interface IMetadataearchModule : ISearchModule
+    { }
 }

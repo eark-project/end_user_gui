@@ -7,7 +7,10 @@
                 '/search',
                 {
                     name: $('#name').val(),
-                    description: $('#description').val(),
+                    //description: $('#description').val(),
+                    meta: $('#metadataSearch').attr('class').split(' ').indexOf('active') > -1,
+                    searchintitle: $('#searchintitle').is(':checked'),
+                    searchindescription: $('#searchindescription').is(':checked'),
                     page: page
                 },
                 function (data) {

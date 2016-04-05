@@ -34,14 +34,14 @@ namespace end_user_gui.Controllers
         [Route("cart/openadd/{iii}")]
         public ActionResult OpenAddDialog(String iii)
         {
-            Archive archive = mod.Environment.Current().SearchModule().Lookup(iii);
+            Archive archive = mod.Environment.Current().ContentSearchModule().Lookup(iii);
             List<Dissemination> ret = mod.Environment.Current().ArchiveRepository().GetDIPs(archive);
             return PartialView("addtocartmodal_body", new Tuple<Archive, List<Dissemination>>(archive, ret));
         }
 
         public ActionResult Add(String key, String disKey, String commnets)
         {
-            Archive archive = mod.Environment.Current().SearchModule().Lookup(key);
+            Archive archive = mod.Environment.Current().ContentSearchModule().Lookup(key);
             Dissemination dissemination = null;
             if (!string.IsNullOrEmpty(disKey))
             {
@@ -53,7 +53,7 @@ namespace end_user_gui.Controllers
 
         public ActionResult Remove(String key)
         {
-            Archive archive = mod.Environment.Current().SearchModule().Lookup(key);
+            Archive archive = mod.Environment.Current().ContentSearchModule().Lookup(key);
             mod.Environment.Current().Session().CurrentOrder.Remove(archive);
             return new HttpStatusCodeResult(HttpStatusCode.OK);
         }

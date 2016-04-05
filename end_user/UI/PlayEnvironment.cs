@@ -9,9 +9,14 @@ namespace end_user_gui.UI
 {
     public class PlayEnvironment : IEnvironment
     {
-        public ISearchModule SearchModule()
+        public ISearchModule ContentSearchModule()
         {
-            return GetObject<ISearchModule>();
+            return GetObject<IContentSearchModule>();
+        }
+
+        public ISearchModule MetadataSearchModule()
+        {
+            return GetObject<IMetadataearchModule>();
         }
 
         private IOrderModule _OrderModule;
@@ -40,7 +45,8 @@ namespace end_user_gui.UI
         {
             // TODO: put real injection here
             _Types[typeof(ISession)] = typeof(PlaySession);
-            _Types[typeof(ISearchModule)] = typeof(Modules.EADSearchModule);
+            _Types[typeof(IContentSearchModule)] = typeof(Modules.FlatLilySearchModule);
+            _Types[typeof(IMetadataearchModule)] = typeof(Modules.EADSearchModule);
             _Types[typeof(IOrderModule)] = typeof(Modules.OrderModule);
             _Types[typeof(IArchiveRepository)] = typeof(Modules.ArchiveRepository);
         }
