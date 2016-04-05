@@ -13,18 +13,18 @@ namespace end_user_gui.Modules
 {
     public class FlatLilySearchModule : IContentSearchModule
     {
-        string CreateUrl(string query, long docStartIndex, long docBatchSize)
+        public static string CreateUrl(string query, long docStartIndex, long docBatchSize)
         {
             return LilyUrl
                 + query
                 + "&wt=json"
-                + "&fl=path,size,contentType"
+                + "&fl=path,size,contentType,package"
                 + "&start=" + docStartIndex
                 + "&rows=" + docBatchSize;
         }
 
 
-        private List<Archive> FindArchives(String query, int targetStartIndex, int targetMaxResults)
+        public List<Archive> FindArchives(String query, int targetStartIndex, int targetMaxResults)
         {
             long docStartIndex = 0, docBatchSize = 100;
 
@@ -46,7 +46,7 @@ namespace end_user_gui.Modules
                         return path.Substring(0, Math.Min(36, path.Length));
                     });
 
-                Predicate<JToken> isValid = (t) => t["path"].ToString().Length >= 36;
+                Predicate<JToken> isValid = (t) => t["path"].ToString().Length >= 36 && t["package"] != null;
 
                 // Add first result set
                 var allDocs = new List<JToken>();
@@ -128,11 +128,11 @@ namespace end_user_gui.Modules
 
         public Archive Lookup(String key)
         {
-            var query = string.Format("q=path:{0}", key);
+            var query = string.Format("q=package:pack_" + key);
             return FindArchives(query, 0, 1).FirstOrDefault();
         }
 
-        public String getStringResult(String url)
+        private String getStringResult(String url)
         {
             StringBuilder builder = new StringBuilder();
             try

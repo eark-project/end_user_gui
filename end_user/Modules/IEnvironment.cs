@@ -8,8 +8,8 @@ namespace end_user_gui.Modules
 {
     public interface IEnvironment
     {
-        ISearchModule ContentSearchModule();
-        ISearchModule MetadataSearchModule();
+        IContentSearchModule ContentSearchModule();
+        IMetadataearchModule MetadataSearchModule();
         IOrderModule OrderModule();
         IArchiveRepository ArchiveRepository();
         ISession Session();

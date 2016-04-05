@@ -27,7 +27,9 @@ namespace end_user_gui.Controllers
                     StartIndex = pageNumber - 1
                 };
                 searchObject.StartIndex *= searchObject.MaxResults;
-                mod.ISearchModule searchModule = searchObject.Metadata ? mod.Environment.Current().MetadataSearchModule() : mod.Environment.Current().ContentSearchModule();
+                mod.ISearchModule searchModule = searchObject.Metadata ?
+                    mod.Environment.Current().MetadataSearchModule() as mod.ISearchModule
+                    : mod.Environment.Current().ContentSearchModule() as mod.ISearchModule;
                 var searchResults = searchModule.Search(searchObject);
                 var searchResultCount = searchModule.SearchCount(searchObject);
 
@@ -40,6 +42,12 @@ namespace end_user_gui.Controllers
             {
                 return null;
             }
+        }
+
+        public PartialViewResult PackageFiles(string referenceCode)
+        {
+            Archive ret = mod.Environment.Current().ContentSearchModule().Lookup(referenceCode);
+            return PartialView("PackageFiles", ret);
         }
 
         public JsonResult AutoComplete(String query)

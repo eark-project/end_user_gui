@@ -1,0 +1,36 @@
+﻿@model end_user_gui.Models.Archive
+
+@functions{
+    string SizeString(long size)
+    {
+        var vals = new List<KeyValuePair<long, string>>();
+        vals.Add(new KeyValuePair<long, string>(1125899906842624, "PB"));
+        vals.Add(new KeyValuePair<long, string>(1099511627776, "TB"));
+        vals.Add(new KeyValuePair<long, string>(1073741824, "GB"));
+        vals.Add(new KeyValuePair<long, string>(1048576, "MB"));
+        vals.Add(new KeyValuePair<long, string>(1024, "KB"));
+        //vals.Add(new KeyValuePair<long,string>(0,"B"));
+
+        foreach (var kvp in vals)
+        {
+            if (size >= kvp.Key)
+                return string.Format("{0} {1}",
+                    Math.Round((double)size / (double)kvp.Key),
+                    kvp.Value
+                    );
+        }
+        return string.Format("{0} B", size);
+    }
+}
+
+@foreach (var file in Model.Files)
+{
+    <div class="row">
+        <div class="col-md-6 col-md-offset-2" style="text-align:left">
+            <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(Model.ReferenceCode, file.Path));}" t target="_blank">
+                @file.Path
+            </a>
+            <span>&nbsp;(@SizeString(file.Size))</span>
+        </div>
+    </div>
+}

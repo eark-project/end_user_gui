@@ -26,7 +26,15 @@
             $('[name="expandPackage"]').click(function () {
                 var uuid = this.getAttribute('uuid');
                 var div = $('#packageFiles_' + uuid)
-                div.toggle();
+                var url = div.attr('url');
+                if (div.is(":hidden"))
+                    $.ajax(url)
+                        .done(function (data) {
+                            div.html(data);
+                            div.show();
+                        });
+                else
+                    div.hide();
             });
 
             $('[name="gotopage"]').click(function () {

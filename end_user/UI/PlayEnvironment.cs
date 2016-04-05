@@ -9,12 +9,12 @@ namespace end_user_gui.UI
 {
     public class PlayEnvironment : IEnvironment
     {
-        public ISearchModule ContentSearchModule()
+        public IContentSearchModule ContentSearchModule()
         {
             return GetObject<IContentSearchModule>();
         }
 
-        public ISearchModule MetadataSearchModule()
+        public IMetadataearchModule MetadataSearchModule()
         {
             return GetObject<IMetadataearchModule>();
         }
