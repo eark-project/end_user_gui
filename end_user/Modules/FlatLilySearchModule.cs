@@ -75,6 +75,15 @@ namespace end_user_gui.Modules
                     {
                         AipUri = grp.Key,
                         ReferenceCode = grp.Key,
+                        Metadata = new ArchiveMetadata()
+                        {
+                            Title = grp.Key,
+                            Description = "",
+                            //CreatedBy = "",
+                            //CreatedDate = new DateTime(),
+                            //Type = ArchiveType.AIP,
+                            //Format = ArchiveFormat.other
+                        },
                         Files = grp.Select(
                             doc => new ArchiveFile()
                             {

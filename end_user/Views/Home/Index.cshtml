@@ -8,9 +8,26 @@
 <div class="row">
     <div class="col-md-7 col-md-offset-1">
         <div class="form-group">
-            <label class="control-label col-md-2" for="name">@Messages.search_nametitle</label>
             <div class="col-md-10">
-                <input type="text" class="form-control" id="name" name="name" autocomplete="off">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#contentSearch">Content</a></li>
+                    <li><a data-toggle="tab" href="#metadataSearch">Metadata</a></li>
+                </ul>                
+                <div class="tab-content">
+                    <div id="contentSearch" class="tab-pane fade in active" style="white-space:nowrap">
+                        <div class="row col-md-10">
+                            <label class="control-label col-md-2" for="name">@Messages.search_nametitle</label>
+                            <input type="text" class="form-control col-md-8" id="name" name="name" autocomplete="off">
+                        </div>
+                        <div class="row col-md-10">
+                            <label class="control-label col-md-2" for="description">@Messages.search_descriptiontitle</label>
+                            <input type="text" class="form-control col-md-8" id="description" name="description" autocomplete="off">
+                        </div>
+                        </div>
+                    <div id="metadataSearch" class="tab-pane fade">
+                        meta
+                    </div>
+                </div>
             </div>
         </div>
     </div>

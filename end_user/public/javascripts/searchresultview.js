@@ -7,6 +7,7 @@
                 '/search',
                 {
                     name: $('#name').val(),
+                    description: $('#description').val(),
                     page: page
                 },
                 function (data) {

@@ -20,6 +20,7 @@ namespace end_user_gui.Controllers
                 ArchiveSearchObject searchObject = new ArchiveSearchObject()
                 {
                     name = HttpContext.Request["name"],
+                    Description = HttpContext.Request["description"],
                     StartIndex = pageNumber - 1
                 };
                 searchObject.StartIndex *= searchObject.MaxResults;

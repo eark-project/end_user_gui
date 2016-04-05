@@ -166,7 +166,7 @@
     <value>Profile</value>
   </data>
   <data name="search_nametitle" xml:space="preserve">
-    <value>Name :</value>
+    <value>Name</value>
   </data>
   <data name="search_foundtitle" xml:space="preserve">
     <value>Found matches</value>
@@ -182,5 +182,8 @@
   </data>
   <data name="search_expandcollapse" xml:space="preserve">
     <value>Details</value>
+  </data>
+  <data name="search_descriptiontitle" xml:space="preserve">
+    <value>Description</value>
   </data>
 </root>

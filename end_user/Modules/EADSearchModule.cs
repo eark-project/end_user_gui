@@ -29,7 +29,7 @@ namespace end_user_gui.Modules
         {
             var request = Properties.Resources.EADSearch;
             request = request.Replace("<title>", searchObject.name)
-                .Replace("<description>", "");
+                .Replace("<description>", searchObject.Description);
             var response = JObject.Parse(GetResponse(PostUrl, request));
             var responseData = response["data"];
             var responseArray = responseData is JArray ? responseData as JArray : new JArray(responseData);
@@ -37,9 +37,9 @@ namespace end_user_gui.Modules
             var ret = responseArray
                 .Select(pkg => new Archive()
                 {
-                    AipUri = null,
+                    AipUri = pkg["id"].ToString(),
                     ReferenceCode = pkg["id"].ToString(),
-                    Files = null,
+                    Files = new List<ArchiveFile>(),
                     Metadata = new ArchiveMetadata()
                     {
                         Title = pkg["title"].ToString(),
@@ -56,7 +56,7 @@ namespace end_user_gui.Modules
 
         public int SearchCount(ArchiveSearchObject searchObject)
         {
-            throw new NotImplementedException();
+            return Search(searchObject).Count;
         }
     }
 }

@@ -205,6 +205,15 @@ namespace end_user_gui.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string search_descriptiontitle {
+            get {
+                return ResourceManager.GetString("search_descriptiontitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string search_expandcollapse {
@@ -223,7 +232,7 @@ namespace end_user_gui.App_GlobalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name :.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string search_nametitle {
             get {
