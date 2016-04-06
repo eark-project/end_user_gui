@@ -23,14 +23,16 @@
     }
 }
 <div class="row">
-    <div class="col-md-10 col-md-offset-2">
+    <div class="col-md-8 col-md-offset-1 table-bordered" style="text-align:left">
         @if (Model.Metadata != null)
         {
             var maxLength = 400;
             @Model.Metadata.Description.Substring(0, Math.Min(Model.Metadata.Description.Length, maxLength));
             if (Model.Metadata.Description.Length > maxLength)
             {
-                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#cell_@Model.ReferenceCode">...</button>
+                <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#cell_@Model.ReferenceCode" style="right:0">
+                    <span class="glyphicon glyphicon-modal-window"></span>...
+                </button>
             <!-- Modal -->
                 <div class="modal" id="cell_@Model.ReferenceCode" role="dialog">
                     <div class="modal-dialog modal-lg">
@@ -45,7 +47,7 @@
                                 @Model.Metadata.Description
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
@@ -54,14 +56,16 @@
         }
     </div>
 </div>
-@foreach (var file in Model.Files)
-{
-    <div class="row">
-        <div class="col-md-6 col-md-offset-2" style="text-align:left">
-            <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(Model.ReferenceCode, file.Path));}" t target="_blank">
-                @file.Path
-            </a>
-            <span>&nbsp;(@SizeString(file.Size))</span>
-        </div>
+<div class="row">
+    <div class="col-md-8 col-md-offset-1 table-bordered" style="">
+        @foreach (var file in Model.Files)
+        {
+            <div style="text-align:left">
+                <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(Model.ReferenceCode, file.Path));}" t target="_blank">
+                    @file.Path
+                </a>
+                <span>&nbsp;(@SizeString(file.Size))</span>
+            </div>
+    }
     </div>
-}
+</div>
