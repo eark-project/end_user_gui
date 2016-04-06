@@ -9,8 +9,7 @@
                     name: $('#name').val(),
                     //description: $('#description').val(),
                     meta: $('#metadataSearch').attr('class').split(' ').indexOf('active') > -1,
-                    searchintitle: $('#searchintitle').is(':checked'),
-                    searchindescription: $('#searchindescription').is(':checked'),
+                    searchin: $('[name="searchin"]:checked').val(),
                     page: page
                 },
                 function (data) {

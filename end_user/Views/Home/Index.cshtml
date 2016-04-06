@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-1">
-        <ul class="nav nav-pills">
+        <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#contentSearch" searchTab="true">Content</a></li>
             <li><a data-toggle="tab" href="#metadataSearch" searchTab="true">Metadata</a></li>
         </ul>
@@ -24,12 +24,14 @@
             <div id="contentSearch" class="tab-pane fade in active">
             </div>
             <span id="metadataSearch" class="tab-pane fade">
-
-                <input type="checkbox" name="searchintitle" id="searchintitle" checked />
+                <input type="radio" name="searchin" id="searchintitle" value="title" />
                 <label for="searchintitle">Title</label>
 
-                <input type="checkbox" name="searchindescription" id="searchindescription" checked />
+                <input type="radio" name="searchin" id="searchindescription" value="description" />
                 <label for="searchindescription">Description</label>
+
+                <input type="radio" name="searchin" id="searchinboth" value="both" checked />
+                <label for="searchinboth">Both</label>
             </span>
         </div>
     </div>
