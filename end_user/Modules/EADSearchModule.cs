@@ -32,7 +32,8 @@ namespace end_user_gui.Modules
                 .Replace("<description>", searchObject.Description);
             var response = JObject.Parse(GetResponse(PostUrl, request));
             var responseData = response["data"];
-            var responseArray = responseData is JArray ? responseData as JArray : new JArray(responseData);
+            var responseArray = responseData is JArray ? responseData as JArray
+                : responseData.Count() > 0 ? new JArray(responseData) : new JArray();
 
             var ret = responseArray
                 .Select(pkg => new Archive()

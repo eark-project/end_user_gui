@@ -12,5 +12,9 @@ define(["jquery", "bootstrap", "cart", "searchresultview"], function ($, b, c, s
         $('#btnSearch').click(function(){
                 s.callSearch();
         });
+
+        $('a[searchTab="true"]').on('shown.bs.tab', function (e) {
+            s.callSearch()
+        });
     });
 });
