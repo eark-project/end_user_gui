@@ -14,5 +14,17 @@ namespace end_user_gui.Models
         public long Size { get; set; }
         public string Path { get; set; }
         public byte[] Contents { get; set; }
+
+        [NotMapped]
+        public FileTypes Type
+        {
+            get { return Path.ToLower().EndsWith("ead.xml") ? FileTypes.EAD : FileTypes.Other; }
+        }
+    }
+
+    public enum FileTypes
+    {
+        EAD,
+        Other
     }
 }

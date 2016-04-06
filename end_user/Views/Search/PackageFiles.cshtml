@@ -22,7 +22,38 @@
         return string.Format("{0} B", size);
     }
 }
-
+<div class="row">
+    <div class="col-md-10 col-md-offset-2">
+        @if (Model.Metadata != null)
+        {
+            var maxLength = 400;
+            @Model.Metadata.Description.Substring(0, Math.Min(Model.Metadata.Description.Length, maxLength));
+            if (Model.Metadata.Description.Length > maxLength)
+            {
+                <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#cell_@Model.ReferenceCode">...</button>
+            <!-- Modal -->
+                <div class="modal" id="cell_@Model.ReferenceCode" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">
+                                    @Model.Metadata.Title
+                                </h4>
+                            </div>
+                            <div class="modal-body" style="text-wrap:normal; word-wrap:break-word">
+                                @Model.Metadata.Description
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
 @foreach (var file in Model.Files)
 {
     <div class="row">

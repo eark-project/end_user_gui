@@ -8,6 +8,7 @@ using end_user_gui.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using end_user_gui.Models.dummy;
+using System.Net;
 
 namespace end_user_gui.Modules
 {
@@ -67,33 +68,20 @@ namespace end_user_gui.Modules
                     allDocs.AddRange(docs.AsEnumerable().Where(t => isValid(t)));
                 }
 
+                var repo = new ArchiveRepository();
+                var fileLoader = new Func<string, string, string>((refCode, path) =>
+                {
+                    var fileUrl = repo.FileUrl(refCode, path);
+                    using (var cli = new WebClient())
+                    {
+                        return cli.DownloadString(fileUrl);
+                    }
+                });
                 // Now fill the return object
                 var archives = grouper(allDocs)
                     .Skip(targetStartIndex)
                     .Take(targetMaxResults)
-                    .Select(grp => new Archive()
-                    {
-                        AipUri = grp.Key,
-                        ReferenceCode = grp.Key,
-                        Metadata = new ArchiveMetadata()
-                        {
-                            Title = grp.Key,
-                            Description = "",
-                            //CreatedBy = "",
-                            //CreatedDate = new DateTime(),
-                            //Type = ArchiveType.AIP,
-                            //Format = ArchiveFormat.other
-                        },
-                        Files = grp.Select(
-                            doc => new ArchiveFile()
-                            {
-                                Path = doc["path"].ToString().Substring(grp.Key.Length),
-                                Size = long.Parse(doc["size"].ToString()),
-                                //Contents = (string)doc["contents"],
-                                ContentType = (string)doc["contentType"],
-                            } as ArchiveFile)
-                        .ToList()
-                    } as Archive)
+                    .Select(grp => Archive.FromLily(grp, (refCode, path) => fileLoader(refCode, path)))
                     .ToList();
 
                 return archives;
