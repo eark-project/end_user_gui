@@ -16,14 +16,14 @@ namespace end_user_gui.Controllers
             try
             {
                 var pageNumber = int.Parse(HttpContext.Request["page"] ?? "1");
-
+                var searchin = HttpContext.Request["searchin"];
                 ArchiveSearchObject searchObject = new ArchiveSearchObject()
                 {
                     name = HttpContext.Request["name"],
                     Description = HttpContext.Request["description"],
                     Metadata = Convert.ToBoolean(HttpContext.Request["meta"]),
-                    SearchInTitle = Convert.ToBoolean(HttpContext.Request["searchintitle"]),
-                    SearchInDescription = Convert.ToBoolean(HttpContext.Request["searchindescription"]),
+                    SearchInTitle = searchin.Equals("both") || searchin.Equals("title"),
+                    SearchInDescription = searchin.Equals("both") || searchin.Equals("description"),
                     StartIndex = pageNumber - 1
                 };
                 searchObject.StartIndex *= searchObject.MaxResults;

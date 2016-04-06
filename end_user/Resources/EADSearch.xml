@@ -10,7 +10,6 @@
     declare option output:media-type "application/json";
     
     let $titleQuery := '<title>'
-    let $descriptionQuery := '<description>'
     
     for $doc in collection('/db/apps/eark')
     
@@ -19,11 +18,11 @@
     let $id := substring( string(($archDescNode//ead:dao/@id)[1]), 10,36)
     
     where (
-        ($id != '') 
+        ($id != '')
         and
-        (string-length($descriptionQuery) = 0 or contains($archDescNode//text(), $descriptionQuery) )
-        and 
-        (string-length($titleQuery)       = 0 or contains ($title//text(), $titleQuery))
+        (
+          <query>          
+        )
     )
     return <package id="{$id}" title="{$title}" description="{$archDescNode//text()}" />
     ]]>

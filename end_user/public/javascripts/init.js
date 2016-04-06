@@ -16,5 +16,9 @@ define(["jquery", "bootstrap", "cart", "searchresultview"], function ($, b, c, s
         $('a[searchTab="true"]').on('shown.bs.tab', function (e) {
             s.callSearch()
         });
+
+        $('input[name="searchin"]').change(function (e) {
+            s.callSearch()
+        });
     });
 });

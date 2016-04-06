@@ -28,8 +28,23 @@ namespace end_user_gui.Modules
         public List<Archive> Search(ArchiveSearchObject searchObject)
         {
             var request = Properties.Resources.EADSearch;
-            request = request.Replace("<title>", searchObject.name)
+            request = request.Replace("<title>", searchObject.name.Replace("'", "''"))
                 .Replace("<description>", searchObject.Description);
+            var filters = new List<string>();
+
+            if (searchObject.SearchInTitle)
+                filters.Add("contains($title//text(), $titleQuery)");
+            if (searchObject.SearchInDescription)
+                filters.Add("contains($archDescNode//text(), $titleQuery)");
+
+
+            request = request.Replace(
+                "<query>",
+                string.Join(
+                    " or ",
+                    filters.ToArray()
+                    ));
+
             var response = JObject.Parse(GetResponse(PostUrl, request));
             var responseData = response["data"];
             var responseArray = responseData is JArray ? responseData as JArray
