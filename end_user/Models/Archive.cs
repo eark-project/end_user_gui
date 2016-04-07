@@ -53,7 +53,48 @@ namespace end_user_gui.Models
             if (mainEad != null)
             {
                 var xml = fileDownloader(ret.ReferenceCode, mainEad.Path);
+                var eadDoc = new XmlDocument();
+                eadDoc.LoadXml(xml);
+
                 ret.Metadata = ArchiveMetadata.FromEAD(xml);
+
+                XmlNamespaceManager nsMgr = new XmlNamespaceManager(eadDoc.NameTable);
+                nsMgr.AddNamespace("ead", "urn:isbn:1-931666-22-9");
+                nsMgr.AddNamespace("xlink", "http://www.w3.org/1999/xlink");
+
+                Func<string, string> uriConverter = (didUrl) =>
+                 {
+                     if (didUrl.StartsWith("file://"))
+                         didUrl = didUrl.Substring(7);
+
+                     var eadUrl = mainEad.Path;
+                     eadUrl = eadUrl.Substring(0, eadUrl.LastIndexOf('/'));
+                     while (didUrl.StartsWith("../"))
+                     {
+                         eadUrl = eadUrl.Substring(0, eadUrl.LastIndexOf('/'));
+                         didUrl = didUrl.Substring(3);
+                     }
+                     return eadUrl + '/' + didUrl;
+                 };
+
+                var xPath = "//*[@level='file']/ead:did [ ead:dao [ string-length(@xlink:href) > 0 ]]";
+                var didNodes = eadDoc.SelectNodes(xPath, nsMgr).OfType<XmlElement>().Select(
+                        nd => new
+                        {
+                            Path = uriConverter(nd.SelectSingleNode("ead:dao/@xlink:href", nsMgr).Value),
+                            Node = nd
+                        }
+                    ).ToArray();
+
+                var joined = from didNode in didNodes
+                             join file in ret.Files
+                             on didNode.Path equals file.Path
+                             select new { didNode, file };
+
+                foreach (var j in joined)
+                {
+                    j.file.Metadata = new FileMetadata(j.didNode.Node);
+                }
             }
             return ret;
         }

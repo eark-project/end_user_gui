@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace end_user_gui.Models
 {
@@ -14,6 +15,8 @@ namespace end_user_gui.Models
         public long Size { get; set; }
         public string Path { get; set; }
         public byte[] Contents { get; set; }
+
+        public FileMetadata Metadata { get; set; }
 
         [NotMapped]
         public FileTypes Type

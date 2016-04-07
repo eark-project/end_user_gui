@@ -1,4 +1,4 @@
-﻿<ead xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="urn:isbn:1-931666-22-9 ../../schemas/ead.xsd http://www.w3.org/1999/xlink ../../schemas/xlink.xsd">
+﻿<ead xmlns="urn:isbn:1-931666-22-9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:isbn:1-931666-22-9 ../../schemas/ead.xsd http://www.w3.org/1999/xlink ../../schemas/xlink.xsd" xmlns:xlink="http://www.w3.org/1999/xlink">
   <eadheader>
     <eadid countrycode="AT" identifier="A/SCI/1/1/1">gb067a/sci/1/1/1</eadid>
     <filedesc>
@@ -70,7 +70,7 @@
               <physdesc>
                 <extent>1 Image file</extent>
               </physdesc>
-              <dao id="urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/imgs/data/Letter-Einstein-Maric.png" xlink:href="http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fimgs%2Fdata%2FLetter-Einstein-Maric%5C.png/field/n$content/data?ns.n=org.eu.eark">
+              <dao xlink:href="file://../../representations/imgs/data/Letter-Einstein-Maric.png">
                 <daodesc>
                   <p>Image of a letter between Einstein and Maric</p>
                 </daodesc>
@@ -97,7 +97,7 @@
                 <extent>1 Image</extent>
               </physdesc>
               <origination>Einstein</origination>
-              <dao id="urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/imgs/data/Einstein-Roosevelt-letter.png" xlink:href="http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fimgs%2Fdata%2FEinstein-Roosevelt-letter%5C.png/field/n$content/data?ns.n=org.eu.eark">
+              <dao xlink:href="file://../../representations/imgs/data/Einstein-Roosevelt-letter.png">
                 <daodesc>
                   <p>Einstein-Roosevelt letter</p>
                 </daodesc>
@@ -130,7 +130,7 @@
               <unitid countrycode="AT" identifier="A/SCI/1/1/1/2/1/1" type="persistent" label="current">A/SCI/1/1/1/2/1/1</unitid>
               <unittitle>General relativity</unittitle>
               <unitdate normal="1915/1915">1915-1915</unitdate>
-              <dao id="urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/docs/data/General relativity.pdf" xlink:href="http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fdocs%2Fdata%2FGeneral%20relativity%5C.pdf/field/n$content/data?ns.n=org.eu.eark">
+              <dao xlink:href="file://../../representations/docs/data/General relativity.pdf">
                 <daodesc>
                   <p>General relativity</p>
                 </daodesc>
@@ -142,7 +142,7 @@
               <unitid countrycode="AT" identifier="A/SCI/1/1/1/2/1/2" type="persistent" label="current">A/SCI/1/1/1/2/1/2</unitid>
               <unittitle>Special relativity</unittitle>
               <unitdate normal="1905/1905">1905-1905</unitdate>
-              <dao id="urn:uuid:46df0610-eaeb-4096-9a13-46531ad563d2/submission/representations/docs/data/Special relativity.pdf" xlink:href="http://earkdev.ait.ac.at:12060/repository/table/eark1/record/USER.46df0610-eaeb-4096-9a13-46531ad563d2%2Fsubmission%2Frepresentations%2Fdocs%2Fdata%2FSpecial%20relativity%5C.pdf/field/n$content/data?ns.n=org.eu.eark">
+              <dao xlink:href="file://../../representations/docs/data/Special relativity.pdf">
                 <daodesc>
                   <p>Special relativity</p>
                 </daodesc>

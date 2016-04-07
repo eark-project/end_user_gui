@@ -78,7 +78,11 @@ foreach (var file in files)
 {
         <div style="text-align:left">
             <a href="@{Output.Write(end_user_gui.Modules.Environment.Current().ArchiveRepository().FileUrl(Model.ReferenceCode, file.Path));}" t target="_blank">
-                @file.Path
+                @if (file.Metadata != null && !string.IsNullOrEmpty(file.Metadata.Title))
+                {    @file.Metadata.Title }
+                else{
+                    @file.Path.Split('/').LastOrDefault()
+                }
             </a>
             <span>&nbsp;(@SizeString(file.Size))</span>
         </div>
