@@ -26,7 +26,7 @@
 {
     if (!string.IsNullOrEmpty(Model.Metadata.UnitDate) || !string.IsNullOrEmpty(Model.Metadata.CreatedBy))
     {
-        <div class="row" style="margin-top:5px;margin-bottom:5px;">
+        <div class="row" style="padding-top:5px; ">
             <div class="col-md-1" style="text-align:left"><b>Creator</b></div>
             <div class="col-md-5" style="text-align:left">@Model.Metadata.CreatedBy</div>
             <div class="col-md-1" style="text-align:left"><b>Date</b></div>
@@ -35,7 +35,7 @@
     }
     if (!string.IsNullOrEmpty(Model.Metadata.Description))
     {
-        <div class="row">
+        <div class="row" style="padding-top:15px;">
             <div class="col-md-1" style="text-align:left"><b>Descr.</b></div>
             <div class="col-md-11 col-md-offset-0" style="text-align:left">
 
@@ -84,7 +84,7 @@ foreach (var file in files)
         </div>
     }
 }
-<div class="row">
+<div class="row" style="padding-top:15px;">
     <div class="col-md-1" style="text-align:left"><b>Contents</b></div>
     <div class="col-md-11 col-md-offset-0" style="">
         @{
