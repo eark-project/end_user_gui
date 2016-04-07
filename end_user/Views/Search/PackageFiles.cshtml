@@ -26,15 +26,15 @@
 {
     <div class="row">
         <div class="col-md-1"><b>Descr.</b></div>
-        <div class="col-md-8 col-md-offset-0 table-bordered" style="text-align:left">
+        <div class="col-md-11 col-md-offset-0" style="text-align:left">
 
             @{
-                var maxLength = 150;
+                var maxLength = 400;
             }
             @Model.Metadata.Description.Substring(0, Math.Min(Model.Metadata.Description.Length, maxLength));
-            if (Model.Metadata.Description.Length > maxLength)
+            @if (Model.Metadata.Description.Length > maxLength)
             {
-            <button type="button" class="btn btn-lg btn-link" data-toggle="modal" data-target="#cell_@Model.ReferenceCode" style="right:0">
+            <button type="button" class="btn btn-md btn-block" data-toggle="modal" data-target="#cell_@Model.ReferenceCode" style="right:0">
                 <span class="glyphicon"></span> (See more)...
             </button>
             <!-- Modal -->
@@ -51,7 +51,7 @@
                             @Model.Metadata.Description
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-md" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -75,15 +75,15 @@ foreach (var file in files)
 }
 <div class="row">
     <div class="col-md-1"><b>Contents</b></div>
-    <div class="col-md-8 col-md-offset-0 table-bordered" style="">
+    <div class="col-md-11 col-md-offset-0" style="">
         @{
-            var maxFiles = 2; }
+            var maxFiles = 10; }
         @Files(Model.Files.Take(maxFiles))
 
         @if (Model.Files.Count > maxFiles)
         {
             <div style="text-align:left">
-                <button type="button" class="btn btn-lg btn-link" data-toggle="modal" data-target="#files_@Model.ReferenceCode" style="right:0">
+                <button type="button" class="btn btn-md btn-block" data-toggle="modal" data-target="#files_@Model.ReferenceCode" style="right:0">
                     <span class="glyphicon"></span>  (more files) ...
                 </button>
             </div>
@@ -101,7 +101,7 @@ foreach (var file in files)
                             @Files(Model.Files)
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-sm" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-md" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
