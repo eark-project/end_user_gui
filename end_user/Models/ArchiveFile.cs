@@ -18,13 +18,20 @@ namespace end_user_gui.Models
         [NotMapped]
         public FileTypes Type
         {
-            get { return Path.ToLower().EndsWith("ead.xml") ? FileTypes.EAD : FileTypes.Other; }
+            get
+            {
+                var p = Path.ToLower();
+                return p.EndsWith("ead.xml") ? FileTypes.EAD
+                    : p.Contains("/data/") || p.Contains("\\data\\") ? FileTypes.Data
+                    : FileTypes.Other;
+            }
         }
     }
 
     public enum FileTypes
     {
         EAD,
+        Data,
         Other
     }
 }

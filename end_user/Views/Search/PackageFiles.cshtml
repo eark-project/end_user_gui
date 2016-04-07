@@ -40,9 +40,10 @@
             <div class="col-md-11 col-md-offset-0" style="text-align:left">
 
                 @{ var maxLength = 400; }
-                @Model.Metadata.Description.Substring(0, Math.Min(Model.Metadata.Description.Length, maxLength));
+                @Model.Metadata.Description.Substring(0, Math.Min(Model.Metadata.Description.Length, maxLength))
                 @if (Model.Metadata.Description.Length > maxLength)
                 {
+                    <span>&nbsp;&nbsp;...</span>
                     <button type="button" class="btn btn-md btn-block" data-toggle="modal" data-target="#cell_@Model.ReferenceCode" style="right:0">
                         <span class="glyphicon"></span> (See more)...
                     </button>
@@ -87,10 +88,12 @@ foreach (var file in files)
     <div class="col-md-1" style="text-align:left"><b>Contents</b></div>
     <div class="col-md-11 col-md-offset-0" style="">
         @{
-            var maxFiles = 10; }
-        @Files(Model.Files.Take(maxFiles))
+            var maxFiles = 10;
+            var relevantFiles = Model.Files.Where(f => f.Type == end_user_gui.Models.FileTypes.Data);
+        }
+        @Files(relevantFiles.Take(maxFiles))
 
-        @if (Model.Files.Count > maxFiles)
+        @if (relevantFiles.Count() > maxFiles)
         {
             <div style="text-align:left">
                 <button type="button" class="btn btn-md btn-block" data-toggle="modal" data-target="#files_@Model.ReferenceCode" style="right:0">
@@ -108,7 +111,7 @@ foreach (var file in files)
                             </h4>
                         </div>
                         <div class="modal-body" style="text-wrap:normal; word-wrap:break-word">
-                            @Files(Model.Files)
+                            @Files(relevantFiles)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-md" data-dismiss="modal">Close</button>
