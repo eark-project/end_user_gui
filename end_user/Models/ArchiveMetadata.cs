@@ -15,6 +15,7 @@ namespace end_user_gui.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string CreatedBy { get; set; }
+        public string UnitDate { get; set; }
         public DateTime CreatedDate { get; set; }
 
         public ArchiveType Type { get; set; } = ArchiveType.AIP;
@@ -30,7 +31,9 @@ namespace end_user_gui.Models
             return new ArchiveMetadata()
             {
                 Title = doc.SelectSingleNode("//ead:eadheader//ead:titleproper", nsMgr).InnerText,
-                Description = doc.SelectSingleNode("//ead:archdesc/ead:bioghist", nsMgr).InnerText
+                Description = doc.SelectSingleNode("//ead:archdesc/ead:bioghist", nsMgr).InnerText,
+                CreatedBy = doc.SelectSingleNode("//ead:archdesc/ead:did/ead:origination", nsMgr).InnerText,
+                UnitDate = doc.SelectSingleNode("//ead:archdesc/ead:did/ead:unitdate", nsMgr).InnerText,
             };
         }
     }
