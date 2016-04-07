@@ -24,7 +24,7 @@
           <query>          
         )
     )
-    return <package id="{$id}" title="{$title}" description="{$archDescNode//text()}" />
+    return <package id="{$id}" title="{$title}" description="{$archDescNode/ead:bioghist//text()}" />
     ]]>
   </text>
   <!--

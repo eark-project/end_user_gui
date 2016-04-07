@@ -33,9 +33,9 @@ namespace end_user_gui.Modules
             var filters = new List<string>();
 
             if (searchObject.SearchInTitle)
-                filters.Add("contains($title//text(), $titleQuery)");
+                filters.Add("contains(upper-case($title//text()), upper-case($titleQuery))");
             if (searchObject.SearchInDescription)
-                filters.Add("contains($archDescNode//text(), $titleQuery)");
+                filters.Add("contains(upper-case($archDescNode//text()), upper-case($titleQuery))");
 
 
             request = request.Replace(

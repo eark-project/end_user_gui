@@ -30,7 +30,7 @@ namespace end_user_gui.Models
             return new ArchiveMetadata()
             {
                 Title = doc.SelectSingleNode("//ead:eadheader//ead:titleproper", nsMgr).InnerText,
-                Description = doc.SelectSingleNode("//ead:archdesc", nsMgr).InnerText
+                Description = doc.SelectSingleNode("//ead:archdesc/ead:bioghist", nsMgr).InnerText
             };
         }
     }
