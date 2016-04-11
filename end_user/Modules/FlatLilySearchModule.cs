@@ -100,6 +100,9 @@ namespace end_user_gui.Modules
             else
                 query += searchObject.name;
 
+            if (!query.EndsWith("*"))
+                query += "*";
+
             return FindArchives(query, searchObject.StartIndex, searchObject.MaxResults);
         }
 
