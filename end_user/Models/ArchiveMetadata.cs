@@ -38,6 +38,7 @@ namespace end_user_gui.Models
 
         public ArchiveType Type { get; set; } = ArchiveType.AIP;
         public ArchiveFormat Format { get; set; } = ArchiveFormat.mixed;
+        public string AccessRestrictions { get; set; }
 
         public static ArchiveMetadata FromEAD(string xml)
         {
@@ -52,6 +53,7 @@ namespace end_user_gui.Models
                 Description = doc.SelectSingleNode("//ead:archdesc/ead:bioghist", nsMgr).InnerText,
                 CreatedBy = doc.SelectSingleNode("//ead:archdesc/ead:did/ead:origination", nsMgr).InnerText,
                 UnitDate = doc.SelectSingleNode("//ead:archdesc/ead:did/ead:unitdate", nsMgr).InnerText,
+                AccessRestrictions = doc.SelectSingleNode("//ead:archdesc/ead:accessrestrict", nsMgr).InnerText,
             };
         }
     }

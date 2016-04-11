@@ -28,9 +28,11 @@
     {
         <div class="row" style="padding-top:5px; ">
             <div class="col-md-1" style="text-align:left"><b>Creator</b></div>
-            <div class="col-md-5" style="text-align:left">@Model.Metadata.CreatedBy</div>
+            <div class="col-md-3" style="text-align:left">@Model.Metadata.CreatedBy</div>
+            <div class="col-md-1" style="text-align:left"><b>Access</b></div>
+            <div class="col-md-3" style="text-align:left">@Model.Metadata.AccessRestrictions</div>
             <div class="col-md-1" style="text-align:left"><b>Date</b></div>
-            <div class="col-md-5" style="text-align:left">@Model.Metadata.UnitDate</div>
+            <div class="col-md-3" style="text-align:left">@Model.Metadata.UnitDate</div>
         </div>
     }
     if (!string.IsNullOrEmpty(Model.Metadata.Description))
