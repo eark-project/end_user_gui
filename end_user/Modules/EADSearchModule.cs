@@ -35,7 +35,7 @@ namespace end_user_gui.Modules
             if (searchObject.SearchInTitle)
                 filters.Add("contains(upper-case($title//text()), upper-case($titleQuery))");
             if (searchObject.SearchInDescription)
-                filters.Add("contains(upper-case($archDescNode//text()), upper-case($titleQuery))");
+                filters.Add("contains(upper-case($bioghistNode//text()), upper-case($titleQuery))");
 
 
             request = request.Replace(

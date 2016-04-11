@@ -13,7 +13,8 @@
     
     for $doc in collection('/db/apps/eark')
     
-    let $archDescNode := $doc//ead:archdesc
+    let $archDescNode := $doc//ead:archdesc[@level='fonds']
+    let $bioghistNode := $archDescNode/ead:bioghist
     let $title := $doc//ead:eadheader//ead:titleproper
     let $id := substring( string(($archDescNode//ead:dao/@id)[1]), 10,36)
     
@@ -24,27 +25,7 @@
           <query>          
         )
     )
-    return <package id="{$id}" title="{$title}" description="{$archDescNode/ead:bioghist//text()}" />
+    return <package id="{$id}" title="{$title}" description="{$bioghistNode//text()}" />
     ]]>
   </text>
-  <!--
-xquery version "3.0";
-    declare namespace ead="urn:isbn:1-931666-22-9";
-    declare namespace xlink="http://www.w3.org/1999/xlink";
-    declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
-    declare option output:method "json";
-    declare option output:media-type "application/json";
-    for $docs in collection('/db/apps/eark')
-    for $title in $docs//ead:dao
-    (:  :for $title in $docs//ead:dao:)
-    (:  :let $packageId := substring( string($title/@id), 10,36):)
-    (:  :where contains($title/ead:daodesc/ead:p, '') :)
-    (:  :group by $packageId:)    
-    let $packageId := substring( string($title/@id), 10,36)
-    where contains($title/ead:daodesc/ead:p, '<title>')
-    group by $packageId
-    return $packageId
-    
-    (: return <item id="{string($title/@id)}" link="{string($title/@xlink:href)}" title="{string($title/ead:daodesc/ead:p)}"/> :)
--->
 </query>
